@@ -2,275 +2,239 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>大阪 5 天 4 夜新春行程 (2026)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Chosen Palette: Warm Sand & Energetic Orange -->
-    <!-- Palette Name: Osaka Sunset -->
-    <!-- Colors: Background: #fafaf9 (stone-50), Primary: #f97316 (orange-500), Secondary: #44403c (stone-700), Accent: #eab308 (yellow-500) -->
-    
+    <!-- Palette: Warm Sand & Energetic Orange -->
     <style>
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background-color: #fafaf9; /* stone-50 */
             color: #44403c; /* stone-700 */
+            padding-bottom: 80px; /* Space for bottom nav */
         }
         
-        /* Chart Container Styling per Requirements */
+        /* Mobile-First Chart Container */
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 600px; /* max-w-xl equivalent */
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px; /* Base height */
-            max-height: 400px;
+            height: 250px;
         }
-
         @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
+            .chart-container { height: 350px; }
         }
 
-        /* Custom Scrollbar for timeline */
-        .timeline-scroll::-webkit-scrollbar {
-            width: 6px;
+        /* Hide Scrollbar but keep functionality */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
         }
-        .timeline-scroll::-webkit-scrollbar-track {
-            background: #f5f5f4;
-        }
-        .timeline-scroll::-webkit-scrollbar-thumb {
-            background-color: #d6d3d1;
-            border-radius: 20px;
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
         .tab-active {
             background-color: #f97316; /* orange-500 */
             color: white;
-            border-bottom: 4px solid #c2410c; /* orange-700 */
+            border-bottom: 3px solid #c2410c;
         }
         .tab-inactive {
-            background-color: #e7e5e4; /* stone-200 */
-            color: #57534e; /* stone-600 */
+            background-color: #f5f5f4;
+            color: #78716c;
         }
-        .tab-inactive:hover {
-            background-color: #d6d3d1; /* stone-300 */
+        
+        /* Smooth fade for view switching */
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Safe area for iPhone X+ */
+        .safe-pb {
+            padding-bottom: env(safe-area-inset-bottom);
         }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <!-- Header Section -->
-    <header class="bg-stone-800 text-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center">
+    <!-- Mobile Header -->
+    <header class="bg-stone-800 text-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div>
-                <h1 class="text-2xl font-bold">🇯🇵 大阪新春購物動漫之旅 2026</h1>
-                <p class="text-stone-400 text-sm">1月3日 (六) - 1月7日 (三) | 住宿: Daiwa Roynet Hotel Osaka Shinsaibashi</p>
+                <h1 class="text-lg font-bold leading-tight">🇯🇵 大阪新春之旅 2026</h1>
+                <p class="text-stone-400 text-xs">1/3 (六) - 1/7 (三)</p>
             </div>
-            <div class="mt-4 md:mt-0 flex space-x-2 text-sm">
-                <button onclick="switchView('dashboard')" class="px-4 py-2 rounded-lg bg-orange-600 hover:bg-orange-700 transition" id="nav-dashboard">總覽</button>
-                <button onclick="switchView('itinerary')" class="px-4 py-2 rounded-lg hover:bg-stone-700 transition" id="nav-itinerary">每日行程</button>
-                <button onclick="switchView('spots')" class="px-4 py-2 rounded-lg hover:bg-stone-700 transition" id="nav-spots">商店名錄</button>
-            </div>
+            <!-- Settings or Info Icon could go here -->
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow container mx-auto px-4 py-6">
+    <main class="flex-grow container mx-auto px-4 py-4 safe-pb">
 
         <!-- VIEW: DASHBOARD -->
-        <div id="view-dashboard" class="space-y-8 animate-fade-in">
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
-                <h2 class="text-xl font-bold text-stone-800 mb-2">旅程概況</h2>
-                <p class="text-stone-600 mb-6">
-                    這是一個專為購物、動漫愛好者設計的 5 天行程。重點涵蓋心齋橋的一番賞、日本橋的深度 Figure 尋寶、神戶 Outlet 掃貨，以及新春限定的福袋與初賣氛圍。
+        <div id="view-dashboard" class="space-y-6 animate-fade-in">
+            <!-- Hero Card -->
+            <div class="bg-gradient-to-r from-orange-500 to-amber-500 rounded-2xl p-6 text-white shadow-lg">
+                <h2 class="text-2xl font-bold mb-2">旅程概覽</h2>
+                <p class="text-white/90 text-sm mb-4">
+                    專為動漫、購物與美食設計的 5 天新春行程。
+                    <br>住宿：Daiwa Roynet Hotel Osaka Shinsaibashi
                 </p>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Chart 1: Activity Breakdown -->
-                    <div class="flex flex-col items-center">
-                        <h3 class="text-lg font-semibold mb-4 text-stone-600">⏳ 時間分配預估</h3>
-                        <div class="chart-container">
-                            <canvas id="activityChart"></canvas>
-                        </div>
-                        <p class="text-xs text-stone-400 mt-2 text-center">基於行程安排的估算比例</p>
-                    </div>
-
-                    <!-- Chart 2: Shopping Focus -->
-                    <div class="flex flex-col items-center">
-                        <h3 class="text-lg font-semibold mb-4 text-stone-600">🛍️ 購物重點類別</h3>
-                        <div class="chart-container">
-                            <canvas id="shoppingChart"></canvas>
-                        </div>
-                        <p class="text-xs text-stone-400 mt-2 text-center">店鋪提及頻率分析</p>
-                    </div>
+                <div class="flex gap-2">
+                    <span class="bg-white/20 px-2 py-1 rounded text-xs">⚡ 動漫聖地</span>
+                    <span class="bg-white/20 px-2 py-1 rounded text-xs">🥩 神戶牛</span>
+                    <span class="bg-white/20 px-2 py-1 rounded text-xs">🛍️ Outlet</span>
                 </div>
             </div>
 
-            <!-- Key Highlights Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
-                    <div class="text-2xl mb-1">⚡ 動漫聖地</div>
-                    <p class="text-sm text-stone-600">日本橋 Den Den Town、PARCO 動漫層、梅田 Pokemon Center。</p>
+            <!-- Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100">
+                    <h3 class="font-bold text-stone-700 mb-3 text-sm">⏳ 行程比重</h3>
+                    <div class="chart-container">
+                        <canvas id="activityChart"></canvas>
+                    </div>
                 </div>
-                <div class="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-500">
-                    <div class="text-2xl mb-1">🥩 美食饗宴</div>
-                    <p class="text-sm text-stone-600">神戶牛鐵板燒、KITTE 壽喜燒、鳥貴族宵夜、蟹道樂。</p>
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100">
+                    <h3 class="font-bold text-stone-700 mb-3 text-sm">🛍️ 購物重點</h3>
+                    <div class="chart-container">
+                        <canvas id="shoppingChart"></canvas>
+                    </div>
                 </div>
-                <div class="bg-stone-100 p-4 rounded-lg border-l-4 border-stone-500">
-                    <div class="text-2xl mb-1">⛩️ 新春祈福</div>
-                    <p class="text-sm text-stone-600">勝尾寺求勝運、生田神社。</p>
-                </div>
-            </div>
-            
-            <div class="text-center mt-8">
-                <button onclick="switchView('itinerary')" class="bg-orange-600 text-white px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:bg-orange-700 hover:scale-105 transition transform">
-                    開始探索每日行程 ➔
-                </button>
             </div>
         </div>
 
         <!-- VIEW: ITINERARY -->
-        <div id="view-itinerary" class="hidden space-y-6">
-            <!-- Day Tabs -->
-            <div class="flex overflow-x-auto space-x-2 pb-2 scrollbar-hide" id="day-tabs">
-                <!-- JS will populate tabs -->
+        <div id="view-itinerary" class="hidden space-y-4 animate-fade-in">
+            <!-- Sticky Day Tabs -->
+            <div class="sticky top-[60px] z-30 bg-[#fafaf9] pt-2 pb-2">
+                <div class="flex overflow-x-auto space-x-3 px-1 scrollbar-hide" id="day-tabs">
+                    <!-- JS populate tabs -->
+                </div>
             </div>
 
-            <!-- Content Area -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
-                <!-- Left: Timeline -->
-                <div class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-stone-200 p-6">
-                    <div id="day-header" class="mb-6 border-b pb-4">
-                        <!-- JS populate header -->
-                    </div>
-                    <div id="timeline-container" class="space-y-0 relative">
-                        <div class="absolute left-4 top-2 bottom-2 w-0.5 bg-stone-200"></div>
-                        <!-- JS populate timeline -->
-                    </div>
-                </div>
+            <!-- Day Header Card -->
+            <div id="day-header" class="bg-white rounded-xl p-5 shadow-sm border border-stone-100">
+                <!-- JS populate -->
+            </div>
 
-                <!-- Right: Quick Stats & Tips -->
-                <div class="lg:col-span-1 space-y-6">
-                    <!-- Transport Info Card -->
-                    <div class="bg-sky-50 p-5 rounded-xl border border-sky-100 shadow-sm">
-                        <h3 class="font-bold text-sky-800 mb-3 text-lg">🚆 交通重點</h3>
-                        <div id="transport-info" class="text-sm text-sky-900 space-y-2 leading-relaxed">
-                            <!-- JS populate -->
-                        </div>
-                    </div>
-                    
-                    <!-- Dining Info Card -->
-                    <div class="bg-rose-50 p-5 rounded-xl border border-rose-100 shadow-sm">
-                        <h3 class="font-bold text-rose-800 mb-3 text-lg">🍽️ 餐飲預約與時間</h3>
-                        <div id="dining-info" class="text-sm text-rose-900 space-y-2">
-                            <!-- JS populate -->
-                        </div>
-                    </div>
-
-                     <!-- Dynamic Map Button -->
-                     <div class="bg-white p-5 rounded-xl border border-stone-200 shadow-sm text-center">
-                        <p class="text-sm text-stone-500 mb-2">提供地圖與官網連結，方便確認營業時間與交通狀況。</p>
-                    </div>
-                </div>
+            <!-- Timeline -->
+            <div id="timeline-container" class="space-y-4 pb-20">
+                <!-- JS populate timeline -->
             </div>
         </div>
 
-        <!-- VIEW: SPOTS DATABASE -->
-        <div id="view-spots" class="hidden">
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
-                <div class="flex flex-col md:flex-row justify-between items-center mb-6">
-                    <h2 class="text-xl font-bold text-stone-800">🛍️ 商店與景點名錄</h2>
-                    <input type="text" id="spot-search" placeholder="搜尋店鋪 (例如: Animate)..." class="mt-2 md:mt-0 px-4 py-2 border rounded-lg w-full md:w-64 focus:outline-none focus:ring-2 focus:ring-orange-500">
+        <!-- VIEW: SPOTS -->
+        <div id="view-spots" class="hidden animate-fade-in pb-20">
+            <div class="sticky top-[60px] z-30 bg-[#fafaf9] pt-2 pb-4 space-y-3">
+                <div class="relative">
+                    <span class="absolute left-3 top-2.5 text-stone-400">🔍</span>
+                    <input type="text" id="spot-search" placeholder="搜尋店鋪 (如: Animate)..." 
+                           class="w-full pl-10 pr-4 py-2 bg-white border border-stone-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-sm">
                 </div>
-                
-                <div class="flex flex-wrap gap-2 mb-6" id="category-filters">
-                    <button class="filter-btn active px-3 py-1 rounded-full text-sm bg-stone-800 text-white" data-cat="all">全部</button>
-                    <button class="filter-btn px-3 py-1 rounded-full text-sm bg-stone-200 text-stone-600 hover:bg-orange-100" data-cat="anime">動漫/玩具</button>
-                    <button class="filter-btn px-3 py-1 rounded-full text-sm bg-stone-200 text-stone-600 hover:bg-orange-100" data-cat="shopping">購物/商場</button>
-                    <button class="filter-btn px-3 py-1 rounded-full text-sm bg-stone-200 text-stone-600 hover:bg-orange-100" data-cat="food">美食</button>
-                    <button class="filter-btn px-3 py-1 rounded-full text-sm bg-stone-200 text-stone-600 hover:bg-orange-100" data-cat="sightseeing">景點/放鬆</button>
+                <div class="flex overflow-x-auto space-x-2 scrollbar-hide pb-1" id="category-filters">
+                    <button class="filter-btn active whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-stone-800 text-white shadow-sm" data-cat="all">全部</button>
+                    <button class="filter-btn whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-white text-stone-600 border border-stone-200" data-cat="anime">⚡ 動漫</button>
+                    <button class="filter-btn whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-white text-stone-600 border border-stone-200" data-cat="shopping">🛍️ 購物</button>
+                    <button class="filter-btn whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-white text-stone-600 border border-stone-200" data-cat="food">🍽️ 美食</button>
+                    <button class="filter-btn whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-white text-stone-600 border border-stone-200" data-cat="sightseeing">⛩️ 景點</button>
                 </div>
+            </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="spots-grid">
-                    <!-- JS populate spots -->
-                </div>
+            <div class="grid grid-cols-1 gap-3" id="spots-grid">
+                <!-- JS populate spots -->
             </div>
         </div>
 
     </main>
 
-    <footer class="bg-stone-800 text-stone-400 py-6 text-center text-sm">
-        <p>2026 大阪新春行程 SPA | Designed for User</p>
-    </footer>
+    <!-- Bottom Navigation Bar (Mobile Optimized) -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-stone-200 flex justify-around items-center px-2 py-2 z-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] safe-pb">
+        <button onclick="switchView('dashboard')" id="nav-dashboard" class="flex flex-col items-center justify-center w-full py-1 text-orange-600">
+            <span class="text-xl mb-0.5">📊</span>
+            <span class="text-[10px] font-bold">總覽</span>
+        </button>
+        <button onclick="switchView('itinerary')" id="nav-itinerary" class="flex flex-col items-center justify-center w-full py-1 text-stone-400 hover:text-stone-600">
+            <span class="text-xl mb-0.5">📅</span>
+            <span class="text-[10px] font-bold">行程</span>
+        </button>
+        <button onclick="switchView('spots')" id="nav-spots" class="flex flex-col items-center justify-center w-full py-1 text-stone-400 hover:text-stone-600">
+            <span class="text-xl mb-0.5">📍</span>
+            <span class="text-[10px] font-bold">商店</span>
+        </button>
+    </nav>
 
     <script>
-        // --- DATA STORAGE ---
-        // Storing the base data from the report with ENHANCED TRANSIT DETAILS & OFFICIAL WEBSITES
+        // --- DATA ---
         const tripData = {
             days: [
                 {
                     id: 1,
-                    date: "1月3日 (六)",
-                    title: "抵達、心齋橋、深夜超市",
-                    summary: "Check-in 後先攻百貨動漫區，再行 Donki/超市，最後回飯店放野後去食宵夜。",
-                    transport: "南海電鐵 Rapi:t (機場→難波) → 地鐵御堂筋線 (難波→心齋橋)。",
-                    dining: "宵夜：鳥貴族 (22:00/23:00)。",
+                    date: "1/3 (六)",
+                    fullDate: "1月3日 週六",
+                    title: "抵達、PARCO、美國村",
+                    summary: "抵達後先逛 PARCO 動漫層，再探索美國村獨棟動漫店與深夜超市。",
+                    transportInfo: "南海電鐵 Rapi:t (機場→難波) → 地鐵御堂筋線 (難波→心齋橋)。",
+                    diningInfo: "宵夜：鳥貴族 (22:00)。",
                     timeline: [
                         { 
-                            time: "14:30", 
-                            icon: "🛬", 
-                            title: "抵達關西機場 (KIX)", 
+                            time: "14:30", icon: "🛬", title: "抵達關西機場 (KIX)", 
                             desc: "入境後上 2F，走過空橋至南海電鐵 (左邊紅色閘口)。", 
                             transit: "🚶 <b>步行 (10分鐘)：</b><br>1. 入境後搭手扶梯上 2F。<br>2. 走出戶外空橋，對面紅色招牌建築物即是「關西機場站」。<br>3. 面對車站，左邊紅色閘口是「南海電鐵」，右邊藍色是 JR。請進<b>左邊</b>。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kansai+Airport+Station",
                             website: "https://www.kansai-airport.or.jp/tw/" 
                         },
                         { 
-                            time: "15:35", 
-                            icon: "🚆", 
-                            title: "搭乘南海電鐵 Rapi:t", 
+                            time: "15:35", icon: "🚆", title: "搭乘南海電鐵 Rapi:t", 
                             desc: "推薦 15:35 (β66) 或 16:05 (α12)。車程約 40 分鐘。", 
                             transit: "🚆 <b>電車 (40分鐘)：</b><br>搭乘往「難波 (Namba)」方向的 Rapi:t 特急。<br>於終點站「南海難波站」下車 (通常停靠 9 號月台)。",
                             map: null,
                             website: "https://www.howto-osaka.com/tc/group/rapit/"
                         },
                         { 
-                            time: "16:50", 
-                            icon: "🏨", 
-                            title: "飯店 Check-in", 
+                            time: "16:50", icon: "🏨", title: "飯店 Check-in", 
                             desc: "Daiwa Roynet Hotel。由南海難波轉御堂筋線至心齋橋站 (1號出口)。", 
                             transit: "🚶 <b>轉乘 (8-10分鐘)：</b><br>1. 南海難波站下車後，搭長手扶梯下至 B1。<br>2. 跟隨紅色「御堂筋線」指標前行。<br>3. 於地鐵難波站搭乘往「千里中央/新大阪」方向列車。<br><br>🚇 <b>地鐵 (2分鐘)：</b><br>搭乘 1 站至「心齋橋站」。<br><br>🚶 <b>步行 (3-4分鐘)：</b><br>1. 到達心齋橋站後，請找<b>「1 號出口」</b>(有手扶梯)。<br>2. 出站後即是 Louis Vuitton，往北走過 ZARA 即達飯店。",
                             map: "https://www.google.com/maps/search/?api=1&query=Daiwa+Roynet+Hotel+Osaka+Shinsaibashi",
                             website: "https://www.daiwaroynet.jp/osaka-shinsaibashi/"
                         },
                         { 
-                            time: "17:30", 
-                            icon: "🛍️", 
-                            title: "心齋橋商圈：一番賞 & 扭蛋", 
-                            desc: "PARCO 5F (一番賞官方店), 6F (動漫層), 大丸 9F (Pokemon Center), #C-pla 扭蛋。", 
+                            time: "17:30", icon: "🛍️", title: "心齋橋 PARCO (一番賞)", 
+                            desc: "5F 一番賞官方店, 6F 動漫層 (Capcom/Godzilla)。營業至 20:00。", 
                             transit: "🚶 <b>步行 (1分鐘)：</b><br>飯店下樓即是心齋橋筋商店街北段。<br>PARCO 與大丸百貨相連，位於地鐵站正上方。",
                             map: "https://www.google.com/maps/search/?api=1&query=Ichiban+Kuji+Official+Shop+Shinsaibashi+PARCO",
                             website: "https://shinsaibashi.parco.jp/" 
                         },
                         { 
-                            time: "20:30", 
-                            icon: "🐧", 
-                            title: "Don Quijote & 24H 超市", 
-                            desc: "道頓堀 Donki + KOHYO 難波湊町 (OCAT)。建議買完先回飯店放東西。", 
-                            transit: "🚶 <b>步行去 Donki (10-15分鐘)：</b><br>沿心齋橋筋商店街往南直行，過戎橋(固力果看板)後，沿河邊步道左轉即見黃色摩天輪 Donki。<br><br>🚶 <b>步行去超市 (15分鐘)：</b><br>由 Donki 沿河邊步道往西(反方向)直行，穿過四橋筋大馬路，看到八角形建築(OCAT)，超市在 B1。<br><br>🚕 <b>回程：</b><br>買完東西較重，建議在 OCAT 計程車招呼站搭車回飯店(約 10 分鐘，¥1000左右)。",
+                            time: "18:30", icon: "🤖", title: "Mandarake Grand Chaos", 
+                            desc: "美國村內的動漫寶庫 (整棟)。獨棟二手店，非百貨公司，尋寶必去。營業至 20:00。", 
+                            transit: "🚶 <b>步行 (8分鐘)：</b><br>從 PARCO 出來過大馬路 (御堂筋) 往西走，進入美國村區域。<br>是一棟很顯眼的白色建築。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Mandarake+Grand+Chaos",
+                            website: "https://www.mandarake.co.jp/dir/gcs/"
+                        },
+                        { 
+                            time: "20:30", icon: "🐧", title: "Don Quijote 道頓堀", 
+                            desc: "摩天輪店。24小時營業。買完建議先回飯店放東西。", 
+                            transit: "🚶 <b>步行去 Donki (10-15分鐘)：</b><br>沿心齋橋筋商店街往南直行，過戎橋(固力果看板)後，沿河邊步道左轉即見黃色摩天輪 Donki。<br><br>🚕 <b>回程：</b><br>若買太多，建議在路口搭的士回飯店 (約 ¥800-1000)。",
                             map: "https://www.google.com/maps/search/?api=1&query=Don+Quijote+Dotonbori",
                             website: "https://www.donki.com/"
                         },
                         { 
-                            time: "22:00", 
-                            icon: "🍢", 
-                            title: "宵夜：鳥貴族", 
-                            desc: "全品項均一價串燒。開到凌晨 05:00。", 
+                            time: "21:30", icon: "🍎", title: "KOHYO 24H 超市 (備選)", 
+                            desc: "位於 OCAT (JR難波) B1。若 Donki 人太多可改去這。", 
+                            transit: "🚶 <b>步行 (15分鐘)：</b><br>由 Donki 沿河邊步道往西(反方向)直行，穿過四橋筋大馬路，看到八角形建築(OCAT)，超市在 B1。",
+                            map: "https://www.google.com/maps/search/?api=1&query=KOHYO+Namba+Minatomachi",
+                            website: "https://www.kohyo.co.jp/"
+                        },
+                        { 
+                            time: "22:30", icon: "🍢", title: "宵夜：鳥貴族", 
+                            desc: "心齋橋北店。營業至凌晨 05:00。全品項均一價。", 
                             transit: "🚶 <b>步行 (5-8分鐘)：</b><br>由飯店步行前往附近的「心齋橋北店」或「南船場店」。<br>Google Map 搜尋最近的一間即可，步行距離極近。",
                             map: "https://www.google.com/maps/search/?api=1&query=Torikizoku+Shinsaibashi",
                             website: "https://torikizoku.co.jp/" 
@@ -279,70 +243,71 @@
                 },
                 {
                     id: 2,
-                    date: "1月4日 (日)",
-                    title: "神戶 Outlet、神戶牛、溫泉",
-                    summary: "週日巴士人多，建議提早 20-30 分鐘排隊。",
-                    transport: "地鐵至梅田 → 高速巴士至 Outlet → 巴士至三宮 → 阪神電車至難波 → 地鐵至鶴橋。",
-                    dining: "晚餐：神戶牛鐵板燒 (19:00)。",
+                    date: "1/4 (日)",
+                    fullDate: "1月4日 週日",
+                    title: "Outlet、神戶牛、溫泉",
+                    summary: "Outlet 掃貨後，前往神戶南京町與神戶牛晚餐。",
+                    transportInfo: "往 Outlet: 神姬巴士 (梅田出發)。<br>往三宮: 神姬巴士 (Outlet出發)。",
+                    diningInfo: "晚餐：Ishida 神戶牛 (19:00)。",
                     timeline: [
                         { 
-                            time: "08:15", 
-                            icon: "🚇", 
-                            title: "前往梅田", 
+                            time: "08:15", icon: "🚇", title: "前往梅田", 
                             desc: "御堂筋線 (心齋橋→梅田)。", 
                             transit: "🚶 <b>步行：</b>從飯店走到心齋橋站 1 號入口。<br>🚇 <b>地鐵 (7分鐘)：</b>搭乘御堂筋線往「新大阪/千里中央」方向，於「梅田站」下車。",
                             map: null 
                         },
                         { 
-                            time: "09:10", 
-                            icon: "🚌", 
-                            title: "巴士直達 Outlets", 
-                            desc: "HERBIS OSAKA 1F 巴士總站。座席定員制，無需預約，需排隊。", 
+                            time: "08:25", icon: "🚌", title: "往 Outlet (早班建議)", 
+                            desc: "梅田 HERBIS OSAKA 1F 巴士站。<br><b>班次 A: 08:25 發車</b> (約 09:32 抵達)<br>早到可避開人潮。", 
                             transit: "🚶 <b>轉乘步行 (10-15分鐘)：重點！容易迷路</b><br>1. 梅田站下車後，請走<b>「南改札口」</b>出站。<br>2. 出站後看頭頂指標，找<b>「西梅田」</b>或<b>「HERBIS OSAKA (ハービスOSAKA)」</b>。<br>3. 沿地下街一直往西走，直到抵達 HERBIS PLAZA ENT 入口。<br>4. 搭手扶梯上 1F，巴士總站就在大樓內。",
                             map: "https://www.google.com/maps/search/?api=1&query=Herbis+Osaka+Bus+Terminal",
                             website: "https://www.premiumoutlets.co.jp/kobesanda/access/bus.html"
                         },
                         { 
-                            time: "10:20", 
-                            icon: "🛍️", 
-                            title: "神戶三田 Premium Outlets", 
-                            desc: "營業時間 10:00-20:00。關西最大級 Outlet。", 
+                            time: "09:35", icon: "🚌", title: "往 Outlet (標準班次)", 
+                            desc: "<b>班次 B: 09:35 發車</b> (約 10:42 抵達)<br>若起不來可搭這班，但人較多。", 
+                            transit: "同上，座席定員制，建議提前 20 分鐘排隊。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Herbis+Osaka+Bus+Terminal",
+                            website: "https://www.premiumoutlets.co.jp/kobesanda/access/bus.html"
+                        },
+                        { 
+                            time: "10:30", icon: "🛍️", title: "神戶三田 Premium Outlets", 
+                            desc: "營業時間 10:00-20:00。關西最大級。建議預留 4-5 小時。", 
                             transit: "🚌 <b>巴士 (70分鐘)：</b><br>下車點即是 Outlet 入口。回程巴士站通常在同一區。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kobe+Sanda+Premium+Outlets",
                             website: "https://www.premiumoutlets.co.jp/kobesanda/" 
                         },
                         { 
-                            time: "15:40", 
-                            icon: "🚌", 
-                            title: "移動至神戶三宮", 
-                            desc: "搭乘神姬巴士。", 
+                            time: "15:00", icon: "🚌", title: "巴士往三宮 (班次A)", 
+                            desc: "Outlet 巴士站搭乘往「三宮」方向。<br><b>建議班次: 15:00</b> (約 15:50 抵達)。", 
                             transit: "🚌 <b>巴士 (50分鐘)：</b><br>在 Outlet 巴士站搭乘往「三宮 (Sannomiya)」的班次。<br>終點站為三宮巴士總站 (近 JR 高架橋)。",
                             map: null,
                             website: "https://www.shinkibus.co.jp/" 
                         },
                         { 
-                            time: "16:40", 
-                            icon: "⛩️", 
-                            title: "生田神社 & 三宮中心街", 
-                            desc: "戀愛結緣神社。步行逛街。", 
-                            transit: "🚶 <b>步行 (8分鐘)：</b><br>1. 下車後，面對車站高架橋，往左手邊走。<br>2. 穿過高架橋下方往<b>北側 (山的方向)</b> 前進。<br>3. 沿著熱鬧的「生田 Road (いくたロード)」直走到底即是神社鳥居。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Ikuta+Shrine",
-                            website: "https://ikutajinja.or.jp/" 
+                            time: "15:40", icon: "🚌", title: "巴士往三宮 (班次B)", 
+                            desc: "<b>備選班次: 15:40</b> (約 16:30 抵達)。", 
+                            transit: "同上。",
+                            map: null,
+                            website: "https://www.shinkibus.co.jp/"
                         },
                         { 
-                            time: "19:00", 
-                            icon: "🥩", 
-                            title: "晚餐：神戶牛鐵板燒", 
-                            desc: "Ishida 或 Mouriya。需預約。", 
-                            transit: "🚶 <b>步行 (3-5分鐘)：</b><br>餐廳大多位於生田神社至三宮站之間的巷弄內。請依照 Google Map 導航，通常在 2F 或 3F。",
+                            time: "16:30", icon: "🏮", title: "南京町 (Nankin-machi)", 
+                            desc: "神戶中華街。取代神社行程，這裡熱鬧且有很多街頭小吃，氣氛很好。", 
+                            transit: "🚶 <b>步行 (10-15分鐘)：</b><br>從三宮巴士站往西走，穿過元町商店街，即可看到著名的長安門。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Kobe+Chinatown+Nankin-machi",
+                            website: "https://www.nankinmachi.or.jp/" 
+                        },
+                        { 
+                            time: "19:00", icon: "🥩", title: "晚餐：神戶牛 Ishida", 
+                            desc: "本店。需預約。頂級鐵板燒體驗。", 
+                            transit: "🚶 <b>步行 (10分鐘)：</b><br>從南京町慢慢走回三宮站北側。餐廳多位於生田新道周邊。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kobe+Beef+Steak+Ishida+Honten",
                             website: "https://kobebeef-ishida.com/" 
                         },
                         { 
-                            time: "22:00", 
-                            icon: "♨️", 
-                            title: "溫泉：延羽之湯 (鶴橋店)", 
-                            desc: "營業至凌晨 02:00。由三宮搭阪神電車回難波轉地鐵。", 
+                            time: "22:00", icon: "♨️", title: "溫泉：延羽之湯 (鶴橋店)", 
+                            desc: "由三宮搭阪神電車回難波轉千日前線。營業至 02:00。", 
                             transit: "🚆 <b>電車 (45分鐘)：</b><br>前往「阪神三宮站」，搭乘<b>快速急行</b> (往奈良/難波方向)，於「大阪難波站」下車。<br><br>🚇 <b>轉乘 (5分鐘)：</b><br>站內轉乘地下鐵「千日前線」 (往南巽方向)，搭 3 站至「鶴橋站」。<br><br>🚶 <b>步行 (5分鐘)：</b><br>鶴橋站<b>「6 號出口」</b>出站，向東直行 (跟著便利商店方向)，會看到巨大的延羽之湯招牌。",
                             map: "https://www.google.com/maps/search/?api=1&query=Nobeha+no+Yu+Tsuruhashi",
                             website: "https://www.nobuta123.co.jp/nobehatsuruhashi/" 
@@ -351,45 +316,38 @@
                 },
                 {
                     id: 3,
-                    date: "1月5日 (一)",
-                    title: "勝尾寺、梅田、KITTE晚餐",
-                    summary: "求勝運達磨，下午梅田動漫購物，晚上新地標 KITTE。",
-                    transport: "地鐵至大國町 → 地鐵至千里中央 → 29號巴士。",
-                    dining: "晚餐：KITTE 大阪 壽喜燒 (19:00)。",
+                    date: "1/5 (一)",
+                    fullDate: "1月5日 週一",
+                    title: "勝尾寺、中崎町、KITTE",
+                    summary: "早上求勝運，下午漫步復古咖啡街區 (非商場)，晚上 KITTE 壽喜燒。",
+                    transportInfo: "地鐵至千里中央 → 29號巴士。",
+                    diningInfo: "晚餐：KITTE 大阪 壽喜燒 (19:00)。",
                     timeline: [
                         { 
-                            time: "07:30", 
-                            icon: "🐟", 
-                            title: "早餐：木津市場", 
-                            desc: "地鐵大國町站。新年開市日。", 
+                            time: "07:30", icon: "🐟", title: "早餐：木津市場", 
+                            desc: "地鐵大國町站。新年開市日。營業至 13:00。", 
                             transit: "🚇 <b>地鐵 (4分鐘)：</b><br>心齋橋搭御堂筋線 (往天王寺/中百舌鳥方向) 至「大國町站」。<br><br>🚶 <b>步行 (2分鐘)：</b><br>請走<b>「1 號出口」</b>。出站後向左後方轉，沿著大路直行即達。",
                             map: "https://www.google.com/maps/search/?api=1&query=Osaka+Kizu+Wholesale+Market",
                             website: "https://kizuroroshi.com/" 
                         },
                         { 
-                            time: "09:00", 
-                            icon: "🚆", 
-                            title: "前往勝尾寺", 
-                            desc: "千里中央站 4號乘車處搭 29號巴士。", 
+                            time: "09:00", icon: "🚆", title: "前往勝尾寺", 
+                            desc: "千里中央站 4號乘車處搭 29號巴士。營業至 17:00。", 
                             transit: "🚇 <b>地鐵 (40分鐘)：</b><br>回到大國町站，搭御堂筋線 (往千里中央方向) 坐到終點站「千里中央」。<br><br>🚌 <b>巴士 (30分鐘)：</b><br>出北改札口，依指標往巴士總站。在<b>「4 號乘車處」</b>搭乘阪急巴士 29 號系統 (往北攝靈園/希望之丘)。於「勝尾寺」下車。",
                             map: "https://www.google.com/maps/search/?api=1&query=Katsuoji+Temple",
                             website: "https://katsuo-ji-temple.or.jp/" 
                         },
                         { 
-                            time: "13:30", 
-                            icon: "🛍️", 
-                            title: "下午購物 (梅田)", 
-                            desc: "大丸梅田 (Nintendo/Pokemon), LUCUA, Grand Front。", 
-                            transit: "🚌 <b>回程巴士：</b><br>搭 29 號巴士回到「千里中央站」。<br><br>🚇 <b>地鐵 (20分鐘)：</b><br>搭御堂筋線至「梅田站」。<br><br>🚶 <b>步行：</b><br>大丸百貨位於 JR 大阪站南側 (South Gate Building)，與地鐵梅田站直結。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Daimaru+Umeda",
-                            website: "https://www.daimaru.co.jp/umedamise/" 
+                            time: "13:30", icon: "☕", title: "中崎町 (Nakazakicho)", 
+                            desc: "復古老屋街區，充滿文青咖啡店與古著店，適合散步拍照。非百貨公司。", 
+                            transit: "🚌 <b>回程巴士：</b><br>搭 29 號巴士回到「千里中央站」。<br><br>🚇 <b>地鐵 (20分鐘)：</b><br>搭御堂筋線至「梅田站」。<br><br>🚶 <b>步行 (10-15分鐘)：</b><br>從梅田站走到東梅田/茶屋町方向，步行約 10 分鐘即可抵達中崎町區域。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Nakazakicho",
+                            website: "https://nakazaki-cho.kitatenma.com/" 
                         },
                         { 
-                            time: "19:00", 
-                            icon: "🥘", 
-                            title: "晚餐：KITTE 大阪 壽喜燒", 
-                            desc: "すき焼 しゃぶしゃぶ つかだ (5F)。一人一鍋。", 
-                            transit: "🚶 <b>步行 (5-8分鐘)：</b><br>KITTE 大阪位於 JR 大阪站<b>「西口」</b>直結。<br>從大丸百貨出發，需穿過 JR 大阪站的一樓中央大廳，往西口方向走。",
+                            time: "19:00", icon: "🥘", title: "晚餐：KITTE 大阪 壽喜燒", 
+                            desc: "すき焼 しゃぶしゃぶ つかだ (5F)。一人一鍋。營業至 23:00。", 
+                            transit: "🚶 <b>步行 (15分鐘)：</b><br>從中崎町走回 JR 大阪站。KITTE 大阪位於 JR 大阪站<b>「西口」</b>直結。<br>需穿過 JR 大阪站的一樓中央大廳，往西口方向走。",
                             map: "https://www.google.com/maps/search/?api=1&query=Sukiyaki+Shabu-shabu+Tsukada+KITTE+Osaka",
                             website: "https://osaka.jp-kitte.jp/shop/index.jsp?bf=1&fmt=6&shopid=150100" 
                         }
@@ -397,94 +355,97 @@
                 },
                 {
                     id: 4,
-                    date: "1月6日 (二)",
-                    title: "橙街潮流 & 日本橋深度遊",
-                    summary: "上午潮牌，下午全心全意 Figure 尋寶。",
-                    transport: "步行或地鐵移動。",
-                    dining: "午晚餐於難波/道頓堀周邊。",
+                    date: "1/6 (二)",
+                    fullDate: "1月6日 週二",
+                    title: "大阪城、橙街、日本橋",
+                    summary: "早上去大阪城散步，下午集中火力逛潮牌與動漫。",
+                    transportInfo: "地鐵移動：心齋橋 -> 森之宮 -> 難波/心齋橋。",
+                    diningInfo: "午餐：JO-TERRACE 或 市區。晚餐：燒肉。",
                     timeline: [
                         { 
-                            time: "10:00", 
-                            icon: "☕", 
-                            title: "早餐/早午餐", 
-                            desc: "美國村或堀江 Cafe。", 
-                            transit: "🚶 <b>步行 (10-15分鐘)：</b><br>從飯店過馬路往西（與心齋橋筋反方向）走，穿過阪神高速高架橋下方，即進入美國村/堀江區域。",
-                            map: null 
+                            time: "09:30", icon: "🏯", title: "大阪城公園", 
+                            desc: "替代方案。氣氛開闊，經典地標。天守閣需購票，公園免費。", 
+                            transit: "🚇 <b>地鐵 (15分鐘)：</b><br>由心齋橋搭「長堀鶴見綠地線」往門真南方向，於「森之宮站」或「大阪商務園區站」下車。<br><br>🚶 <b>步行：</b><br>出站即是公園入口。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Osaka+Castle+Park",
+                            website: "https://www.osakacastle.net/" 
                         },
                         { 
-                            time: "11:00", 
-                            icon: "🧢", 
-                            title: "橙街 (Orange Street)", 
-                            desc: "潮牌集中地 (Supreme, Carhartt)。營業時間 11:00-20:00。", 
-                            transit: "🚶 <b>步行：</b><br>位於南堀江的立花通（Tachibana-dori）。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Orange+Street+Osaka" 
+                            time: "12:00", icon: "🍽️", title: "午餐：JO-TERRACE OSAKA", 
+                            desc: "位於大阪城公園內的複合餐飲設施，有多種選擇。", 
+                            transit: "🚶 <b>步行：</b><br>就在大阪城公園站旁。",
+                            map: "https://www.google.com/maps/search/?api=1&query=JO-TERRACE+OSAKA",
+                            website: "https://jo-terrace.jp/"
                         },
                         { 
-                            time: "14:00", 
-                            icon: "⚡", 
-                            title: "日本橋 Den Den Town", 
-                            desc: "深度動漫遊：Super Kids Land, BOOKOFF, Animate, 駿河屋, Jungle。", 
-                            transit: "🚶 <b>步行 (15-20分鐘)：</b><br>從橙街沿著千日前通往東走，經過難波站，繼續直行直到看到高架橋和堺筋大馬路。<br>右轉進入堺筋，兩側即是電器街。",
+                            time: "14:00", icon: "🧢", title: "橙街 (Orange Street)", 
+                            desc: "南堀江。Supreme, Carhartt 等潮牌集中地。營業至 20:00。", 
+                            transit: "🚇 <b>地鐵 (15分鐘)：</b><br>從大阪城搭地鐵回「心齋橋」或「四橋」。<br><br>🚶 <b>步行：</b><br>步行至南堀江立花通。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Orange+Street+Osaka",
+                            website: "http://osaka-horie.com/" 
+                        },
+                        { 
+                            time: "15:30", icon: "⚡", title: "日本橋 Den Den Town", 
+                            desc: "深度動漫遊：Super Kids Land, Animate, 駿河屋, Jungle, BOOKOFF。", 
+                            transit: "🚶 <b>步行 (20分鐘)：</b><br>從橙街沿著千日前通往東走，經過難波站，繼續直行直到看到高架橋和堺筋大馬路。<br>右轉進入堺筋，兩側即是電器街。",
                             map: "https://www.google.com/maps/search/?api=1&query=Super+Kids+Land+Character",
                             website: "https://shop.joshin.co.jp/shopdetail.php?cd=1746" 
                         },
                         { 
-                            time: "19:00", 
-                            icon: "🍽️", 
-                            title: "晚餐：難波/道頓堀", 
-                            desc: "燒肉或居酒屋。", 
+                            time: "19:00", icon: "🍽️", title: "晚餐：難波/道頓堀", 
+                            desc: "帶著戰利品，在附近的燒肉店或居酒屋慶功。", 
                             transit: "🚶 <b>步行 (10分鐘)：</b><br>沿著堺筋往北走回道頓堀川邊。",
-                            map: null 
+                            map: "https://www.google.com/maps/search/?api=1&query=Dotonbori",
+                            website: null
                         }
                     ]
                 },
                 {
                     id: 5,
-                    date: "1月7日 (三)",
+                    date: "1/7 (三)",
+                    fullDate: "1月7日 週三",
                     title: "蟹道樂、回程",
-                    summary: "最後衝刺與美食，準時前往機場。",
-                    transport: "步行/地鐵至難波 → 南海 Rapi:t 至機場。",
-                    dining: "午餐：蟹道樂 (11:00)。",
+                    summary: "行李寄放飯店更輕鬆，最後享用螃蟹大餐。",
+                    transportInfo: "飯店拿行李 → 計程車至南海難波 → 機場。",
+                    diningInfo: "午餐：蟹道樂 (11:00)。",
                     timeline: [
                         { 
-                            time: "10:00", 
-                            icon: "🧳", 
-                            title: "Check-out", 
-                            desc: "前往南海難波站。", 
-                            transit: "🚶 <b>步行/地鐵 (20-25分鐘)：</b><br>帶著行李建議搭地鐵：心齋橋站→難波站。<br>出站後依指示前往<b>「南海電鐵」</b>方向，搭手扶梯上 2F 中央改札口。",
-                            map: null 
+                            time: "10:00", icon: "🧳", title: "Check-out & 寄放行李", 
+                            desc: "辦理退房，將<b>行李寄放在飯店櫃台</b>。", 
+                            transit: "無，飯店內。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Daiwa+Roynet+Hotel+Osaka+Shinsaibashi",
+                            website: "https://www.daiwaroynet.jp/osaka-shinsaibashi/"
                         },
                         { 
-                            time: "10:20", 
-                            icon: "🔐", 
-                            title: "寄放行李", 
-                            desc: "南海難波站 2F JTB 寄放處。", 
-                            transit: "🚶 <b>位置：</b><br>南海難波站 2F 中央改札口外，尋找 JTB 行李寄放櫃台（有人服務）或附近的投幣式置物櫃。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Nankai+Namba+Station" 
-                        },
-                        { 
-                            time: "11:00", 
-                            icon: "🦀", 
-                            title: "午餐：蟹道樂", 
-                            desc: "道頓堀本店。午間懷石料理。", 
-                            transit: "🚶 <b>步行 (10分鐘)：</b><br>由難波站 1F 北出口出，進入「戎橋筋商店街」，直走到底過橋（戎橋）右手邊即是。",
+                            time: "11:00", icon: "🦀", title: "午餐：蟹道樂", 
+                            desc: "道頓堀本店。午間懷石料理。營業至 22:00。", 
+                            transit: "🚶 <b>步行 (5-8分鐘)：</b><br>從飯店過馬路進入商店街，往南直走到底，過戎橋右手邊即是。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kani+Doraku+Dotonbori+Honten",
                             website: "https://douraku.co.jp/" 
                         },
                         { 
-                            time: "13:35", 
-                            icon: "🚆", 
-                            title: "搭乘 Rapi:t 往機場", 
-                            desc: "推薦 13:35 (β41) 班次。", 
-                            transit: "🚶 <b>步行 (15分鐘)：</b><br>原路走回南海難波站 2F 取行李。<br>取完行李後，搭手扶梯上 <b>3F 月台</b>候車。",
+                            time: "13:00", icon: "🚶", title: "回飯店取行李", 
+                            desc: "步行返回飯店拿取寄放的行李。", 
+                            transit: "🚶 <b>步行 (5-8分鐘)：</b><br>沿原路返回飯店。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Daiwa+Roynet+Hotel+Osaka+Shinsaibashi",
+                            website: null
+                        },
+                        { 
+                            time: "13:15", icon: "🚕", title: "前往南海難波站", 
+                            desc: "從飯店<b>搭計程車</b>直達南海難波站 3F 北改札口 (約 10 分鐘，省力)。", 
+                            transit: "🚕 <b>計程車 (10分鐘)：</b><br>請飯店櫃台幫忙叫車，指定去「南海難波站 (Nankai Namba Station)」。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Nankai+Namba+Station",
+                            website: "http://www.nankai.co.jp/"
+                        },
+                        { 
+                            time: "13:35", icon: "🚆", title: "搭乘 Rapi:t 往機場", 
+                            desc: "推薦 13:35 (β41) 班次。最晚搭 14:05。", 
+                            transit: "🚶 <b>步行 (5分鐘)：</b><br>計程車下車處通常在 3F 或 1F，南海月台在 3F。<br>進站後尋找 9 號月台。",
                             map: "https://www.google.com/maps/search/?api=1&query=Nankai+Namba+Station",
                             website: "https://www.howto-osaka.com/tc/group/rapit/" 
                         },
                         { 
-                            time: "15:00", 
-                            icon: "🛫", 
-                            title: "抵達機場 & Check-in", 
-                            desc: "17:00 起飛。", 
+                            time: "15:00", icon: "🛫", title: "抵達機場 & Check-in", 
+                            desc: "17:00 起飛。第一航廈 4F。", 
                             transit: "🚶 <b>步行：</b><br>出改札口後左轉，依照「國際線出發」指標，前往第 1 航廈 4F 辦理登機。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport",
                             website: "https://www.kansai-airport.or.jp/tw/" 
@@ -493,111 +454,110 @@
                 }
             ],
             spots: [
-                { name: "心齋橋 PARCO", type: "anime", desc: "5F 一番賞官方店, 6F 動漫層", hours: "10:00 - 20:00", website: "https://shinsaibashi.parco.jp/" },
-                { name: "大丸心齋橋店", type: "anime", desc: "9F Pokemon Center, 扭蛋百貨", hours: "10:00 - 20:30", website: "https://www.daimaru.co.jp/shinsaibashi/" },
-                { name: "#C-pla 心齋橋筋店", type: "anime", desc: "扭蛋專門店", hours: "10:00 - 23:00", website: "https://toshin.jpn.com/shop/c-pla/" },
-                { name: "Jungle (密林)", type: "anime", desc: "二手 Figure, 特攝", hours: "平日 12:00-20:00 / 假日 11:00", website: "https://jungle-scs.co.jp/" },
+                { name: "大阪城公園", type: "sightseeing", desc: "經典地標，散步首選", hours: "全天", website: "https://www.osakacastle.net/" },
+                { name: "南京町", type: "sightseeing", desc: "神戶唐人街", hours: "10:00 - 20:30", website: "https://www.nankinmachi.or.jp/" },
+                { name: "中崎町", type: "sightseeing", desc: "復古老屋咖啡街", hours: "12:00 - 19:00", website: "https://nakazaki-cho.kitatenma.com/" },
+                { name: "Mandarake Grand Chaos", type: "anime", desc: "整棟動漫二手寶庫", hours: "12:00 - 20:00", website: "https://www.mandarake.co.jp/dir/gcs/" },
+                { name: "心齋橋 PARCO", type: "anime", desc: "5F 一番賞, 6F 動漫層", hours: "10:00 - 20:00", website: "https://shinsaibashi.parco.jp/" },
+                { name: "#C-pla 心齋橋", type: "anime", desc: "扭蛋專門店", hours: "10:00 - 23:00", website: "https://toshin.jpn.com/shop/c-pla/" },
+                { name: "Jungle (密林)", type: "anime", desc: "二手 Figure, 特攝", hours: "12:00 - 20:00", website: "https://jungle-scs.co.jp/" },
                 { name: "Super Kids Land", type: "anime", desc: "高達模型, 玩具", hours: "10:00 - 20:00", website: "https://shop.joshin.co.jp/shopdetail.php?cd=1746" },
-                { name: "Animate 日本橋", type: "anime", desc: "新番周邊, 漫畫", hours: "平日 11:00 / 假日 10:00", website: "https://www.animate.co.jp/shop/osaka_nipponbashi/" },
-                { name: "駿河屋 日本橋本館", type: "anime", desc: "二手淘寶聖地", hours: "11:00 - 20:00", website: "https://www.suruga-ya.jp/feature/nipponbashi_honkan/index.html" },
-                { name: "BOOKOFF 難波中店", type: "anime", desc: "二手 Figure, 遊戲", hours: "10:00 - 22:00", website: "https://www.bookoff.co.jp/shop/shop20436.html" },
-                { name: "Nintendo Osaka", type: "anime", desc: "大丸梅田 13F", hours: "10:00 - 20:00", website: "https://www.nintendo.co.jp/officialstore/" },
-                { name: "Pokemon Center Osaka", type: "anime", desc: "大丸梅田 13F", hours: "10:00 - 20:00", website: "https://www.pokemon.co.jp/shop/pokecen/osaka/" },
+                { name: "Animate 日本橋", type: "anime", desc: "新番周邊, 漫畫", hours: "11:00 - 20:00", website: "https://www.animate.co.jp/shop/osaka_nipponbashi/" },
+                { name: "駿河屋 日本橋", type: "anime", desc: "二手淘寶聖地", hours: "11:00 - 20:00", website: "https://www.suruga-ya.jp/feature/nipponbashi_honkan/index.html" },
+                { name: "BOOKOFF 難波", type: "anime", desc: "二手 Figure, 遊戲", hours: "10:00 - 22:00", website: "https://www.bookoff.co.jp/shop/shop20436.html" },
                 { name: "鳥貴族", type: "food", desc: "平價串燒居酒屋", hours: "17:00 - 05:00", website: "https://torikizoku.co.jp/" },
                 { name: "天地人", type: "food", desc: "豚丼", hours: "10:30 - 03:00", website: "https://tabelog.com/osaka/A2701/A270202/27012437/" },
                 { name: "Kobe Beef Ishida", type: "food", desc: "神戶牛鐵板燒", hours: "需預約", website: "https://kobebeef-ishida.com/" },
                 { name: "KITTE つかだ", type: "food", desc: "一人一鍋壽喜燒", hours: "11:00 - 23:00", website: "https://osaka.jp-kitte.jp/shop/index.jsp?bf=1&fmt=6&shopid=150100" },
                 { name: "蟹道樂 本店", type: "food", desc: "螃蟹料理", hours: "11:00 - 22:00", website: "https://douraku.co.jp/" },
-                { name: "Don Quijote 道頓堀", type: "shopping", desc: "雜貨藥妝", hours: "24H", website: "https://www.donki.com/" },
-                { name: "KOHYO 難波湊町", type: "shopping", desc: "AEON超市", hours: "24H", website: "https://www.kohyo.co.jp/" },
+                { name: "Don Quijote", type: "shopping", desc: "雜貨藥妝", hours: "24H", website: "https://www.donki.com/" },
+                { name: "KOHYO 超市", type: "shopping", desc: "24H AEON超市", hours: "24H", website: "https://www.kohyo.co.jp/" },
                 { name: "神戶三田 Outlets", type: "shopping", desc: "名牌折扣", hours: "10:00 - 20:00", website: "https://www.premiumoutlets.co.jp/kobesanda/" },
                 { name: "Orange Street", type: "shopping", desc: "潮牌 (Supreme等)", hours: "11:00 - 20:00", website: "http://osaka-horie.com/" },
                 { name: "勝尾寺", type: "sightseeing", desc: "求勝運", hours: "08:00 - 17:00", website: "https://katsuo-ji-temple.or.jp/" },
-                { name: "生田神社", type: "sightseeing", desc: "戀愛結緣", hours: "07:00 - 17:00", website: "https://ikutajinja.or.jp/" },
                 { name: "延羽之湯", type: "sightseeing", desc: "溫泉", hours: "10:00 - 02:00", website: "https://www.nobuta123.co.jp/nobehatsuruhashi/" }
             ]
         };
 
-        // --- CORE INTERACTION ---
+        // --- UI LOGIC ---
         function switchView(viewName) {
-            // Hide all views
             ['dashboard', 'itinerary', 'spots'].forEach(v => {
                 document.getElementById(`view-${v}`).classList.add('hidden');
-                document.getElementById(`nav-${v}`).classList.remove('bg-orange-600', 'text-white');
-                document.getElementById(`nav-${v}`).classList.add('hover:bg-stone-700');
+                document.getElementById(`nav-${v}`).classList.remove('text-orange-600');
+                document.getElementById(`nav-${v}`).classList.add('text-stone-400');
             });
 
-            // Show selected view
             document.getElementById(`view-${viewName}`).classList.remove('hidden');
-            const navBtn = document.getElementById(`nav-${viewName}`);
-            navBtn.classList.add('bg-orange-600', 'text-white');
-            navBtn.classList.remove('hover:bg-stone-700');
+            document.getElementById(`nav-${viewName}`).classList.add('text-orange-600');
+            document.getElementById(`nav-${viewName}`).classList.remove('text-stone-400');
 
-            // Trigger renders if needed
             if (viewName === 'dashboard') renderCharts();
             if (viewName === 'itinerary' && !document.querySelector('.tab-active')) renderDay(0);
             if (viewName === 'spots') renderSpots('all');
+            
+            window.scrollTo(0, 0);
         }
 
-        // --- ITINERARY LOGIC ---
         function renderDay(index) {
             const day = tripData.days[index];
-            const tabsContainer = document.getElementById('day-tabs');
-            const timelineContainer = document.getElementById('timeline-container');
-            const headerContainer = document.getElementById('day-header');
-
-            // Update Tabs
-            tabsContainer.innerHTML = tripData.days.map((d, i) => `
-                <button onclick="renderDay(${i})" class="flex-shrink-0 px-4 py-3 rounded-t-lg font-bold text-sm transition ${i === index ? 'tab-active' : 'tab-inactive'}">
-                    ${d.date}<br><span class="text-xs font-normal">Day ${d.id}</span>
+            
+            // Tabs
+            document.getElementById('day-tabs').innerHTML = tripData.days.map((d, i) => `
+                <button onclick="renderDay(${i})" class="flex-shrink-0 px-4 py-2 rounded-full text-xs font-bold transition whitespace-nowrap shadow-sm border ${i === index ? 'bg-orange-500 text-white border-orange-500' : 'bg-white text-stone-600 border-stone-200'}">
+                    ${d.date}
                 </button>
             `).join('');
 
-            // Update Header
-            headerContainer.innerHTML = `
+            // Header
+            document.getElementById('day-header').innerHTML = `
                 <div class="flex justify-between items-start">
                     <div>
-                        <h2 class="text-2xl font-bold text-orange-600 mb-2">${day.date} - ${day.title}</h2>
-                        <p class="text-stone-600 text-sm">${day.summary}</p>
+                        <span class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded">${day.fullDate}</span>
+                        <h2 class="text-xl font-bold text-stone-800 mt-2">${day.title}</h2>
+                        <p class="text-stone-500 text-sm mt-1">${day.summary}</p>
                     </div>
-                    <div class="text-4xl opacity-20">🇯🇵</div>
                 </div>
+                ${day.transportInfo ? `
+                <div class="mt-3 pt-3 border-t border-stone-100">
+                    <p class="text-xs text-stone-500 font-bold mb-1">🚆 交通重點</p>
+                    <p class="text-xs text-stone-600 leading-relaxed">${day.transportInfo}</p>
+                </div>` : ''}
             `;
 
-            // Update Sidebar Info
-            document.getElementById('transport-info').innerHTML = day.transport;
-            document.getElementById('dining-info').innerHTML = day.dining;
-
-            // Update Timeline
-            timelineContainer.innerHTML = day.timeline.map(item => `
-                <div class="relative pl-8 pb-8 group">
-                    <!-- Node -->
-                    <div class="absolute left-0 top-0 w-8 h-8 bg-white border-2 border-orange-500 rounded-full flex items-center justify-center z-10 shadow-sm group-hover:scale-110 transition">
-                        <span class="text-sm">${item.icon}</span>
+            // Timeline
+            document.getElementById('timeline-container').innerHTML = day.timeline.map((item, idx) => `
+                <div class="flex gap-4 group">
+                    <!-- Line & Dot -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-sm font-bold shadow-sm z-10 shrink-0">
+                            ${item.icon}
+                        </div>
+                        ${idx !== day.timeline.length - 1 ? '<div class="w-0.5 flex-grow bg-stone-200 my-1"></div>' : ''}
                     </div>
                     
-                    <!-- Content -->
-                    <div class="bg-stone-50 rounded-lg p-4 border border-stone-100 hover:shadow-md transition">
+                    <!-- Card -->
+                    <div class="flex-grow bg-white rounded-xl p-4 shadow-sm border border-stone-100 hover:border-orange-200 transition mb-2">
                         <div class="flex justify-between items-start mb-1">
-                            <span class="font-bold text-stone-800 text-lg">${item.title}</span>
-                            <span class="text-xs font-mono text-orange-600 bg-orange-100 px-2 py-1 rounded">${item.time}</span>
+                            <h3 class="font-bold text-stone-800 text-base">${item.title}</h3>
+                            <span class="text-xs font-mono text-stone-400 bg-stone-50 px-1.5 py-0.5 rounded">${item.time}</span>
                         </div>
-                        <p class="text-stone-600 text-sm mb-3">${item.desc}</p>
+                        <p class="text-sm text-stone-600 mb-3 leading-relaxed">${item.desc}</p>
+                        
                         ${item.transit ? `
-                            <div class="mt-2 bg-sky-50 border border-sky-100 p-3 rounded text-xs text-sky-800 leading-relaxed">
+                            <div class="mt-2 mb-3 bg-sky-50 border border-sky-100 p-3 rounded-lg text-xs text-sky-800 leading-relaxed">
                                 ${item.transit}
                             </div>
                         ` : ''}
-                        
-                        <div class="mt-3 flex space-x-2">
+
+                        <div class="flex gap-2 flex-wrap">
                             ${item.map ? `
-                                <a href="${item.map}" target="_blank" class="inline-flex items-center text-xs font-bold text-white bg-blue-500 px-3 py-1.5 rounded hover:bg-blue-600 transition">
-                                    📍 地圖
+                                <a href="${item.map}" target="_blank" class="flex items-center gap-1 bg-stone-50 text-stone-600 px-3 py-1.5 rounded-lg text-xs font-bold border border-stone-200 active:bg-stone-200 transition">
+                                    <span>📍</span> 地圖
                                 </a>
                             ` : ''}
                             ${item.website ? `
-                                <a href="${item.website}" target="_blank" class="inline-flex items-center text-xs font-bold text-white bg-stone-500 px-3 py-1.5 rounded hover:bg-stone-600 transition">
-                                    🌐 官網/時刻表
+                                <a href="${item.website}" target="_blank" class="flex items-center gap-1 bg-blue-50 text-blue-600 px-3 py-1.5 rounded-lg text-xs font-bold border border-blue-100 active:bg-blue-100 transition">
+                                    <span>🌐</span> 官網/時刻
                                 </a>
                             ` : ''}
                         </div>
@@ -606,123 +566,104 @@
             `).join('');
         }
 
-        // --- SPOTS LOGIC ---
         function renderSpots(filter) {
-            const grid = document.getElementById('spots-grid');
-            const search = document.getElementById('spot-search').value.toLowerCase();
-            
-            // Update filter buttons
+            // Update filter buttons UI
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 if(btn.dataset.cat === filter) {
-                    btn.classList.add('bg-stone-800', 'text-white');
-                    btn.classList.remove('bg-stone-200', 'text-stone-600');
+                    btn.classList.add('bg-stone-800', 'text-white', 'border-transparent');
+                    btn.classList.remove('bg-white', 'text-stone-600', 'border-stone-200');
                 } else {
-                    btn.classList.remove('bg-stone-800', 'text-white');
-                    btn.classList.add('bg-stone-200', 'text-stone-600');
+                    btn.classList.remove('bg-stone-800', 'text-white', 'border-transparent');
+                    btn.classList.add('bg-white', 'text-stone-600', 'border-stone-200');
                 }
             });
 
+            const search = document.getElementById('spot-search').value.toLowerCase();
             const filtered = tripData.spots.filter(spot => {
                 const matchesCat = filter === 'all' || spot.type === filter;
                 const matchesSearch = spot.name.toLowerCase().includes(search) || spot.desc.toLowerCase().includes(search);
                 return matchesCat && matchesSearch;
             });
 
-            grid.innerHTML = filtered.map(spot => {
-                let colorClass = "bg-white";
-                let icon = "📍";
-                if(spot.type === 'anime') { colorClass = "border-purple-200 bg-purple-50"; icon = "⚡"; }
-                if(spot.type === 'food') { colorClass = "border-rose-200 bg-rose-50"; icon = "🍽️"; }
-                if(spot.type === 'shopping') { colorClass = "border-blue-200 bg-blue-50"; icon = "🛍️"; }
-                if(spot.type === 'sightseeing') { colorClass = "border-green-200 bg-green-50"; icon = "🌳"; }
+            const grid = document.getElementById('spots-grid');
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="text-center py-10 text-stone-400 text-sm">沒有找到相關店鋪</div>`;
+                return;
+            }
 
-                return `
-                <div class="p-4 rounded-xl border ${colorClass} shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            grid.innerHTML = filtered.map(spot => `
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100 flex justify-between items-start">
                     <div>
-                        <div class="flex justify-between items-start">
-                            <h3 class="font-bold text-stone-800">${icon} ${spot.name}</h3>
-                            <span class="text-xs bg-white px-2 py-1 rounded border border-stone-200 text-stone-500 whitespace-nowrap">${spot.hours}</span>
+                        <div class="flex items-center gap-2 mb-1">
+                            <h3 class="font-bold text-stone-800 text-base">${spot.name}</h3>
+                            <span class="text-[10px] px-1.5 py-0.5 rounded border ${spot.type === 'food' ? 'bg-rose-50 text-rose-600 border-rose-100' : 'bg-stone-50 text-stone-500 border-stone-100'}">${spot.hours}</span>
                         </div>
-                        <p class="text-sm text-stone-600 mt-2">${spot.desc}</p>
+                        <p class="text-xs text-stone-500">${spot.desc}</p>
                     </div>
-                    ${spot.website ? `
-                    <div class="mt-4 pt-3 border-t border-stone-100">
-                        <a href="${spot.website}" target="_blank" class="text-xs font-bold text-orange-600 hover:text-orange-700 flex items-center">
-                            🌐 官方網站 ➔
-                        </a>
+                    <div class="flex flex-col gap-2 ml-2">
+                        <a href="${spot.website}" target="_blank" class="w-8 h-8 flex items-center justify-center rounded-full bg-stone-50 text-stone-400 border border-stone-200">🌐</a>
+                        <!-- Search on Map shortcut -->
+                        <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.name)}" target="_blank" class="w-8 h-8 flex items-center justify-center rounded-full bg-orange-50 text-orange-500 border border-orange-200">📍</a>
                     </div>
-                    ` : ''}
                 </div>
-                `;
-            }).join('');
+            `).join('');
         }
 
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', (e) => renderSpots(e.target.dataset.cat));
         });
         document.getElementById('spot-search').addEventListener('input', () => {
-            const activeBtn = document.querySelector('.filter-btn.bg-stone-800'); // simple check for active
+            const activeBtn = document.querySelector('.filter-btn.bg-stone-800');
             renderSpots(activeBtn ? activeBtn.dataset.cat : 'all');
         });
 
-        // --- CHARTS LOGIC ---
+        // Charts
         let chartsRendered = false;
         function renderCharts() {
             if (chartsRendered) return;
             
-            // Chart 1: Activity Breakdown
-            const ctx1 = document.getElementById('activityChart').getContext('2d');
-            new Chart(ctx1, {
+            // Activity Chart
+            new Chart(document.getElementById('activityChart').getContext('2d'), {
                 type: 'doughnut',
                 data: {
-                    labels: ['購物/動漫 (Shopping)', '美食 (Dining)', '觀光/體驗 (Sightseeing)', '交通 (Travel)'],
+                    labels: ['購物', '美食', '觀光', '交通'],
                     datasets: [{
-                        data: [45, 25, 20, 10], // Estimated based on itinerary
+                        data: [40, 30, 20, 10],
                         backgroundColor: ['#f97316', '#f43f5e', '#84cc16', '#94a3b8'],
                         borderWidth: 0
                     }]
                 },
-                options: {
-                    responsive: true,
+                options: { 
+                    responsive: true, 
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'bottom' }
-                    }
+                    plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 10 } } } } 
                 }
             });
 
-            // Chart 2: Shopping Categories
-            const ctx2 = document.getElementById('shoppingChart').getContext('2d');
-            new Chart(ctx2, {
+            // Shopping Chart
+            new Chart(document.getElementById('shoppingChart').getContext('2d'), {
                 type: 'bar',
                 data: {
-                    labels: ['動漫/Figure', '百貨/名牌', '雜貨/超市', '潮牌'],
+                    labels: ['動漫', '百貨', '藥妝', '潮牌'],
                     datasets: [{
-                        label: '店鋪提及數',
-                        data: [8, 5, 2, 1],
+                        label: '店鋪數',
+                        data: [9, 5, 2, 2],
                         backgroundColor: '#eab308',
                         borderRadius: 4
                     }]
                 },
-                options: {
-                    responsive: true,
+                options: { 
+                    responsive: true, 
                     maintainAspectRatio: false,
-                    scales: {
-                        y: { beginAtZero: true, ticks: { stepSize: 1 } }
-                    },
-                    plugins: {
-                        legend: { display: false }
-                    }
+                    plugins: { legend: { display: false } },
+                    scales: { y: { display: false }, x: { grid: { display: false }, ticks: { font: { size: 10 } } } }
                 }
             });
-
             chartsRendered = true;
         }
 
-        // --- INITIALIZATION ---
-        // Start on Dashboard
+        // Init
         switchView('dashboard');
-
     </script>
 </body>
 </html>
