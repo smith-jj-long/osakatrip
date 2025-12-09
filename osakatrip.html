@@ -40,15 +40,17 @@
             background-color: #f97316; /* orange-500 */
             color: white;
             border-bottom: 3px solid #c2410c;
+            box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.3);
         }
         .tab-inactive {
-            background-color: #f5f5f4;
+            background-color: #ffffff;
             color: #78716c;
+            border: 1px solid #e5e5e5;
         }
         
         /* Smooth fade for view switching */
         .animate-fade-in {
-            animation: fadeIn 0.3s ease-in-out;
+            animation: fadeIn 0.4s ease-out;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -58,6 +60,34 @@
         /* Safe area for iPhone X+ */
         .safe-pb {
             padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        /* Floating Scroll Top Button (Small) */
+        #scrollTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 16px;
+            z-index: 99;
+            width: 32px; /* Smaller size */
+            height: 32px;
+            font-size: 14px;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        #scrollTopBtn:active {
+            transform: scale(0.9);
+        }
+        
+        /* Card Hover Effect */
+        .card-hover:active {
+            transform: scale(0.995);
+            background-color: #fafafa;
+        }
+
+        /* Checklist Item Style */
+        .checklist-item input:checked + span {
+            text-decoration: line-through;
+            color: #a8a29e;
         }
     </style>
 </head>
@@ -81,31 +111,95 @@
         <div id="view-dashboard" class="space-y-6 animate-fade-in">
             <!-- Hero Card -->
             <div class="bg-gradient-to-r from-orange-500 to-amber-500 rounded-2xl p-6 text-white shadow-lg">
-                <h2 class="text-2xl font-bold mb-2">旅程概覽</h2>
-                <p class="text-white/90 text-sm mb-4">
-                    專為動漫、購物與美食設計的 5 天新春行程。
-                    <br>住宿：Daiwa Roynet Hotel Osaka Shinsaibashi
-                </p>
-                <div class="flex gap-2">
-                    <span class="bg-white/20 px-2 py-1 rounded text-xs">⚡ 動漫聖地</span>
-                    <span class="bg-white/20 px-2 py-1 rounded text-xs">🥩 神戶牛</span>
-                    <span class="bg-white/20 px-2 py-1 rounded text-xs">🛍️ Outlet</span>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-1">旅程概覽</h2>
+                        <p class="text-white/90 text-sm mb-3">5 天 4 夜 | 購物・動漫・美食</p>
+                    </div>
+                    <div class="text-3xl opacity-80">✈️</div>
+                </div>
+                <div class="bg-white/10 rounded-lg p-3 backdrop-blur-sm mb-3">
+                    <p class="text-xs text-white/90">住宿：Daiwa Roynet Hotel Osaka Shinsaibashi</p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">⚡ 日本橋動漫</span>
+                    <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">🥩 神戶牛鐵板燒</span>
+                    <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">🛍️ 三田 Outlet</span>
+                </div>
+            </div>
+
+            <!-- Pre-Travel Checklist (New) -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100">
+                <h3 class="font-bold text-stone-800 mb-3 flex items-center gap-2">
+                    <span>✅</span> 行前準備清單
+                </h3>
+                <div class="space-y-2 text-sm text-stone-600">
+                    <label class="flex items-center gap-3 checklist-item cursor-pointer p-2 hover:bg-stone-50 rounded-lg transition">
+                        <input type="checkbox" class="w-4 h-4 text-orange-500 rounded border-stone-300 focus:ring-orange-500">
+                        <span><b>Visit Japan Web</b> (入境/海關申報)</span>
+                    </label>
+                    <label class="flex items-center gap-3 checklist-item cursor-pointer p-2 hover:bg-stone-50 rounded-lg transition">
+                        <input type="checkbox" class="w-4 h-4 text-orange-500 rounded border-stone-300 focus:ring-orange-500">
+                        <span><b>旅遊保險</b> (建議涵蓋醫療與不便險)</span>
+                    </label>
+                    <label class="flex items-center gap-3 checklist-item cursor-pointer p-2 hover:bg-stone-50 rounded-lg transition">
+                        <input type="checkbox" class="w-4 h-4 text-orange-500 rounded border-stone-300 focus:ring-orange-500">
+                        <span><b>eSIM / 漫遊網卡</b> (確認開通日期)</span>
+                    </label>
+                    <label class="flex items-center gap-3 checklist-item cursor-pointer p-2 hover:bg-stone-50 rounded-lg transition">
+                        <input type="checkbox" class="w-4 h-4 text-orange-500 rounded border-stone-300 focus:ring-orange-500">
+                        <span><b>線上預辦登機</b> (Online Check-in)</span>
+                    </label>
+                    <label class="flex items-center gap-3 checklist-item cursor-pointer p-2 hover:bg-stone-50 rounded-lg transition">
+                        <input type="checkbox" class="w-4 h-4 text-orange-500 rounded border-stone-300 focus:ring-orange-500">
+                        <span><b>確認護照效期</b> (需 6 個月以上)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Coupon Section (New) -->
+            <div class="bg-gradient-to-br from-rose-50 to-pink-50 p-4 rounded-xl shadow-sm border border-rose-100">
+                <h3 class="font-bold text-rose-700 mb-3 flex items-center gap-2">
+                    <span>🎟️</span> 購物優惠券 (Coupons)
+                </h3>
+                <p class="text-xs text-rose-600 mb-3">結帳前請出示條碼，可享免稅 + 折扣。</p>
+                <div class="flex gap-3">
+                    <a href="https://www.japaholic.com/tw/article/coupon" target="_blank" class="flex-1 bg-white hover:bg-rose-100 text-center py-3 rounded-lg text-xs font-bold text-rose-600 border border-rose-200 shadow-sm transition">
+                        Japaholic 優惠券總覽<br><span class="text-[10px] font-normal opacity-70">藥妝/電器/百貨</span>
+                    </a>
+                    <a href="https://www.donki.com/en/service/coupon.php" target="_blank" class="flex-1 bg-white hover:bg-rose-100 text-center py-3 rounded-lg text-xs font-bold text-rose-600 border border-rose-200 shadow-sm transition">
+                        Don Quijote 優惠券<br><span class="text-[10px] font-normal opacity-70">免稅+5%折扣</span>
+                    </a>
                 </div>
             </div>
 
             <!-- Stats -->
+            <h3 class="text-lg font-bold text-stone-800 mt-2">行程分析</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100">
-                    <h3 class="font-bold text-stone-700 mb-3 text-sm">⏳ 行程比重</h3>
+                    <h4 class="font-bold text-stone-600 mb-3 text-xs uppercase tracking-wide">時間分配</h4>
                     <div class="chart-container">
                         <canvas id="activityChart"></canvas>
                     </div>
                 </div>
                 <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100">
-                    <h3 class="font-bold text-stone-700 mb-3 text-sm">🛍️ 購物重點</h3>
+                    <h4 class="font-bold text-stone-600 mb-3 text-xs uppercase tracking-wide">購物重點</h4>
                     <div class="chart-container">
                         <canvas id="shoppingChart"></canvas>
                     </div>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100">
+                <h3 class="font-bold text-stone-800 mb-3 text-sm">⚡ 快速連結</h3>
+                <div class="flex gap-3">
+                    <a href="https://www.google.com/maps" target="_blank" class="flex-1 bg-stone-50 hover:bg-stone-100 text-center py-2 rounded-lg text-xs font-bold text-stone-600 border border-stone-200 transition">
+                        📍 Google Maps
+                    </a>
+                    <a href="https://tenki.jp/forecast/6/30/6200/27100/" target="_blank" class="flex-1 bg-stone-50 hover:bg-stone-100 text-center py-2 rounded-lg text-xs font-bold text-stone-600 border border-stone-200 transition">
+                        ☀️ 大阪天氣
+                    </a>
                 </div>
             </div>
         </div>
@@ -113,8 +207,8 @@
         <!-- VIEW: ITINERARY -->
         <div id="view-itinerary" class="hidden space-y-4 animate-fade-in">
             <!-- Sticky Day Tabs -->
-            <div class="sticky top-[60px] z-30 bg-[#fafaf9] pt-2 pb-2">
-                <div class="flex overflow-x-auto space-x-3 px-1 scrollbar-hide" id="day-tabs">
+            <div class="sticky top-[52px] z-30 bg-[#fafaf9]/95 backdrop-blur-sm pt-3 pb-2 transition-all">
+                <div class="flex overflow-x-auto space-x-3 px-1 scrollbar-hide py-1" id="day-tabs">
                     <!-- JS populate tabs -->
                 </div>
             </div>
@@ -132,11 +226,11 @@
 
         <!-- VIEW: SPOTS -->
         <div id="view-spots" class="hidden animate-fade-in pb-20">
-            <div class="sticky top-[60px] z-30 bg-[#fafaf9] pt-2 pb-4 space-y-3">
+            <div class="sticky top-[52px] z-30 bg-[#fafaf9]/95 backdrop-blur-sm pt-3 pb-4 space-y-3">
                 <div class="relative">
                     <span class="absolute left-3 top-2.5 text-stone-400">🔍</span>
                     <input type="text" id="spot-search" placeholder="搜尋店鋪 (如: Animate)..." 
-                           class="w-full pl-10 pr-4 py-2 bg-white border border-stone-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-sm">
+                           class="w-full pl-10 pr-4 py-2 bg-white border border-stone-200 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-sm transition">
                 </div>
                 <div class="flex overflow-x-auto space-x-2 scrollbar-hide pb-1" id="category-filters">
                     <button class="filter-btn active whitespace-nowrap px-4 py-1.5 rounded-full text-xs font-bold bg-stone-800 text-white shadow-sm" data-cat="all">全部</button>
@@ -154,17 +248,22 @@
 
     </main>
 
+    <!-- Scroll Top Button (Small) -->
+    <button id="scrollTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="bg-stone-800/80 backdrop-blur text-white flex items-center justify-center rounded-full shadow-lg hover:bg-stone-700 transition">
+        ⬆️
+    </button>
+
     <!-- Bottom Navigation Bar (Mobile Optimized) -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-stone-200 flex justify-around items-center px-2 py-2 z-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] safe-pb">
-        <button onclick="switchView('dashboard')" id="nav-dashboard" class="flex flex-col items-center justify-center w-full py-1 text-orange-600">
+    <nav class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur border-t border-stone-200 flex justify-around items-center px-2 py-2 z-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] safe-pb">
+        <button onclick="switchView('dashboard')" id="nav-dashboard" class="flex flex-col items-center justify-center w-full py-1 text-orange-600 active:scale-95 transition">
             <span class="text-xl mb-0.5">📊</span>
             <span class="text-[10px] font-bold">總覽</span>
         </button>
-        <button onclick="switchView('itinerary')" id="nav-itinerary" class="flex flex-col items-center justify-center w-full py-1 text-stone-400 hover:text-stone-600">
+        <button onclick="switchView('itinerary')" id="nav-itinerary" class="flex flex-col items-center justify-center w-full py-1 text-stone-400 hover:text-stone-600 active:scale-95 transition">
             <span class="text-xl mb-0.5">📅</span>
             <span class="text-[10px] font-bold">行程</span>
         </button>
-        <button onclick="switchView('spots')" id="nav-spots" class="flex flex-col items-center justify-center w-full py-1 text-stone-400 hover:text-stone-600">
+        <button onclick="switchView('spots')" id="nav-spots" class="flex flex-col items-center justify-center w-full py-1 text-stone-400 hover:text-stone-600 active:scale-95 transition">
             <span class="text-xl mb-0.5">📍</span>
             <span class="text-[10px] font-bold">商店</span>
         </button>
@@ -178,8 +277,8 @@
                     id: 1,
                     date: "1/3 (六)",
                     fullDate: "1月3日 週六",
-                    title: "抵達、PARCO、美國村",
-                    summary: "抵達後先逛 PARCO 動漫層，再探索美國村獨棟動漫店與深夜超市。",
+                    title: "抵達、PARCO、心齋橋",
+                    summary: "抵達後先逛 PARCO，再行心齋橋筋商店街掃貨與吃街頭美食。",
                     transportInfo: "南海電鐵 Rapi:t (機場→難波) → 地鐵御堂筋線 (難波→心齋橋)。",
                     diningInfo: "宵夜：鳥貴族 (22:00)。",
                     timeline: [
@@ -212,11 +311,11 @@
                             website: "https://shinsaibashi.parco.jp/" 
                         },
                         { 
-                            time: "18:30", icon: "🤖", title: "Mandarake Grand Chaos", 
-                            desc: "美國村內的動漫寶庫 (整棟)。獨棟二手店，非百貨公司，尋寶必去。營業至 20:00。", 
-                            transit: "🚶 <b>步行 (8分鐘)：</b><br>從 PARCO 出來過大馬路 (御堂筋) 往西走，進入美國村區域。<br>是一棟很顯眼的白色建築。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Mandarake+Grand+Chaos",
-                            website: "https://www.mandarake.co.jp/dir/gcs/"
+                            time: "18:30", icon: "🚶", title: "心齋橋筋商店街 (必逛)", 
+                            desc: "<b>重點店鋪與營業時間：</b><br>• UNIQLO (11:00-21:00)<br>• Disney Store (11:00-20:00)<br>• 3COINS+plus (11:00-21:00)<br>• Strawberry Mania (11:00-21:00)<br>• Daiou Cheese (11:00-21:00)", 
+                            transit: "🚶 <b>步行 (隨意)：</b><br>沿著有蓋拱廊往南走。大部分商店營業至 21:00。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Shinsaibashisuji+Shopping+Street",
+                            website: "https://www.shinsaibashi.or.jp/"
                         },
                         { 
                             time: "20:30", icon: "🐧", title: "Don Quijote 道頓堀", 
@@ -258,14 +357,14 @@
                         },
                         { 
                             time: "08:25", icon: "🚌", title: "往 Outlet (早班建議)", 
-                            desc: "梅田 HERBIS OSAKA 1F 巴士站。<br><b>班次 A: 08:25 發車</b> (約 09:32 抵達)<br>早到可避開人潮。", 
+                            desc: "梅田 HERBIS OSAKA 1F 巴士站。<br><b>班次 A: 08:25 發車</b> (約 09:32 抵達)<br><b>⚠️ 注意：座席定員制 (先到先得)，不可網上預約。</b>請提早排隊。", 
                             transit: "🚶 <b>轉乘步行 (10-15分鐘)：重點！容易迷路</b><br>1. 梅田站下車後，請走<b>「南改札口」</b>出站。<br>2. 出站後看頭頂指標，找<b>「西梅田」</b>或<b>「HERBIS OSAKA (ハービスOSAKA)」</b>。<br>3. 沿地下街一直往西走，直到抵達 HERBIS PLAZA ENT 入口。<br>4. 搭手扶梯上 1F，巴士總站就在大樓內。",
                             map: "https://www.google.com/maps/search/?api=1&query=Herbis+Osaka+Bus+Terminal",
                             website: "https://www.premiumoutlets.co.jp/kobesanda/access/bus.html"
                         },
                         { 
                             time: "09:35", icon: "🚌", title: "往 Outlet (標準班次)", 
-                            desc: "<b>班次 B: 09:35 發車</b> (約 10:42 抵達)<br>若起不來可搭這班，但人較多。", 
+                            desc: "<b>班次 B: 09:35 發車</b> (約 10:42 抵達)<br><b>⚠️ 注意：不可預約。</b>若起不來可搭這班，但人較多。", 
                             transit: "同上，座席定員制，建議提前 20 分鐘排隊。",
                             map: "https://www.google.com/maps/search/?api=1&query=Herbis+Osaka+Bus+Terminal",
                             website: "https://www.premiumoutlets.co.jp/kobesanda/access/bus.html"
@@ -279,14 +378,14 @@
                         },
                         { 
                             time: "15:00", icon: "🚌", title: "巴士往三宮 (班次A)", 
-                            desc: "Outlet 巴士站搭乘往「三宮」方向。<br><b>建議班次: 15:00</b> (約 15:50 抵達)。", 
+                            desc: "Outlet 巴士站搭乘往「三宮」方向。<br><b>建議班次: 15:00</b> (約 15:50 抵達)。無預約制。", 
                             transit: "🚌 <b>巴士 (50分鐘)：</b><br>在 Outlet 巴士站搭乘往「三宮 (Sannomiya)」的班次。<br>終點站為三宮巴士總站 (近 JR 高架橋)。",
                             map: null,
                             website: "https://www.shinkibus.co.jp/" 
                         },
                         { 
                             time: "15:40", icon: "🚌", title: "巴士往三宮 (班次B)", 
-                            desc: "<b>備選班次: 15:40</b> (約 16:30 抵達)。", 
+                            desc: "<b>備選班次: 15:40</b> (約 16:30 抵達)。無預約制。", 
                             transit: "同上。",
                             map: null,
                             website: "https://www.shinkibus.co.jp/"
@@ -385,7 +484,7 @@
                         },
                         { 
                             time: "15:30", icon: "⚡", title: "日本橋 Den Den Town", 
-                            desc: "深度動漫遊：Super Kids Land, Animate, 駿河屋, Jungle, BOOKOFF。", 
+                            desc: "深度動漫遊。<b>重點店鋪與營業時間：</b><br>• Super Kids Land (10:00-20:00)<br>• Animate (11:00-20:00)<br>• Surugaya 駿河屋 (11:00-20:00)<br>• Jungle 密林 (12:00-20:00)<br>• BOOKOFF (10:00-22:00)", 
                             transit: "🚶 <b>步行 (20分鐘)：</b><br>從橙街沿著千日前通往東走，經過難波站，繼續直行直到看到高架橋和堺筋大馬路。<br>右轉進入堺筋，兩側即是電器街。",
                             map: "https://www.google.com/maps/search/?api=1&query=Super+Kids+Land+Character",
                             website: "https://shop.joshin.co.jp/shopdetail.php?cd=1746" 
@@ -416,9 +515,9 @@
                             website: "https://www.daiwaroynet.jp/osaka-shinsaibashi/"
                         },
                         { 
-                            time: "11:00", icon: "🦀", title: "午餐：蟹道樂", 
-                            desc: "道頓堀本店。午間懷石料理。營業至 22:00。", 
-                            transit: "🚶 <b>步行 (5-8分鐘)：</b><br>從飯店過馬路進入商店街，往南直走到底，過戎橋右手邊即是。",
+                            time: "11:00", icon: "🦀", title: "午餐：蟹道樂 (道頓堀本店)", 
+                            desc: "享用招牌螃蟹懷石料理 (注意：沒有心齋橋本店，此為道頓堀本店，近心齋橋入口)。營業至 22:00。", 
+                            transit: "🚶 <b>步行 (5-8分鐘)：</b><br>從飯店過馬路進入心齋橋筋商店街，往南直走到底，過戎橋(固力果)右手邊即是，位於蟹道樂大招牌下。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kani+Doraku+Dotonbori+Honten",
                             website: "https://douraku.co.jp/" 
                         },
@@ -454,10 +553,12 @@
                 }
             ],
             spots: [
+                { name: "心齋橋筋商店街", type: "shopping", desc: "藥妝, UNIQLO, 街頭小食", hours: "11:00 - 21:00", website: "https://www.shinsaibashi.or.jp/" },
+                { name: "Strawberry Mania", type: "food", desc: "草莓大福, 甜點", hours: "11:00 - 21:00", website: "https://tabelog.com/osaka/A2701/A270202/27105430/" },
+                { name: "Daiou Cheese", type: "food", desc: "10円起司麵包", hours: "11:00 - 21:00", website: "https://tabelog.com/osaka/A2701/A270202/27125345/" },
                 { name: "大阪城公園", type: "sightseeing", desc: "經典地標，散步首選", hours: "全天", website: "https://www.osakacastle.net/" },
                 { name: "南京町", type: "sightseeing", desc: "神戶唐人街", hours: "10:00 - 20:30", website: "https://www.nankinmachi.or.jp/" },
                 { name: "中崎町", type: "sightseeing", desc: "復古老屋咖啡街", hours: "12:00 - 19:00", website: "https://nakazaki-cho.kitatenma.com/" },
-                { name: "Mandarake Grand Chaos", type: "anime", desc: "整棟動漫二手寶庫", hours: "12:00 - 20:00", website: "https://www.mandarake.co.jp/dir/gcs/" },
                 { name: "心齋橋 PARCO", type: "anime", desc: "5F 一番賞, 6F 動漫層", hours: "10:00 - 20:00", website: "https://shinsaibashi.parco.jp/" },
                 { name: "#C-pla 心齋橋", type: "anime", desc: "扭蛋專門店", hours: "10:00 - 23:00", website: "https://toshin.jpn.com/shop/c-pla/" },
                 { name: "Jungle (密林)", type: "anime", desc: "二手 Figure, 特攝", hours: "12:00 - 20:00", website: "https://jungle-scs.co.jp/" },
@@ -475,6 +576,7 @@
                 { name: "神戶三田 Outlets", type: "shopping", desc: "名牌折扣", hours: "10:00 - 20:00", website: "https://www.premiumoutlets.co.jp/kobesanda/" },
                 { name: "Orange Street", type: "shopping", desc: "潮牌 (Supreme等)", hours: "11:00 - 20:00", website: "http://osaka-horie.com/" },
                 { name: "勝尾寺", type: "sightseeing", desc: "求勝運", hours: "08:00 - 17:00", website: "https://katsuo-ji-temple.or.jp/" },
+                { name: "生田神社", type: "sightseeing", desc: "戀愛結緣", hours: "07:00 - 17:00", website: "https://ikutajinja.or.jp/" },
                 { name: "延羽之湯", type: "sightseeing", desc: "溫泉", hours: "10:00 - 02:00", website: "https://www.nobuta123.co.jp/nobehatsuruhashi/" }
             ]
         };
@@ -501,6 +603,9 @@
         function renderDay(index) {
             const day = tripData.days[index];
             
+            // Auto scroll to top of itinerary
+            window.scrollTo({top: 0, behavior: 'smooth'});
+
             // Tabs
             document.getElementById('day-tabs').innerHTML = tripData.days.map((d, i) => `
                 <button onclick="renderDay(${i})" class="flex-shrink-0 px-4 py-2 rounded-full text-xs font-bold transition whitespace-nowrap shadow-sm border ${i === index ? 'bg-orange-500 text-white border-orange-500' : 'bg-white text-stone-600 border-stone-200'}">
@@ -512,7 +617,7 @@
             document.getElementById('day-header').innerHTML = `
                 <div class="flex justify-between items-start">
                     <div>
-                        <span class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded">${day.fullDate}</span>
+                        <span class="text-xs font-bold bg-orange-100 text-orange-800 px-2 py-1 rounded">${day.fullDate}</span>
                         <h2 class="text-xl font-bold text-stone-800 mt-2">${day.title}</h2>
                         <p class="text-stone-500 text-sm mt-1">${day.summary}</p>
                     </div>
@@ -536,10 +641,10 @@
                     </div>
                     
                     <!-- Card -->
-                    <div class="flex-grow bg-white rounded-xl p-4 shadow-sm border border-stone-100 hover:border-orange-200 transition mb-2">
+                    <div class="flex-grow bg-white rounded-xl p-4 shadow-sm border border-stone-100 hover:border-orange-200 transition mb-2 card-hover">
                         <div class="flex justify-between items-start mb-1">
                             <h3 class="font-bold text-stone-800 text-base">${item.title}</h3>
-                            <span class="text-xs font-mono text-stone-400 bg-stone-50 px-1.5 py-0.5 rounded">${item.time}</span>
+                            <span class="text-xs font-mono bg-orange-100 text-orange-800 px-1.5 py-0.5 rounded">${item.time}</span>
                         </div>
                         <p class="text-sm text-stone-600 mb-3 leading-relaxed">${item.desc}</p>
                         
@@ -592,11 +697,11 @@
             }
 
             grid.innerHTML = filtered.map(spot => `
-                <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100 flex justify-between items-start">
+                <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100 flex justify-between items-start card-hover">
                     <div>
                         <div class="flex items-center gap-2 mb-1">
                             <h3 class="font-bold text-stone-800 text-base">${spot.name}</h3>
-                            <span class="text-[10px] px-1.5 py-0.5 rounded border ${spot.type === 'food' ? 'bg-rose-50 text-rose-600 border-rose-100' : 'bg-stone-50 text-stone-500 border-stone-100'}">${spot.hours}</span>
+                            <span class="text-[10px] px-1.5 py-0.5 rounded border bg-orange-100 text-orange-800 border-orange-200">${spot.hours}</span>
                         </div>
                         <p class="text-xs text-stone-500">${spot.desc}</p>
                     </div>
@@ -661,6 +766,16 @@
             });
             chartsRendered = true;
         }
+
+        // Scroll to Top Logic
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollTopBtn.style.display = "flex";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        };
 
         // Init
         switchView('dashboard');
