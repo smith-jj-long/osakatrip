@@ -69,7 +69,7 @@
             bottom: 80px;
             right: 16px;
             z-index: 99;
-            width: 32px; /* Smaller size */
+            width: 32px;
             height: 32px;
             font-size: 14px;
             transition: opacity 0.3s, transform 0.3s;
@@ -100,7 +100,6 @@
                 <h1 class="text-lg font-bold leading-tight">🇯🇵 大阪新春之旅 2026</h1>
                 <p class="text-stone-400 text-xs">1/3 (六) - 1/7 (三)</p>
             </div>
-            <!-- Settings or Info Icon could go here -->
         </div>
     </header>
 
@@ -123,12 +122,12 @@
                 </div>
                 <div class="flex flex-wrap gap-2">
                     <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">⚡ 日本橋動漫</span>
-                    <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">🥩 神戶牛鐵板燒</span>
+                    <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">⛩️ 京都下鴨</span>
                     <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">🛍️ 三田 Outlet</span>
                 </div>
             </div>
 
-            <!-- Pre-Travel Checklist (New) -->
+            <!-- Pre-Travel Checklist -->
             <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100">
                 <h3 class="font-bold text-stone-800 mb-3 flex items-center gap-2">
                     <span>✅</span> 行前準備清單
@@ -150,19 +149,14 @@
                         <input type="checkbox" class="w-4 h-4 text-orange-500 rounded border-stone-300 focus:ring-orange-500">
                         <span><b>線上預辦登機</b> (Online Check-in)</span>
                     </label>
-                    <label class="flex items-center gap-3 checklist-item cursor-pointer p-2 hover:bg-stone-50 rounded-lg transition">
-                        <input type="checkbox" class="w-4 h-4 text-orange-500 rounded border-stone-300 focus:ring-orange-500">
-                        <span><b>確認護照效期</b> (需 6 個月以上)</span>
-                    </label>
                 </div>
             </div>
 
-            <!-- Coupon Section (New) -->
+            <!-- Coupon Section -->
             <div class="bg-gradient-to-br from-rose-50 to-pink-50 p-4 rounded-xl shadow-sm border border-rose-100">
                 <h3 class="font-bold text-rose-700 mb-3 flex items-center gap-2">
                     <span>🎟️</span> 購物優惠券 (Coupons)
                 </h3>
-                <p class="text-xs text-rose-600 mb-3">結帳前請出示條碼，可享免稅 + 折扣。</p>
                 <div class="flex gap-3">
                     <a href="https://www.japaholic.com/tw/article/coupon" target="_blank" class="flex-1 bg-white hover:bg-rose-100 text-center py-3 rounded-lg text-xs font-bold text-rose-600 border border-rose-200 shadow-sm transition">
                         Japaholic 優惠券總覽<br><span class="text-[10px] font-normal opacity-70">藥妝/電器/百貨</span>
@@ -187,19 +181,6 @@
                     <div class="chart-container">
                         <canvas id="shoppingChart"></canvas>
                     </div>
-                </div>
-            </div>
-
-            <!-- Quick Links -->
-            <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100">
-                <h3 class="font-bold text-stone-800 mb-3 text-sm">⚡ 快速連結</h3>
-                <div class="flex gap-3">
-                    <a href="https://www.google.com/maps" target="_blank" class="flex-1 bg-stone-50 hover:bg-stone-100 text-center py-2 rounded-lg text-xs font-bold text-stone-600 border border-stone-200 transition">
-                        📍 Google Maps
-                    </a>
-                    <a href="https://tenki.jp/forecast/6/30/6200/27100/" target="_blank" class="flex-1 bg-stone-50 hover:bg-stone-100 text-center py-2 rounded-lg text-xs font-bold text-stone-600 border border-stone-200 transition">
-                        ☀️ 大阪天氣
-                    </a>
                 </div>
             </div>
         </div>
@@ -277,9 +258,9 @@
                     id: 1,
                     date: "1/3 (六)",
                     fullDate: "1月3日 週六",
-                    title: "抵達、PARCO、心齋橋",
-                    summary: "抵達後先逛 PARCO，再行心齋橋筋商店街掃貨與吃街頭美食。",
-                    transportInfo: "南海電鐵 Rapi:t (機場→難波) → 地鐵御堂筋線 (難波→心齋橋)。",
+                    title: "抵達、Workman、心齋橋",
+                    summary: "機場直奔飯店，先去難波 Workman 買裝備，再回心齋橋逛 PARCO 與吃宵夜。",
+                    transportInfo: "南海電鐵 Rapi:t (機場→難波)。Workman 位於難波 CITY，可步行回心齋橋。",
                     diningInfo: "宵夜：鳥貴族 (22:00)。",
                     timeline: [
                         { 
@@ -304,32 +285,32 @@
                             website: "https://www.daiwaroynet.jp/osaka-shinsaibashi/"
                         },
                         { 
-                            time: "17:30", icon: "🛍️", title: "心齋橋 PARCO (一番賞)", 
+                            time: "17:30", icon: "🧥", title: "Workman Girl Namba City", 
+                            desc: "位於難波 CITY 南館 2F。購買防寒外套。營業至 21:00。", 
+                            transit: "🚶 <b>步行/地鐵 (15分鐘)：</b><br>從飯店搭地鐵回難波，或步行約 15-20 分鐘。<br>Workman Girl 位於難波 CITY 商場南館 2 樓，與南海電鐵直結。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Workman+Girl+Namba+City",
+                            website: "https://www.workman.co.jp/" 
+                        },
+                        { 
+                            time: "18:45", icon: "🛍️", title: "心齋橋 PARCO (一番賞)", 
                             desc: "5F 一番賞官方店, 6F 動漫層 (Capcom/Godzilla)。營業至 20:00。", 
-                            transit: "🚶 <b>步行 (1分鐘)：</b><br>飯店下樓即是心齋橋筋商店街北段。<br>PARCO 與大丸百貨相連，位於地鐵站正上方。",
+                            transit: "🚶 <b>步行 (15分鐘)：</b><br>從難波 CITY 沿著戎橋筋商店街往北走，穿過道頓堀回到心齋橋筋。<br>PARCO 位於地鐵心齋橋站正上方。",
                             map: "https://www.google.com/maps/search/?api=1&query=Ichiban+Kuji+Official+Shop+Shinsaibashi+PARCO",
                             website: "https://shinsaibashi.parco.jp/" 
                         },
                         { 
-                            time: "18:30", icon: "🚶", title: "心齋橋筋商店街 (必逛)", 
+                            time: "20:00", icon: "🚶", title: "心齋橋筋商店街 (必逛)", 
                             desc: "<b>重點店鋪與營業時間：</b><br>• UNIQLO (11:00-21:00)<br>• Disney Store (11:00-20:00)<br>• 3COINS+plus (11:00-21:00)<br>• Strawberry Mania (11:00-21:00)<br>• Daiou Cheese (11:00-21:00)", 
                             transit: "🚶 <b>步行 (隨意)：</b><br>沿著有蓋拱廊往南走。大部分商店營業至 21:00。",
                             map: "https://www.google.com/maps/search/?api=1&query=Shinsaibashisuji+Shopping+Street",
                             website: "https://www.shinsaibashi.or.jp/"
                         },
                         { 
-                            time: "20:30", icon: "🐧", title: "Don Quijote 道頓堀", 
+                            time: "21:30", icon: "🐧", title: "Don Quijote 道頓堀", 
                             desc: "摩天輪店。24小時營業。買完建議先回飯店放東西。", 
                             transit: "🚶 <b>步行去 Donki (10-15分鐘)：</b><br>沿心齋橋筋商店街往南直行，過戎橋(固力果看板)後，沿河邊步道左轉即見黃色摩天輪 Donki。<br><br>🚕 <b>回程：</b><br>若買太多，建議在路口搭的士回飯店 (約 ¥800-1000)。",
                             map: "https://www.google.com/maps/search/?api=1&query=Don+Quijote+Dotonbori",
                             website: "https://www.donki.com/"
-                        },
-                        { 
-                            time: "21:30", icon: "🍎", title: "KOHYO 24H 超市 (備選)", 
-                            desc: "位於 OCAT (JR難波) B1。若 Donki 人太多可改去這。", 
-                            transit: "🚶 <b>步行 (15分鐘)：</b><br>由 Donki 沿河邊步道往西(反方向)直行，穿過四橋筋大馬路，看到八角形建築(OCAT)，超市在 B1。",
-                            map: "https://www.google.com/maps/search/?api=1&query=KOHYO+Namba+Minatomachi",
-                            website: "https://www.kohyo.co.jp/"
                         },
                         { 
                             time: "22:30", icon: "🍢", title: "宵夜：鳥貴族", 
@@ -463,52 +444,38 @@
                     id: 4,
                     date: "1/6 (二)",
                     fullDate: "1月6日 週二",
-                    title: "難波神社、橙街、日本橋",
-                    summary: "早上去獅子頭神社參拜與難波公園散步，午餐後專攻潮牌與動漫。",
-                    transportInfo: "地鐵移動：心齋橋 -> 難波 -> 步行。",
-                    diningInfo: "午餐：堀江/難波周邊。晚餐：燒肉。",
+                    title: "京都下鴨、網元本館、日本橋",
+                    summary: "早上前往京都下鴨神社，下午回日本橋尋寶，晚上於西心齋橋享用頂級蟹料理。",
+                    transportInfo: "去京都: 京阪電車 (淀屋橋發)。<br>回大阪: 京阪電車 (出町柳發)。",
+                    diningInfo: "晚餐：蟹道樂 網元本館 (20:30)。",
                     timeline: [
                         { 
-                            time: "09:30", icon: "🦁", title: "難波八阪神社", 
-                            desc: "巨型獅子頭舞台，求金運與勝運。拍照打卡必去。", 
-                            transit: "🚇 <b>地鐵 (5分鐘)：</b><br>由心齋橋搭御堂筋線至難波站。<br><br>🚶 <b>步行 (10分鐘)：</b><br>從難波站南邊出口，沿著高架橋西側往南走，再轉入巷弄（建議開地圖導航）。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Namba+Yasaka+Shrine",
-                            website: "https://nambayasaka.jp/" 
+                            time: "09:00", icon: "⛩️", title: "前往京都 (下鴨神社)", 
+                            desc: "京阪電車特急。車程約 50 分鐘。", 
+                            transit: "🚇 <b>地鐵 (2分鐘)：</b><br>心齋橋搭御堂筋線至「淀屋橋站」。<br><br>🚆 <b>京阪電車 (50分鐘)：</b><br>轉乘京阪本線 (特急/快速急行) 往「出町柳」方向，於終點站「出町柳」下車。<br><br>🚶 <b>步行 (10分鐘)：</b><br>出站後過橋，沿著指示步行即達下鴨神社 (世界遺產)。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Shimogamo+Shrine",
+                            website: "https://www.shimogamo-jinja.or.jp/" 
                         },
                         { 
-                            time: "10:15", icon: "🌳", title: "Namba Parks (空中花園)", 
-                            desc: "難波公園購物中心。建築獨特，有層層堆疊的空中花園，適合早晨散步。", 
-                            transit: "🚶 <b>步行 (10分鐘)：</b><br>從神社往東走回難波站方向，即可看到這棟流線型建築。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Namba+Parks",
-                            website: "http://nambaparks.com/" 
-                        },
-                        { 
-                            time: "11:00", icon: "🧢", title: "橙街 (Orange Street)", 
-                            desc: "<b>重點潮牌：</b><br>• <b>HUMAN MADE</b> (11:00-19:00)<br>• Supreme (11:00-20:00)<br>• BIOTOP (11:00-20:00)<br>• Carhartt WIP (11:00-20:00)", 
-                            transit: "🚶 <b>步行 (15分鐘)：</b><br>從難波公園往西走，穿過四橋筋，進入南堀江區域。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Orange+Street+Osaka",
-                            website: "http://osaka-horie.com/" 
-                        },
-                        { 
-                            time: "13:00", icon: "☕", title: "午餐：堀江/美國村周邊", 
-                            desc: "這一帶有很多時尚 Cafe 或漢堡店。", 
-                            transit: "步行於堀江區域。",
+                            time: "13:30", icon: "🚆", title: "返回大阪 (日本橋)", 
+                            desc: "午餐建議在京都出町柳附近簡單解決，或回大阪日本橋吃。", 
+                            transit: "🚆 <b>京阪電車 (50分鐘)：</b><br>從出町柳搭特急回程，在「北濱站 (Kitahama)」下車。<br><br>🚇 <b>地鐵 (5分鐘)：</b><br>轉乘堺筋線 (往天下茶屋方向)，在「惠美須町站」或「日本橋站」下車，即抵達 Den Den Town。",
                             map: null,
-                            website: null
+                            website: "https://www.keihan.co.jp/"
                         },
                         { 
-                            time: "15:30", icon: "⚡", title: "日本橋 Den Den Town", 
+                            time: "15:00", icon: "⚡", title: "日本橋 Den Den Town", 
                             desc: "深度動漫遊。<b>重點店鋪與營業時間：</b><br>• Super Kids Land (10:00-20:00)<br>• Animate (11:00-20:00)<br>• Surugaya 駿河屋 (11:00-20:00)<br>• Jungle 密林 (12:00-20:00)<br>• BOOKOFF (10:00-22:00)", 
-                            transit: "🚶 <b>步行 (20分鐘)：</b><br>從橙街沿著千日前通往東走，經過難波站，繼續直行直到看到高架橋和堺筋大馬路。<br>右轉進入堺筋，兩側即是電器街。",
+                            transit: "🚶 <b>步行：</b><br>沿著堺筋大道兩側逛。從南 (惠美須町) 往北 (難波) 走。",
                             map: "https://www.google.com/maps/search/?api=1&query=Super+Kids+Land+Character",
                             website: "https://shop.joshin.co.jp/shopdetail.php?cd=1746" 
                         },
                         { 
-                            time: "19:00", icon: "🍽️", title: "晚餐：難波/道頓堀", 
-                            desc: "帶著戰利品，在附近的燒肉店或居酒屋慶功。", 
-                            transit: "🚶 <b>步行 (10分鐘)：</b><br>沿著堺筋往北走回道頓堀川邊。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Dotonbori",
-                            website: null
+                            time: "20:30", icon: "🦀", title: "晚餐：蟹道樂 網元本館", 
+                            desc: "<b>注意：</b>這間不是道頓堀那間，而是位於西心齋橋的高級別邸。氣氛更幽靜。營業至 22:30。", 
+                            transit: "🚶 <b>步行 (15分鐘)：</b><br>從日本橋往難波/心齋橋方向走。網元本館位於美國村附近的西心齋橋區域。<br>請務必開啟 Google Map 導航確認位置。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Kani+Doraku+Amimoto+Honkan",
+                            website: "https://douraku.co.jp/kansai/shop/amimoto_h/" 
                         }
                     ]
                 },
@@ -516,50 +483,43 @@
                     id: 5,
                     date: "1/7 (三)",
                     fullDate: "1月7日 週三",
-                    title: "蟹道樂、回程",
-                    summary: "行李寄放飯店更輕鬆，最後享用螃蟹大餐。",
+                    title: "機場美食、回程",
+                    summary: "退房後直接前往機場，享受新裝修的機場美食區。",
                     transportInfo: "飯店拿行李 → 計程車至南海難波 → 機場。",
-                    diningInfo: "午餐：蟹道樂 (11:00)。",
+                    diningInfo: "午餐：關西機場 (Tasty Street)。",
                     timeline: [
                         { 
-                            time: "10:00", icon: "🧳", title: "Check-out & 寄放行李", 
-                            desc: "辦理退房，將<b>行李寄放在飯店櫃台</b>。", 
-                            transit: "無，飯店內。",
+                            time: "10:00", icon: "🧳", title: "Check-out", 
+                            desc: "辦理退房，帶著行李離開。", 
+                            transit: "無。",
                             map: "https://www.google.com/maps/search/?api=1&query=Daiwa+Roynet+Hotel+Osaka+Shinsaibashi",
                             website: "https://www.daiwaroynet.jp/osaka-shinsaibashi/"
                         },
                         { 
-                            time: "11:00", icon: "🦀", title: "午餐：蟹道樂 (道頓堀本店)", 
-                            desc: "享用招牌螃蟹懷石料理。注意是<b>道頓堀本店</b> (大螃蟹招牌)。營業至 22:00。", 
-                            transit: "🚶 <b>步行 (5-8分鐘)：</b><br>從飯店過馬路進入心齋橋筋商店街，往南直走到底，過戎橋(固力果)右手邊即是。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Kani+Doraku+Dotonbori+Honten",
-                            website: "https://douraku.co.jp/" 
-                        },
-                        { 
-                            time: "13:00", icon: "🚶", title: "回飯店取行李", 
-                            desc: "步行返回飯店拿取寄放的行李。", 
-                            transit: "🚶 <b>步行 (5-8分鐘)：</b><br>沿原路返回飯店。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Daiwa+Roynet+Hotel+Osaka+Shinsaibashi",
-                            website: null
-                        },
-                        { 
-                            time: "13:15", icon: "🚕", title: "前往南海難波站", 
+                            time: "10:30", icon: "🚕", title: "前往南海難波站", 
                             desc: "從飯店<b>搭計程車</b>直達南海難波站 3F 北改札口 (約 10 分鐘，省力)。", 
                             transit: "🚕 <b>計程車 (10分鐘)：</b><br>請飯店櫃台幫忙叫車，指定去「南海難波站 (Nankai Namba Station)」。",
                             map: "https://www.google.com/maps/search/?api=1&query=Nankai+Namba+Station",
                             website: "http://www.nankai.co.jp/"
                         },
                         { 
-                            time: "13:35", icon: "🚆", title: "搭乘 Rapi:t 往機場", 
-                            desc: "推薦 13:35 (β41) 班次。最晚搭 14:05。", 
+                            time: "11:05", icon: "🚆", title: "搭乘 Rapi:t 往機場", 
+                            desc: "推薦 11:05 (α7) 或 11:35 (β39) 班次。提早去機場吃飯。", 
                             transit: "🚶 <b>步行 (5分鐘)：</b><br>計程車下車處通常在 3F 或 1F，南海月台在 3F。<br>進站後尋找 9 號月台。",
                             map: "https://www.google.com/maps/search/?api=1&query=Nankai+Namba+Station",
                             website: "https://www.howto-osaka.com/tc/group/rapit/" 
                         },
                         { 
-                            time: "15:00", icon: "🛫", title: "抵達機場 & Check-in", 
+                            time: "12:00", icon: "🍽️", title: "午餐：關西機場 (Tasty Street)", 
+                            desc: "位於第1航廈 2F 的新美食區。推薦：<b>551蓬萊</b>(中華料理)、<b>神座拉麵</b>、<b>Colowide</b>(牛排/漢堡排)。", 
+                            transit: "🚶 <b>步行：</b><br>出改札口後直走即達第 1 航廈 2F，美食區位於國內線出發口附近 (非管制區，誰都可以吃)。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Kansai+Airport+Terminal+1+Restaurants",
+                            website: "https://www.kansai-airport.or.jp/tw/shop-and-dine/dine" 
+                        },
+                        { 
+                            time: "15:00", icon: "🛫", title: "Check-in & 登機", 
                             desc: "17:00 起飛。第一航廈 4F。", 
-                            transit: "🚶 <b>步行：</b><br>出改札口後左轉，依照「國際線出發」指標，前往第 1 航廈 4F 辦理登機。",
+                            transit: "🚶 <b>步行：</b><br>吃飽後搭手扶梯上 4F 辦理登機。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport",
                             website: "https://www.kansai-airport.or.jp/tw/" 
                         }
@@ -567,14 +527,13 @@
                 }
             ],
             spots: [
+                { name: "Workman Girl Namba", type: "shopping", desc: "難波CITY南館2F，防寒衣物", hours: "11:00 - 21:00", website: "https://www.workman.co.jp/" },
                 { name: "心齋橋筋商店街", type: "shopping", desc: "藥妝, UNIQLO, 街頭小食", hours: "11:00 - 21:00", website: "https://www.shinsaibashi.or.jp/" },
                 { name: "Strawberry Mania", type: "food", desc: "草莓大福, 甜點", hours: "11:00 - 21:00", website: "https://tabelog.com/osaka/A2701/A270202/27105430/" },
                 { name: "Daiou Cheese", type: "food", desc: "10円起司麵包", hours: "11:00 - 21:00", website: "https://tabelog.com/osaka/A2701/A270202/27125345/" },
-                { name: "難波八阪神社", type: "sightseeing", desc: "巨型獅子頭，必去打卡", hours: "06:00 - 17:00", website: "https://nambayasaka.jp/" },
-                { name: "Namba Parks", type: "sightseeing", desc: "空中花園，建築美學", hours: "11:00 - 21:00", website: "http://nambaparks.com/" },
+                { name: "下鴨神社", type: "sightseeing", desc: "京都世界遺產，森林神社", hours: "06:30 - 17:00", website: "https://www.shimogamo-jinja.or.jp/" },
                 { name: "南京町", type: "sightseeing", desc: "神戶唐人街", hours: "10:00 - 20:30", website: "https://www.nankinmachi.or.jp/" },
                 { name: "中崎町", type: "sightseeing", desc: "復古老屋咖啡街", hours: "12:00 - 19:00", website: "https://nakazaki-cho.kitatenma.com/" },
-                { name: "Human Made Osaka", type: "shopping", desc: "南堀江潮牌", hours: "11:00 - 19:00", website: "https://humanmade.jp/" },
                 { name: "心齋橋 PARCO", type: "anime", desc: "5F 一番賞, 6F 動漫層", hours: "10:00 - 20:00", website: "https://shinsaibashi.parco.jp/" },
                 { name: "#C-pla 心齋橋", type: "anime", desc: "扭蛋專門店", hours: "10:00 - 23:00", website: "https://toshin.jpn.com/shop/c-pla/" },
                 { name: "Jungle (密林)", type: "anime", desc: "二手 Figure, 特攝", hours: "12:00 - 20:00", website: "https://jungle-scs.co.jp/" },
@@ -586,13 +545,11 @@
                 { name: "天地人", type: "food", desc: "豚丼", hours: "10:30 - 03:00", website: "https://tabelog.com/osaka/A2701/A270202/27012437/" },
                 { name: "Kobe Beef Ishida", type: "food", desc: "神戶牛鐵板燒", hours: "需預約", website: "https://kobebeef-ishida.com/" },
                 { name: "KITTE つかだ", type: "food", desc: "一人一鍋壽喜燒", hours: "11:00 - 23:00", website: "https://osaka.jp-kitte.jp/shop/index.jsp?bf=1&fmt=6&shopid=150100" },
-                { name: "蟹道樂 本店", type: "food", desc: "螃蟹料理", hours: "11:00 - 22:00", website: "https://douraku.co.jp/" },
+                { name: "蟹道樂 網元本館", type: "food", desc: "高級別邸，西心齋橋", hours: "17:00 - 22:30", website: "https://douraku.co.jp/kansai/shop/amimoto_h/" },
                 { name: "Don Quijote", type: "shopping", desc: "雜貨藥妝", hours: "24H", website: "https://www.donki.com/" },
                 { name: "KOHYO 超市", type: "shopping", desc: "24H AEON超市", hours: "24H", website: "https://www.kohyo.co.jp/" },
                 { name: "神戶三田 Outlets", type: "shopping", desc: "名牌折扣", hours: "10:00 - 20:00", website: "https://www.premiumoutlets.co.jp/kobesanda/" },
-                { name: "Orange Street", type: "shopping", desc: "潮牌 (Supreme等)", hours: "11:00 - 20:00", website: "http://osaka-horie.com/" },
                 { name: "勝尾寺", type: "sightseeing", desc: "求勝運", hours: "08:00 - 17:00", website: "https://katsuo-ji-temple.or.jp/" },
-                { name: "生田神社", type: "sightseeing", desc: "戀愛結緣", hours: "07:00 - 17:00", website: "https://ikutajinja.or.jp/" },
                 { name: "延羽之湯", type: "sightseeing", desc: "溫泉", hours: "10:00 - 02:00", website: "https://www.nobuta123.co.jp/nobehatsuruhashi/" }
             ]
         };
