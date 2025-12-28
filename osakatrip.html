@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>大阪 5 天 4 夜新春行程 (2026)</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js removed as requested -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     
     <!-- Palette: Warm Sand & Energetic Orange -->
@@ -17,16 +17,6 @@
             padding-bottom: 80px; /* Space for bottom nav */
         }
         
-        /* Mobile-First Chart Container */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            height: 250px;
-        }
-        @media (min-width: 768px) {
-            .chart-container { height: 350px; }
-        }
-
         /* Hide Scrollbar but keep functionality */
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
@@ -127,6 +117,48 @@
                 </div>
             </div>
 
+            <!-- Packing List -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100">
+                <h3 class="font-bold text-stone-800 mb-3 flex items-center gap-2 border-b pb-2">
+                    <span>🧳</span> 出發前執行李清單
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2 text-sm text-stone-600">
+                    <!-- Documents -->
+                    <div class="font-bold text-orange-600 mt-1 col-span-full">證件與錢包</div>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>護照及身份證</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>機票及行程確認單</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>錢包 (Yen, HKD現金, 信用卡)</span></label>
+                    
+                    <!-- Electronics -->
+                    <div class="font-bold text-orange-600 mt-2 col-span-full">電子用品</div>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>手機及充電線/器</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>移動電源 (Powerbank)</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>日本電壓轉換插頭 (兩腳扁插)</span></label>
+                    
+                    <!-- Clothing -->
+                    <div class="font-bold text-orange-600 mt-2 col-span-full">衣物與飾品</div>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>衣物 (2套衫/褲/內衣/襪子)</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>睡衣 (1套訓教衫褲)</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>帽子 & 太陽眼鏡</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>Muji 小型斜背包</span></label>
+                    
+                    <!-- Personal Care -->
+                    <div class="font-bold text-orange-600 mt-2 col-span-full">個人護理 & 藥品</div>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>基本藥品 (止痛,腸胃,過敏)</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>清熱酷 (粉袋 各人一盒)</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>牙套套裝 (盒/牙刷/牙線)</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>直髮器 & 髮夾</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>剃鬚刨</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>口罩 x4</span></label>
+                    
+                    <!-- Misc -->
+                    <div class="font-bold text-orange-600 mt-2 col-span-full">雜物</div>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>摺疊傘</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>紙巾 x5 & 濕紙巾 x2</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>垃圾膠袋 x5</span></label>
+                </div>
+            </div>
+
             <!-- Pre-Travel Checklist -->
             <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100">
                 <h3 class="font-bold text-stone-800 mb-3 flex items-center gap-2">
@@ -161,26 +193,22 @@
                     <a href="https://www.japaholic.com/tw/article/coupon" target="_blank" class="flex-1 bg-white hover:bg-rose-100 text-center py-3 rounded-lg text-xs font-bold text-rose-600 border border-rose-200 shadow-sm transition">
                         Japaholic 優惠券總覽<br><span class="text-[10px] font-normal opacity-70">藥妝/電器/百貨</span>
                     </a>
-                    <a href="https://www.donki.com/en/service/coupon.php" target="_blank" class="flex-1 bg-white hover:bg-rose-100 text-center py-3 rounded-lg text-xs font-bold text-rose-600 border border-rose-200 shadow-sm transition">
-                        Don Quijote 優惠券<br><span class="text-[10px] font-normal opacity-70">免稅+5%折扣</span>
+                    <a href="https://japanportal.donki-global.com/coupon/cp001_zhtw.html" target="_blank" class="flex-1 bg-white hover:bg-rose-100 text-center py-3 rounded-lg text-xs font-bold text-rose-600 border border-rose-200 shadow-sm transition">
+                        Don Quijote 優惠券<br><span class="text-[10px] font-normal opacity-70">免稅+5%折扣 (官方正確版)</span>
                     </a>
                 </div>
             </div>
 
-            <!-- Stats -->
-            <h3 class="text-lg font-bold text-stone-800 mt-2">行程分析</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100">
-                    <h4 class="font-bold text-stone-600 mb-3 text-xs uppercase tracking-wide">時間分配</h4>
-                    <div class="chart-container">
-                        <canvas id="activityChart"></canvas>
-                    </div>
-                </div>
-                <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100">
-                    <h4 class="font-bold text-stone-600 mb-3 text-xs uppercase tracking-wide">購物重點</h4>
-                    <div class="chart-container">
-                        <canvas id="shoppingChart"></canvas>
-                    </div>
+            <!-- Quick Links -->
+            <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100">
+                <h3 class="font-bold text-stone-800 mb-3 text-sm">⚡ 快速連結</h3>
+                <div class="flex gap-3">
+                    <a href="https://www.google.com/maps" target="_blank" class="flex-1 bg-stone-50 hover:bg-stone-100 text-center py-2 rounded-lg text-xs font-bold text-stone-600 border border-stone-200 transition">
+                        📍 Google Maps
+                    </a>
+                    <a href="https://tenki.jp/forecast/6/30/6200/27100/" target="_blank" class="flex-1 bg-stone-50 hover:bg-stone-100 text-center py-2 rounded-lg text-xs font-bold text-stone-600 border border-stone-200 transition">
+                        ☀️ 大阪天氣
+                    </a>
                 </div>
             </div>
         </div>
@@ -259,7 +287,7 @@
                     date: "1/3 (六)",
                     fullDate: "1月3日 週六",
                     title: "抵達、Workman、心齋橋",
-                    summary: "機場直奔飯店，先去難波 Workman 買裝備，再回心齋橋逛 PARCO 與吃宵夜。",
+                    summary: "抵達難波後先去買外套，再回酒店 Check-in，晚上行心齋橋。",
                     transportInfo: "南海電鐵 Rapi:t (機場→難波)。Workman 位於難波 CITY，可步行回心齋橋。",
                     diningInfo: "宵夜：鳥貴族 (22:00)。",
                     timeline: [
@@ -278,35 +306,35 @@
                             website: "https://www.howto-osaka.com/tc/group/rapit/"
                         },
                         { 
-                            time: "16:50", icon: "🏨", title: "飯店 Check-in", 
-                            desc: "Daiwa Roynet Hotel。由南海難波轉御堂筋線至心齋橋站 (1號出口)。", 
-                            transit: "🚶 <b>轉乘 (8-10分鐘)：</b><br>1. 南海難波站下車後，搭長手扶梯下至 B1。<br>2. 跟隨紅色「御堂筋線」指標前行。<br>3. 於地鐵難波站搭乘往「千里中央/新大阪」方向列車。<br><br>🚇 <b>地鐵 (2分鐘)：</b><br>搭乘 1 站至「心齋橋站」。<br><br>🚶 <b>步行 (3-4分鐘)：</b><br>1. 到達心齋橋站後，請找<b>「1 號出口」</b>(有手扶梯)。<br>2. 出站後即是 Louis Vuitton，往北走過 ZARA 即達飯店。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Daiwa+Roynet+Hotel+Osaka+Shinsaibashi",
-                            website: "https://www.daiwaroynet.jp/osaka-shinsaibashi/"
-                        },
-                        { 
-                            time: "17:30", icon: "🧥", title: "Workman Girl Namba City", 
-                            desc: "位於難波 CITY 南館 2F。購買防寒外套。營業至 21:00。", 
-                            transit: "🚶 <b>步行/地鐵 (15分鐘)：</b><br>從飯店搭地鐵回難波，或步行約 15-20 分鐘。<br>Workman Girl 位於難波 CITY 商場南館 2 樓，與南海電鐵直結。",
+                            time: "16:30", icon: "🧥", title: "Workman Girl Namba City", 
+                            desc: "<b>行程變更：</b>抵達難波後，先去買外套！位於難波 CITY 南館 2F。營業至 21:00。", 
+                            transit: "🚶 <b>步行 (5-8分鐘)：</b><br>南海難波站與難波 CITY 直結。從 3F 改札口搭手扶梯下樓，依照指標前往「南館」。<br>💡 <b>建議：</b>行李可先寄放在南海難波站 2F 或 1F 的投幣式置物櫃 (Coin Locker)，買完再拿。",
                             map: "https://www.google.com/maps/search/?api=1&query=Workman+Girl+Namba+City",
                             website: "https://www.workman.co.jp/" 
                         },
                         { 
-                            time: "18:45", icon: "🛍️", title: "心齋橋 PARCO (一番賞)", 
+                            time: "17:45", icon: "🏨", title: "飯店 Check-in", 
+                            desc: "Daiwa Roynet Hotel。由南海難波轉御堂筋線至心齋橋站 (1號出口)。", 
+                            transit: "🚶 <b>轉乘 (15分鐘)：</b><br>取回行李後，從難波站搭乘地鐵御堂筋線 (往新大阪/千里中央方向) 1 站至「心齋橋」。<br>由 1 號出口步行 3-4 分鐘抵達飯店。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Daiwa+Roynet+Hotel+Osaka+Shinsaibashi",
+                            website: "https://www.daiwaroynet.jp/osaka-shinsaibashi/"
+                        },
+                        { 
+                            time: "18:30", icon: "🛍️", title: "心齋橋 PARCO (一番賞)", 
                             desc: "5F 一番賞官方店, 6F 動漫層 (Capcom/Godzilla)。營業至 20:00。", 
-                            transit: "🚶 <b>步行 (15分鐘)：</b><br>從難波 CITY 沿著戎橋筋商店街往北走，穿過道頓堀回到心齋橋筋。<br>PARCO 位於地鐵心齋橋站正上方。",
+                            transit: "🚶 <b>步行 (1分鐘)：</b><br>飯店下樓即是心齋橋筋商店街北段。<br>PARCO 與大丸百貨相連，位於地鐵站正上方。",
                             map: "https://www.google.com/maps/search/?api=1&query=Ichiban+Kuji+Official+Shop+Shinsaibashi+PARCO",
                             website: "https://shinsaibashi.parco.jp/" 
                         },
                         { 
-                            time: "20:00", icon: "🚶", title: "心齋橋筋商店街 (必逛)", 
+                            time: "19:30", icon: "🚶", title: "心齋橋筋商店街 (必逛)", 
                             desc: "<b>重點店鋪與營業時間：</b><br>• UNIQLO (11:00-21:00)<br>• Disney Store (11:00-20:00)<br>• 3COINS+plus (11:00-21:00)<br>• Strawberry Mania (11:00-21:00)<br>• Daiou Cheese (11:00-21:00)", 
                             transit: "🚶 <b>步行 (隨意)：</b><br>沿著有蓋拱廊往南走。大部分商店營業至 21:00。",
                             map: "https://www.google.com/maps/search/?api=1&query=Shinsaibashisuji+Shopping+Street",
                             website: "https://www.shinsaibashi.or.jp/"
                         },
                         { 
-                            time: "21:30", icon: "🐧", title: "Don Quijote 道頓堀", 
+                            time: "21:00", icon: "🐧", title: "Don Quijote 道頓堀", 
                             desc: "摩天輪店。24小時營業。買完建議先回飯店放東西。", 
                             transit: "🚶 <b>步行去 Donki (10-15分鐘)：</b><br>沿心齋橋筋商店街往南直行，過戎橋(固力果看板)後，沿河邊步道左轉即見黃色摩天輪 Donki。<br><br>🚕 <b>回程：</b><br>若買太多，建議在路口搭的士回飯店 (約 ¥800-1000)。",
                             map: "https://www.google.com/maps/search/?api=1&query=Don+Quijote+Dotonbori",
@@ -325,10 +353,10 @@
                     id: 2,
                     date: "1/4 (日)",
                     fullDate: "1月4日 週日",
-                    title: "Outlet、神戶牛、溫泉",
-                    summary: "Outlet 掃貨後，前往神戶南京町與神戶牛晚餐。",
+                    title: "Outlet、三宮模型、神戶牛",
+                    summary: "Outlet 掃貨後，前往三宮逛模型店與商場，晚餐享用神戶牛。",
                     transportInfo: "往 Outlet: 神姬巴士 (梅田出發)。<br>往三宮: 神姬巴士 (Outlet出發)。",
-                    diningInfo: "晚餐：Ishida 神戶牛 (19:00)。",
+                    diningInfo: "晚餐：Kobe Beef Steak Ishida. 三宮店 (19:00)。",
                     timeline: [
                         { 
                             time: "08:15", icon: "🚇", title: "前往梅田", 
@@ -338,15 +366,15 @@
                         },
                         { 
                             time: "08:25", icon: "🚌", title: "往 Outlet (早班建議)", 
-                            desc: "梅田 HERBIS OSAKA 1F 巴士站。<br><b>班次 A: 08:25 發車</b> (約 09:32 抵達)<br><b>⚠️ 注意：座席定員制 (先到先得)，不可網上預約。</b>請提早排隊。", 
-                            transit: "🚶 <b>轉乘步行 (10-15分鐘)：重點！容易迷路</b><br>1. 梅田站下車後，請走<b>「南改札口」</b>出站。<br>2. 出站後看頭頂指標，找<b>「西梅田」</b>或<b>「HERBIS OSAKA (ハービスOSAKA)」</b>。<br>3. 沿地下街一直往西走，直到抵達 HERBIS PLAZA ENT 入口。<br>4. 搭手扶梯上 1F，巴士總站就在大樓內。",
+                            desc: "<b>HERBIS OSAKA 巴士總站 4 號乘車處</b>。<br><b>班次 A: 08:25 發車</b> (約 09:32 抵達)<br><b>⚠️ 注意：座席定員制 (先到先得)，不可網上預約。</b>請提早排隊。", 
+                            transit: "🚶 <b>轉乘步行 (10-15分鐘)：重點！容易迷路</b><br>1. 梅田站下車後，請走<b>「南改札口」</b>出站。<br>2. 出站後看頭頂指標，找<b>「西梅田」</b>或<b>「HERBIS OSAKA (ハービスOSAKA)」</b>。<br>3. 沿地下街一直往西走，直到抵達 HERBIS PLAZA ENT 入口。<br>4. 搭手扶梯上 1F，前往巴士總站 <b>4 號站牌</b>。",
                             map: "https://www.google.com/maps/search/?api=1&query=Herbis+Osaka+Bus+Terminal",
                             website: "https://www.premiumoutlets.co.jp/kobesanda/access/bus.html"
                         },
                         { 
                             time: "09:35", icon: "🚌", title: "往 Outlet (標準班次)", 
                             desc: "<b>班次 B: 09:35 發車</b> (約 10:42 抵達)<br><b>⚠️ 注意：不可預約。</b>若起不來可搭這班，但人較多。", 
-                            transit: "同上，座席定員制，建議提前 20 分鐘排隊。",
+                            transit: "同上，於 HERBIS OSAKA 4 號站牌排隊。",
                             map: "https://www.google.com/maps/search/?api=1&query=Herbis+Osaka+Bus+Terminal",
                             website: "https://www.premiumoutlets.co.jp/kobesanda/access/bus.html"
                         },
@@ -362,27 +390,34 @@
                             desc: "Outlet 巴士站搭乘往「三宮」方向。<br><b>建議班次: 15:00</b> (約 15:50 抵達)。無預約制。", 
                             transit: "🚌 <b>巴士 (50分鐘)：</b><br>在 Outlet 巴士站搭乘往「三宮 (Sannomiya)」的班次。<br>終點站為三宮巴士總站 (近 JR 高架橋)。",
                             map: null,
-                            website: "https://www.shinkibus.co.jp/" 
+                            website: "https://www.premiumoutlets.co.jp/en/kobesanda/access/bus_schedule_root2.html" 
                         },
                         { 
                             time: "15:40", icon: "🚌", title: "巴士往三宮 (班次B)", 
                             desc: "<b>備選班次: 15:40</b> (約 16:30 抵達)。無預約制。", 
                             transit: "同上。",
                             map: null,
-                            website: "https://www.shinkibus.co.jp/"
+                            website: "https://www.premiumoutlets.co.jp/en/kobesanda/access/bus_schedule_root2.html"
                         },
                         { 
-                            time: "16:30", icon: "🏮", title: "南京町 (Nankin-machi)", 
-                            desc: "神戶中華街。取代神社行程，這裡熱鬧且有很多街頭小吃，氣氛很好。", 
-                            transit: "🚶 <b>步行 (10-15分鐘)：</b><br>從三宮巴士站往西走，穿過元町商店街，即可看到著名的長安門。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Kobe+Chinatown+Nankin-machi",
-                            website: "https://www.nankinmachi.or.jp/" 
+                            time: "16:30", icon: "🤖", title: "TamTam Hobby Shop", 
+                            desc: "三宮著名的模型店。位於 Center Plaza 西館。營業時間 11:00-20:00。", 
+                            transit: "🚶 <b>步行：</b><br>抵達三宮後，前往 TamTam Hobby Shop Kobe Sannomiya (位於 Center Plaza 西館)。",
+                            map: "https://maps.app.goo.gl/saf3yjxTAsAoMsef9",
+                            website: "https://www.hs-tamtam.jp/" 
                         },
                         { 
-                            time: "19:00", icon: "🥩", title: "晚餐：神戶牛 Ishida", 
+                            time: "17:30", icon: "🛍️", title: "三宮周邊商場漫步", 
+                            desc: "Center Plaza, 三宮 Center 街。可以逛 Clefy, OPA 等年輕人商場。", 
+                            transit: "🚶 <b>步行：</b><br>TamTam 所在的 Center Plaza 本身就是熱鬧的商場，連接三宮 Center 街。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Sannomiya+Center+Gai",
+                            website: null 
+                        },
+                        { 
+                            time: "19:00", icon: "🥩", title: "晚餐：神戶牛 Ishida. 三宮店", 
                             desc: "本店。需預約。頂級鐵板燒體驗。", 
-                            transit: "🚶 <b>步行 (10分鐘)：</b><br>從南京町慢慢走回三宮站北側。餐廳多位於生田新道周邊。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Kobe+Beef+Steak+Ishida+Honten",
+                            transit: "🚶 <b>步行 (5-10分鐘)：</b><br>從模型店步行前往餐廳。請務必依照 Google Map 導航確認分店位置 (連結為三宮店)。",
+                            map: "https://goo.gl/maps/1s2wGuMMrWdHkW4S8",
                             website: "https://kobebeef-ishida.com/" 
                         },
                         { 
@@ -398,10 +433,10 @@
                     id: 3,
                     date: "1/5 (一)",
                     fullDate: "1月5日 週一",
-                    title: "勝尾寺、梅田午餐、購物",
-                    summary: "早上求勝運，午餐享用 KITTE 精緻壽喜燒，下午梅田逛街，晚餐美食街。",
-                    transportInfo: "地鐵至千里中央 → 29號巴士。",
-                    diningInfo: "午餐：KITTE 大阪 壽喜燒 (13:30)。晚餐：LUCUA/Grand Front。",
+                    title: "勝尾寺、梅田大爆買、壽喜燒",
+                    summary: "早上求勝運，下午梅田深度動漫潮流購物，晚餐享用木曽路壽喜燒。",
+                    transportInfo: "地鐵至箕面萱野 → 30號巴士。",
+                    diningInfo: "晚餐：木曽路 北新地店 (19:30)。",
                     timeline: [
                         { 
                             time: "07:30", icon: "🐟", title: "早餐：木津市場", 
@@ -411,32 +446,46 @@
                             website: "https://kizuroroshi.com/" 
                         },
                         { 
-                            time: "09:00", icon: "🚆", title: "前往勝尾寺", 
-                            desc: "千里中央站 4號乘車處搭 29號巴士。營業至 17:00。", 
-                            transit: "🚇 <b>地鐵 (40分鐘)：</b><br>回到大國町站，搭御堂筋線 (往千里中央方向) 坐到終點站「千里中央」。<br><br>🚌 <b>巴士 (30分鐘)：</b><br>出北改札口，依指標往巴士總站。在<b>「4 號乘車處」</b>搭乘阪急巴士 29 號系統 (往北攝靈園/希望之丘)。於「勝尾寺」下車。",
+                            time: "09:00", icon: "🚆", title: "前往勝尾寺 (新路線)", 
+                            desc: "<b>御堂筋線直通北大阪急行</b>至終點站「箕面萱野」。入山需購票。", 
+                            transit: "🚇 <b>地鐵 (45分鐘)：</b><br>回到大國町站，搭御堂筋線 (往箕面萱野方向) 坐到終點站「箕面萱野」。<br><br>🚌 <b>巴士 (20分鐘)：</b><br>從<b>北改札口</b>出站，前往巴士總站 <b>8 號乘車處</b>，搭乘阪急巴士 <b>30 號系統</b>。於「勝尾寺」下車。",
                             map: "https://www.google.com/maps/search/?api=1&query=Katsuoji+Temple",
                             website: "https://katsuo-ji-temple.or.jp/" 
                         },
                         { 
-                            time: "13:30", icon: "🥘", title: "午餐：KITTE 大阪 (つかだ)", 
-                            desc: "すき焼 しゃぶしゃぶ つかだ (5F)。一人一鍋。午餐時段至 15:00。", 
-                            transit: "🚌 <b>回程巴士：</b><br>搭 29 號巴士回到「千里中央站」。<br><br>🚇 <b>地鐵 (20分鐘)：</b><br>搭御堂筋線至「梅田站」。<br><br>🚶 <b>步行 (5-8分鐘)：</b><br>KITTE 大阪位於 JR 大阪站<b>「西口」</b>直結。<br>需穿過 JR 大阪站的一樓中央大廳，往西口方向走。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Sukiyaki+Shabu-shabu+Tsukada+KITTE+Osaka",
-                            website: "https://osaka.jp-kitte.jp/shop/index.jsp?bf=1&fmt=6&shopid=150100" 
+                            time: "13:00", icon: "🍽️", title: "午餐：梅田周邊", 
+                            desc: "回到梅田後，在附近的商場或地下街享用午餐 (彈性安排)。", 
+                            transit: "🚌 <b>回程巴士：</b><br>搭 30 號巴士回到「箕面萱野站」。<br><br>🚇 <b>地鐵 (25分鐘)：</b><br>搭御堂筋線至「梅田站」。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Umeda+Station+Restaurants",
+                            website: null
                         },
                         { 
-                            time: "15:00", icon: "🛍️", title: "梅田商圈購物", 
-                            desc: "Grand Front Osaka, LUCUA, 阪急百貨。各大品牌集中地。", 
-                            transit: "🚶 <b>步行：</b><br>各商場皆有連通道相連。LUCUA 位於車站北側，Grand Front 位於更北側。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Grand+Front+Osaka",
-                            website: "https://www.gfo.co.jp/"
+                            time: "14:30", icon: "🧸", title: "阪急三番街 & HEP FIVE", 
+                            desc: "<b>重點店鋪：</b><br>• <b>Chiikawa Land</b> (新開, 阪急三番街)<br>• <b>Kiddy Land</b> (阪急三番街)<br>• <b>Muji Com</b> (阪急三番街)<br>• <b>#C-pla</b> 扭蛋 (三番街對面)<br>• <b>Jump Shop & 一番賞</b> (HEP FIVE 6F/7F)", 
+                            transit: "🚶 <b>步行：</b><br>從地鐵梅田站往北走，跟隨「阪急三番街」指標。HEP FIVE 就在旁邊紅色摩天輪建築。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Hankyu+Sanbangai",
+                            website: "https://www.h-sanbangai.com/"
                         },
                         { 
-                            time: "19:00", icon: "🍽️", title: "晚餐：LUCUA B2 / Grand Front", 
-                            desc: "LUCUA Food Hall (B2) 或 Grand Front 南館 7F。選擇多樣，氣氛佳。", 
-                            transit: "🚶 <b>步行：</b><br>LUCUA B2 直通地鐵站。",
-                            map: "https://www.google.com/maps/search/?api=1&query=LUCUA+Food+Hall",
-                            website: "https://www.lucua.jp/floorguide/floor_b2.html" 
+                            time: "16:30", icon: "🛍️", title: "LUCUA / LUCUA 1100", 
+                            desc: "<b>重點店鋪：</b><br>• Freak's Store<br>• BEAMS<br>• 橡子共和國 (Donguri Kyowakoku)<br>• Loft<br>• @cosme OSAKA", 
+                            transit: "🚶 <b>步行：</b><br>回到 JR 大阪站北側 (North Gate Building)。",
+                            map: "https://www.google.com/maps/search/?api=1&query=LUCUA+Osaka",
+                            website: "https://www.lucua.jp/"
+                        },
+                        { 
+                            time: "17:30", icon: "👗", title: "EST 梅田", 
+                            desc: "年輕時尚商場，有很多潮流女裝與選物店。", 
+                            transit: "🚶 <b>步行：</b><br>位於 HEP FIVE 旁邊的高架橋下區域。",
+                            map: "https://www.google.com/maps/search/?api=1&query=EST+Umeda",
+                            website: "https://www.est-sc.com/"
+                        },
+                        { 
+                            time: "19:30", icon: "🥘", title: "晚餐：木曽路 北新地店", 
+                            desc: "しゃぶしゃぶ・日本料理。預約時間 19:30。優質涮涮鍋。", 
+                            transit: "🚶 <b>步行 (10-15分鐘)：</b><br>從梅田往南走，穿過大阪站前大樓區域，抵達北新地。<br>請開啟 Google Map 導航確認位置。",
+                            map: "https://maps.app.goo.gl/RDgMw3rR9aGvN6FPA",
+                            website: "https://www.kisoji.co.jp/" 
                         }
                     ]
                 },
@@ -452,7 +501,7 @@
                         { 
                             time: "09:00", icon: "⛩️", title: "前往京都 (下鴨神社)", 
                             desc: "京阪電車特急。車程約 50 分鐘。", 
-                            transit: "🚇 <b>地鐵 (2分鐘)：</b><br>心齋橋搭御堂筋線至「淀屋橋站」。<br><br>🚆 <b>京阪電車 (50分鐘)：</b><br>轉乘京阪本線 (特急/快速急行) 往「出町柳」方向，於終點站「出町柳」下車。<br><br>🚶 <b>步行 (10分鐘)：</b><br>出站後過橋，沿著指示步行即達下鴨神社 (世界遺產)。",
+                            transit: "🚇 <b>地鐵 (2分鐘)：</b><br>心齋橋搭御堂筋線至「淀屋橋站」。<br><br>🚆 <b>京阪電車 (50分鐘)：</b><br>轉乘京阪本線 (特急/快速急行) 往「出町柳」方向，於終點站「出町柳」下車。<br><br>🚶 <b>步行 (10分鐘)：</b><br>從<b>「5 號出口」</b>出站，過橋後沿著表參道直行即達下鴨神社 (世界遺產)。",
                             map: "https://www.google.com/maps/search/?api=1&query=Shimogamo+Shrine",
                             website: "https://www.shimogamo-jinja.or.jp/" 
                         },
@@ -474,7 +523,7 @@
                             time: "20:30", icon: "🦀", title: "晚餐：蟹道樂 網元本館", 
                             desc: "<b>注意：</b>這間不是道頓堀那間，而是位於西心齋橋的高級別邸。氣氛更幽靜。營業至 22:30。", 
                             transit: "🚶 <b>步行 (15分鐘)：</b><br>從日本橋往難波/心齋橋方向走。網元本館位於美國村附近的西心齋橋區域。<br>請務必開啟 Google Map 導航確認位置。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Kani+Doraku+Amimoto+Honkan",
+                            map: "https://maps.google.com/?cid=17195628979030036511",
                             website: "https://douraku.co.jp/kansai/shop/amimoto_h/" 
                         }
                     ]
@@ -532,8 +581,10 @@
                 { name: "Strawberry Mania", type: "food", desc: "草莓大福, 甜點", hours: "11:00 - 21:00", website: "https://tabelog.com/osaka/A2701/A270202/27105430/" },
                 { name: "Daiou Cheese", type: "food", desc: "10円起司麵包", hours: "11:00 - 21:00", website: "https://tabelog.com/osaka/A2701/A270202/27125345/" },
                 { name: "下鴨神社", type: "sightseeing", desc: "京都世界遺產，森林神社", hours: "06:30 - 17:00", website: "https://www.shimogamo-jinja.or.jp/" },
-                { name: "南京町", type: "sightseeing", desc: "神戶唐人街", hours: "10:00 - 20:30", website: "https://www.nankinmachi.or.jp/" },
-                { name: "中崎町", type: "sightseeing", desc: "復古老屋咖啡街", hours: "12:00 - 19:00", website: "https://nakazaki-cho.kitatenma.com/" },
+                { name: "TamTam Hobby Shop", type: "anime", desc: "三宮模型店", hours: "11:00 - 20:00", website: "https://www.hs-tamtam.jp/" },
+                { name: "阪急三番街", type: "shopping", desc: "Muji, Chiikawa Land, Kiddy Land", hours: "10:00 - 21:00", website: "https://www.h-sanbangai.com/" },
+                { name: "EST", type: "shopping", desc: "梅田年輕時尚商場", hours: "11:00 - 21:00", website: "https://www.est-sc.com/" },
+                { name: "LUCUA Osaka", type: "shopping", desc: "時尚潮流百貨", hours: "10:30 - 20:30", website: "https://www.lucua.jp/" },
                 { name: "心齋橋 PARCO", type: "anime", desc: "5F 一番賞, 6F 動漫層", hours: "10:00 - 20:00", website: "https://shinsaibashi.parco.jp/" },
                 { name: "#C-pla 心齋橋", type: "anime", desc: "扭蛋專門店", hours: "10:00 - 23:00", website: "https://toshin.jpn.com/shop/c-pla/" },
                 { name: "Jungle (密林)", type: "anime", desc: "二手 Figure, 特攝", hours: "12:00 - 20:00", website: "https://jungle-scs.co.jp/" },
@@ -544,7 +595,7 @@
                 { name: "鳥貴族", type: "food", desc: "平價串燒居酒屋", hours: "17:00 - 05:00", website: "https://torikizoku.co.jp/" },
                 { name: "天地人", type: "food", desc: "豚丼", hours: "10:30 - 03:00", website: "https://tabelog.com/osaka/A2701/A270202/27012437/" },
                 { name: "Kobe Beef Ishida", type: "food", desc: "神戶牛鐵板燒", hours: "需預約", website: "https://kobebeef-ishida.com/" },
-                { name: "KITTE つかだ", type: "food", desc: "一人一鍋壽喜燒", hours: "11:00 - 23:00", website: "https://osaka.jp-kitte.jp/shop/index.jsp?bf=1&fmt=6&shopid=150100" },
+                { name: "木曽路 北新地店", type: "food", desc: "日本料理・涮涮鍋", hours: "11:30 - 22:00", website: "https://www.kisoji.co.jp/" },
                 { name: "蟹道樂 網元本館", type: "food", desc: "高級別邸，西心齋橋", hours: "17:00 - 22:30", website: "https://douraku.co.jp/kansai/shop/amimoto_h/" },
                 { name: "Don Quijote", type: "shopping", desc: "雜貨藥妝", hours: "24H", website: "https://www.donki.com/" },
                 { name: "KOHYO 超市", type: "shopping", desc: "24H AEON超市", hours: "24H", website: "https://www.kohyo.co.jp/" },
@@ -566,7 +617,6 @@
             document.getElementById(`nav-${viewName}`).classList.add('text-orange-600');
             document.getElementById(`nav-${viewName}`).classList.remove('text-stone-400');
 
-            if (viewName === 'dashboard') renderCharts();
             if (viewName === 'itinerary' && !document.querySelector('.tab-active')) renderDay(0);
             if (viewName === 'spots') renderSpots('all');
             
@@ -694,51 +744,6 @@
             const activeBtn = document.querySelector('.filter-btn.bg-stone-800');
             renderSpots(activeBtn ? activeBtn.dataset.cat : 'all');
         });
-
-        // Charts
-        let chartsRendered = false;
-        function renderCharts() {
-            if (chartsRendered) return;
-            
-            // Activity Chart
-            new Chart(document.getElementById('activityChart').getContext('2d'), {
-                type: 'doughnut',
-                data: {
-                    labels: ['購物', '美食', '觀光', '交通'],
-                    datasets: [{
-                        data: [40, 30, 20, 10],
-                        backgroundColor: ['#f97316', '#f43f5e', '#84cc16', '#94a3b8'],
-                        borderWidth: 0
-                    }]
-                },
-                options: { 
-                    responsive: true, 
-                    maintainAspectRatio: false,
-                    plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: { size: 10 } } } } 
-                }
-            });
-
-            // Shopping Chart
-            new Chart(document.getElementById('shoppingChart').getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: ['動漫', '百貨', '藥妝', '潮牌'],
-                    datasets: [{
-                        label: '店鋪數',
-                        data: [9, 5, 2, 2],
-                        backgroundColor: '#eab308',
-                        borderRadius: 4
-                    }]
-                },
-                options: { 
-                    responsive: true, 
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: { y: { display: false }, x: { grid: { display: false }, ticks: { font: { size: 10 } } } }
-                }
-            });
-            chartsRendered = true;
-        }
 
         // Scroll to Top Logic
         const scrollTopBtn = document.getElementById('scrollTopBtn');
