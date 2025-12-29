@@ -140,7 +140,7 @@
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>衣物 (2套衫/褲/內衣/襪子)</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>睡衣 (1套訓教衫褲)</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>帽子 & 太陽眼鏡</span></label>
-                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>Muji 小型斜背包</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>Beams斜背包</span></label>
                     
                     <!-- Personal Care -->
                     <div class="font-bold text-orange-600 mt-2 col-span-full">個人護理 & 藥品</div>
@@ -286,13 +286,27 @@
                     id: 1,
                     date: "1/3 (六)",
                     fullDate: "1月3日 週六",
-                    title: "抵達、Workman、心齋橋",
-                    summary: "抵達難波後先去買外套，再回酒店 Check-in，晚上行心齋橋。",
+                    title: "香港出發、Workman、心齋橋",
+                    summary: "早機出發，抵達難波後先去買外套，再回酒店 Check-in。",
                     transportInfo: "南海電鐵 Rapi:t (機場→難波)。Workman 位於難波 CITY，可步行回心齋橋。",
                     diningInfo: "宵夜：鳥貴族 (22:00)。",
                     timeline: [
                         { 
-                            time: "14:30", icon: "🛬", title: "抵達關西機場 (KIX)", 
+                            time: "05:25", icon: "🚌", title: "出發前往機場", 
+                            desc: "前往香港國際機場。預計 06:30 抵達。", 
+                            transit: "<b>路線1：</b>巴士 A36 (05:40 錦上路開，約 45 分鐘)。<br><b>路線2：</b>巴士 N26 (05:25 油塘開，約 60 分鐘)。",
+                            map: null,
+                            website: "https://www.hongkongairport.com/" 
+                        },
+                        { 
+                            time: "09:35", icon: "✈️", title: "飛往大阪 (HX614)", 
+                            desc: "香港航空 HX614。預計 14:05 抵達關西機場 (KIX) 第 1 航廈。", 
+                            transit: "飛行時間約 3 小時 30 分。機上提供輕食。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Kansai+Airport+Terminal+1",
+                            website: "https://www.hongkongairlines.com/" 
+                        },
+                        { 
+                            time: "14:05", icon: "🛬", title: "抵達關西機場", 
                             desc: "入境後上 2F，走過空橋至南海電鐵 (左邊紅色閘口)。", 
                             transit: "🚶 <b>步行 (10分鐘)：</b><br>1. 入境後搭手扶梯上 2F。<br>2. 走出戶外空橋，對面紅色招牌建築物即是「關西機場站」。<br>3. 面對車站，左邊紅色閘口是「南海電鐵」，右邊藍色是 JR。請進<b>左邊</b>。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kansai+Airport+Station",
@@ -300,7 +314,7 @@
                         },
                         { 
                             time: "15:35", icon: "🚆", title: "搭乘南海電鐵 Rapi:t", 
-                            desc: "推薦 15:35 (β66) 或 16:05 (α12)。車程約 40 分鐘。", 
+                            desc: "已確認搭乘 15:35 (β66) 班次。車程約 40 分鐘，預計 16:15 抵達難波。", 
                             transit: "🚆 <b>電車 (40分鐘)：</b><br>搭乘往「難波 (Namba)」方向的 Rapi:t 特急。<br>於終點站「南海難波站」下車 (通常停靠 9 號月台)。",
                             map: null,
                             website: "https://www.howto-osaka.com/tc/group/rapit/"
@@ -401,7 +415,7 @@
                         },
                         { 
                             time: "16:30", icon: "🤖", title: "TamTam Hobby Shop", 
-                            desc: "三宮著名的模型店。位於 Center Plaza 西館。營業時間 11:00-20:00。", 
+                            desc: "三宮著名的模型店。位於 Center Plaza 西館 2F/3F。營業時間 11:00-20:00。", 
                             transit: "🚶 <b>步行：</b><br>抵達三宮後，前往 TamTam Hobby Shop Kobe Sannomiya (位於 Center Plaza 西館)。",
                             map: "https://maps.app.goo.gl/saf3yjxTAsAoMsef9",
                             website: "https://www.hs-tamtam.jp/" 
@@ -433,7 +447,7 @@
                     id: 3,
                     date: "1/5 (一)",
                     fullDate: "1月5日 週一",
-                    title: "勝尾寺、梅田大爆買、壽喜燒",
+                    title: "勝尾寺、梅田大爆買、木曽路",
                     summary: "早上求勝運，下午梅田深度動漫潮流購物，晚餐享用木曽路壽喜燒。",
                     transportInfo: "地鐵至箕面萱野 → 30號巴士。",
                     diningInfo: "晚餐：木曽路 北新地店 (19:30)。",
@@ -461,21 +475,21 @@
                         },
                         { 
                             time: "14:30", icon: "🧸", title: "阪急三番街 & HEP FIVE", 
-                            desc: "<b>重點店鋪：</b><br>• <b>Chiikawa Land</b> (新開, 阪急三番街)<br>• <b>Kiddy Land</b> (阪急三番街)<br>• <b>Muji Com</b> (阪急三番街)<br>• <b>#C-pla</b> 扭蛋 (三番街對面)<br>• <b>Jump Shop & 一番賞</b> (HEP FIVE 6F/7F)", 
+                            desc: "<b>重點店鋪與營業時間：</b><br>• <b>Chiikawa Land / Kiddy Land</b> (10:00-21:00)<br>• <b>Muji Com</b> (10:00-21:00)<br>• <b>#C-pla 扭蛋</b> (10:00-23:00)<br>• <b>HEP FIVE 商場</b> (11:00-21:00)<br>• <b>Jump Shop</b> (HEP FIVE 6F, 11:00-21:00)", 
                             transit: "🚶 <b>步行：</b><br>從地鐵梅田站往北走，跟隨「阪急三番街」指標。HEP FIVE 就在旁邊紅色摩天輪建築。",
                             map: "https://www.google.com/maps/search/?api=1&query=Hankyu+Sanbangai",
                             website: "https://www.h-sanbangai.com/"
                         },
                         { 
                             time: "16:30", icon: "🛍️", title: "LUCUA / LUCUA 1100", 
-                            desc: "<b>重點店鋪：</b><br>• Freak's Store<br>• BEAMS<br>• 橡子共和國 (Donguri Kyowakoku)<br>• Loft<br>• @cosme OSAKA", 
+                            desc: "<b>LUCUA 1100 / LUCUA (10:30-20:30)：</b><br>• <b>Freak's Store</b> (LUCUA 7F)<br>• <b>BEAMS</b> (LUCUA 3F)<br>• <b>橡子共和國</b> (LUCUA 9F)<br>• <b>Loft</b> (LUCUA 9F)<br>• <b>@cosme OSAKA</b> (LUCUA 3F)", 
                             transit: "🚶 <b>步行：</b><br>回到 JR 大阪站北側 (North Gate Building)。",
                             map: "https://www.google.com/maps/search/?api=1&query=LUCUA+Osaka",
                             website: "https://www.lucua.jp/"
                         },
                         { 
                             time: "17:30", icon: "👗", title: "EST 梅田", 
-                            desc: "年輕時尚商場，有很多潮流女裝與選物店。", 
+                            desc: "年輕時尚商場 (11:00-21:00)。<br>推薦店鋪：<b>GRL</b> (實體店), <b>ABC-MART Grand Stage</b>。", 
                             transit: "🚶 <b>步行：</b><br>位於 HEP FIVE 旁邊的高架橋下區域。",
                             map: "https://www.google.com/maps/search/?api=1&query=EST+Umeda",
                             website: "https://www.est-sc.com/"
@@ -538,37 +552,37 @@
                     diningInfo: "午餐：關西機場 (Tasty Street)。",
                     timeline: [
                         { 
-                            time: "10:00", icon: "🧳", title: "Check-out", 
+                            time: "10:30", icon: "🧳", title: "Check-out", 
                             desc: "辦理退房，帶著行李離開。", 
                             transit: "無。",
                             map: "https://www.google.com/maps/search/?api=1&query=Daiwa+Roynet+Hotel+Osaka+Shinsaibashi",
                             website: "https://www.daiwaroynet.jp/osaka-shinsaibashi/"
                         },
                         { 
-                            time: "10:30", icon: "🚕", title: "前往南海難波站", 
-                            desc: "從飯店<b>搭計程車</b>直達南海難波站 3F 北改札口 (約 10 分鐘，省力)。", 
-                            transit: "🚕 <b>計程車 (10分鐘)：</b><br>請飯店櫃台幫忙叫車，指定去「南海難波站 (Nankai Namba Station)」。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Nankai+Namba+Station",
-                            website: "http://www.nankai.co.jp/"
+                            time: "11:00", icon: "🚶", title: "心齋橋/難波隨意逛", 
+                            desc: "最後的補貨時間，或找間咖啡店休息。", 
+                            transit: "🚶 <b>步行：</b><br>帶著行李不便走遠，建議在南海難波站周邊。",
+                            map: null,
+                            website: null
                         },
                         { 
-                            time: "11:05", icon: "🚆", title: "搭乘 Rapi:t 往機場", 
-                            desc: "推薦 11:05 (α7) 或 11:35 (β39) 班次。提早去機場吃飯。", 
-                            transit: "🚶 <b>步行 (5分鐘)：</b><br>計程車下車處通常在 3F 或 1F，南海月台在 3F。<br>進站後尋找 9 號月台。",
+                            time: "14:00", icon: "🚆", title: "搭乘 Rapi:t 往機場", 
+                            desc: "<b>推薦班次：</b> 14:00 發車 (約 14:40 抵達)。<br><b>備選班次：</b> 15:00 發車 (約 15:40 抵達 - 較趕)。", 
+                            transit: "🚶 <b>步行 (5分鐘)：</b><br>南海難波站 3F 月台候車。請預留時間購票。",
                             map: "https://www.google.com/maps/search/?api=1&query=Nankai+Namba+Station",
                             website: "https://www.howto-osaka.com/tc/group/rapit/" 
                         },
                         { 
-                            time: "12:00", icon: "🍽️", title: "午餐：關西機場 (Tasty Street)", 
+                            time: "15:00", icon: "🍽️", title: "午餐：關西機場 (Tasty Street)", 
                             desc: "位於第1航廈 2F 的新美食區。推薦：<b>551蓬萊</b>(中華料理)、<b>神座拉麵</b>、<b>Colowide</b>(牛排/漢堡排)。", 
                             transit: "🚶 <b>步行：</b><br>出改札口後直走即達第 1 航廈 2F，美食區位於國內線出發口附近 (非管制區，誰都可以吃)。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kansai+Airport+Terminal+1+Restaurants",
                             website: "https://www.kansai-airport.or.jp/tw/shop-and-dine/dine" 
                         },
                         { 
-                            time: "15:00", icon: "🛫", title: "Check-in & 登機", 
-                            desc: "17:00 起飛。第一航廈 4F。", 
-                            transit: "🚶 <b>步行：</b><br>吃飽後搭手扶梯上 4F 辦理登機。",
+                            time: "15:40", icon: "🛫", title: "Check-in & 登機 (HX619)", 
+                            desc: "17:05 起飛。第一航廈 4F 辦理登機。", 
+                            transit: "🚶 <b>步行：</b><br>吃飽後搭手扶梯上 4F。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport",
                             website: "https://www.kansai-airport.or.jp/tw/" 
                         }
