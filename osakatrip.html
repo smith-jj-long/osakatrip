@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>大阪 5 日 4 夜行程 (2026)</title>
+    <title>大阪 5 天 4 夜行程 (2026)</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js removed as requested -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     
     <!-- Palette: Warm Sand & Energetic Orange -->
@@ -17,6 +16,16 @@
             padding-bottom: 80px; /* Space for bottom nav */
         }
         
+        /* Mobile-First Chart Container */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+        }
+        @media (min-width: 768px) {
+            .chart-container { height: 350px; }
+        }
+
         /* Hide Scrollbar but keep functionality */
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
@@ -112,7 +121,6 @@
                 </div>
                 <div class="flex flex-wrap gap-2">
                     <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">⚡ 日本橋動漫</span>
-                    <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">⛩️ 勝尾寺</span>
                     <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">⛩️ 京都下鴨</span>
                     <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">🛍️ 三田 Outlet</span>
                 </div>
@@ -160,7 +168,7 @@
                 </div>
             </div>
 
-            <!-- Pre-Travel Checklist -->
+            <!-- Pre-Travel Checklist (Admin) -->
             <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100">
                 <h3 class="font-bold text-stone-800 mb-3 flex items-center gap-2">
                     <span>✅</span> 行前準備清單
@@ -295,70 +303,70 @@
                         { 
                             time: "05:25", icon: "🚌", title: "出發前往機場", 
                             desc: "前往香港國際機場。預計 06:30 抵達。", 
-                            transit: "<b>路線1：</b>巴士 A36 (05:40 錦上路開，約 45 分鐘)。<br><b>路線2：</b>巴士 N26 (05:25 油塘開，約 60 分鐘)。",
+                            transit: "🕒 <b>05:25 出發 ➔ 06:30 抵達</b><br><b>路線1：</b>巴士 A36 (05:40 錦上路開，約 45 分鐘)。<br><b>路線2：</b>巴士 N26 (05:25 油塘開，約 60 分鐘)。",
                             map: null,
                             website: "https://www.hongkongairport.com/" 
                         },
                         { 
                             time: "09:35", icon: "✈️", title: "飛往大阪 (HX614)", 
                             desc: "香港航空 HX614。預計 14:05 抵達關西機場 (KIX) 第 1 航廈。", 
-                            transit: "飛行時間約 3 小時 30 分。機上提供輕食。",
+                            transit: "🕒 <b>09:35 起飛 ➔ 14:05 抵達</b><br>飛行時間約 3 小時 30 分。機上提供輕食。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kansai+Airport+Terminal+1",
                             website: "https://www.hongkongairlines.com/" 
                         },
                         { 
                             time: "14:05", icon: "🛬", title: "抵達關西機場", 
                             desc: "入境後上 2F，走過空橋至南海電鐵 (左邊紅色閘口)。", 
-                            transit: "🚶 <b>步行 (10分鐘)：</b><br>1. 入境後搭手扶梯上 2F。<br>2. 走出戶外空橋，對面紅色招牌建築物即是「關西機場站」。<br>3. 面對車站，左邊紅色閘口是「南海電鐵」，右邊藍色是 JR。請進<b>左邊</b>。",
+                            transit: "🕒 <b>14:05 抵達 ➔ 15:35 上車</b><br>🚶 <b>步行 (10分鐘)：</b><br>1. 入境後搭手扶梯上 2F。<br>2. 走出戶外空橋，對面紅色招牌建築物即是「關西機場站」。<br>3. 面對車站，左邊紅色閘口是「南海電鐵」，右邊藍色是 JR。請進<b>左邊</b>。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kansai+Airport+Station",
                             website: "https://www.kansai-airport.or.jp/tw/" 
                         },
                         { 
                             time: "15:35", icon: "🚆", title: "搭乘南海電鐵 Rapi:t", 
                             desc: "已確認搭乘 15:35 (β66) 班次。車程約 40 分鐘，預計 16:15 抵達難波。", 
-                            transit: "🚆 <b>電車 (40分鐘)：</b><br>搭乘往「難波 (Namba)」方向的 Rapi:t 特急。<br>於終點站「南海難波站」下車 (通常停靠 9 號月台)。",
+                            transit: "🕒 <b>15:35 出發 ➔ 16:15 抵達</b><br>🚆 <b>電車 (40分鐘)：</b><br>搭乘往「難波 (Namba)」方向的 Rapi:t 特急。<br>於終點站「南海難波站」下車 (通常停靠 9 號月台)。",
                             map: null,
                             website: "https://www.howto-osaka.com/tc/group/rapit/"
                         },
                         { 
                             time: "16:30", icon: "🧥", title: "Workman Girl Namba City", 
                             desc: "<b>行程變更：</b>抵達難波後，先去買外套！位於難波 CITY 南館 2F。營業至 21:00。", 
-                            transit: "🚶 <b>步行 (5-8分鐘)：</b><br>南海難波站與難波 CITY 直結。從 3F 改札口搭手扶梯下樓，依照指標前往「南館」。<br>💡 <b>建議：</b>行李可先寄放在南海難波站 2F 或 1F 的投幣式置物櫃 (Coin Locker)，買完再拿。",
+                            transit: "🕒 <b>16:30 抵達 ➔ 17:30 離開</b><br>🚶 <b>步行 (5-8分鐘)：</b><br>南海難波站與難波 CITY 直結。從 3F 改札口搭手扶梯下樓，依照指標前往「南館」。<br>💡 <b>建議：</b>行李可先寄放在南海難波站 2F 或 1F 的投幣式置物櫃 (Coin Locker)，買完再拿。",
                             map: "https://www.google.com/maps/search/?api=1&query=Workman+Girl+Namba+City",
                             website: "https://www.workman.co.jp/" 
                         },
                         { 
                             time: "17:45", icon: "🏨", title: "飯店 Check-in", 
                             desc: "Daiwa Roynet Hotel。由南海難波轉御堂筋線至心齋橋站 (1號出口)。", 
-                            transit: "🚶 <b>轉乘 (15分鐘)：</b><br>取回行李後，從難波站搭乘地鐵御堂筋線 (往新大阪/千里中央方向) 1 站至「心齋橋」。<br>由 1 號出口步行 3-4 分鐘抵達飯店。",
+                            transit: "🕒 <b>17:30 出發 ➔ 17:45 抵達</b><br>🚶 <b>轉乘 (15分鐘)：</b><br>取回行李後，從難波站搭乘地鐵御堂筋線 (往新大阪/千里中央方向) 1 站至「心齋橋」。<br>由 1 號出口步行 3-4 分鐘抵達飯店。",
                             map: "https://www.google.com/maps/search/?api=1&query=Daiwa+Roynet+Hotel+Osaka+Shinsaibashi",
                             website: "https://www.daiwaroynet.jp/osaka-shinsaibashi/"
                         },
                         { 
                             time: "18:30", icon: "🛍️", title: "心齋橋 PARCO (一番賞)", 
                             desc: "5F 一番賞官方店, 6F 動漫層 (Capcom/Godzilla)。營業至 20:00。", 
-                            transit: "🚶 <b>步行 (1分鐘)：</b><br>飯店下樓即是心齋橋筋商店街北段。<br>PARCO 與大丸百貨相連，位於地鐵站正上方。",
+                            transit: "🕒 <b>18:30 抵達 ➔ 19:30 離開</b><br>🚶 <b>步行 (1分鐘)：</b><br>飯店下樓即是心齋橋筋商店街北段。<br>PARCO 與大丸百貨相連，位於地鐵站正上方。",
                             map: "https://www.google.com/maps/search/?api=1&query=Ichiban+Kuji+Official+Shop+Shinsaibashi+PARCO",
                             website: "https://shinsaibashi.parco.jp/" 
                         },
                         { 
                             time: "19:30", icon: "🚶", title: "心齋橋筋商店街 (必逛)", 
                             desc: "<b>重點店鋪與營業時間：</b><br>• UNIQLO (11:00-21:00)<br>• Disney Store (11:00-20:00)<br>• 3COINS+plus (11:00-21:00)<br>• Strawberry Mania (11:00-21:00)<br>• Daiou Cheese (11:00-21:00)", 
-                            transit: "🚶 <b>步行 (隨意)：</b><br>沿著有蓋拱廊往南走。大部分商店營業至 21:00。",
+                            transit: "🕒 <b>19:30 開始 ➔ 20:30 結束</b><br>🚶 <b>步行 (隨意)：</b><br>沿著有蓋拱廊往南走。大部分商店營業至 21:00。",
                             map: "https://www.google.com/maps/search/?api=1&query=Shinsaibashisuji+Shopping+Street",
                             website: "https://www.shinsaibashi.or.jp/"
                         },
                         { 
-                            time: "21:00", icon: "🐧", title: "Don Quijote 道頓堀", 
+                            time: "20:30", icon: "🐧", title: "Don Quijote 道頓堀", 
                             desc: "摩天輪店。24小時營業。買完建議先回飯店放東西。", 
-                            transit: "🚶 <b>步行去 Donki (10-15分鐘)：</b><br>沿心齋橋筋商店街往南直行，過戎橋(固力果看板)後，沿河邊步道左轉即見黃色摩天輪 Donki。<br><br>🚕 <b>回程：</b><br>若買太多，建議在路口搭的士回飯店 (約 ¥800-1000)。",
+                            transit: "🕒 <b>20:30 抵達 ➔ 21:30 離開</b><br>🚶 <b>步行去 Donki (10-15分鐘)：</b><br>沿心齋橋筋商店街往南直行，過戎橋(固力果看板)後，沿河邊步道左轉即見黃色摩天輪 Donki。<br><br>🚕 <b>回程：</b><br>若買太多，建議在路口搭的士回飯店 (約 ¥800-1000)。",
                             map: "https://www.google.com/maps/search/?api=1&query=Don+Quijote+Dotonbori",
                             website: "https://www.donki.com/"
                         },
                         { 
                             time: "22:30", icon: "🍢", title: "宵夜：鳥貴族", 
                             desc: "心齋橋北店。營業至凌晨 05:00。全品項均一價。", 
-                            transit: "🚶 <b>步行 (5-8分鐘)：</b><br>由飯店步行前往附近的「心齋橋北店」或「南船場店」。<br>Google Map 搜尋最近的一間即可，步行距離極近。",
+                            transit: "🕒 <b>22:30 抵達</b><br>🚶 <b>步行 (5-8分鐘)：</b><br>由飯店步行前往附近的「心齋橋北店」或「南船場店」。<br>Google Map 搜尋最近的一間即可，步行距離極近。",
                             map: "https://www.google.com/maps/search/?api=1&query=Torikizoku+Shinsaibashi",
                             website: "https://torikizoku.co.jp/" 
                         }
@@ -374,71 +382,64 @@
                     diningInfo: "晚餐：Kobe Beef Steak Ishida. 三宮店 (19:00)。",
                     timeline: [
                         { 
-                            time: "08:15", icon: "🚇", title: "前往梅田", 
+                            time: "08:00", icon: "🚇", title: "前往梅田", 
                             desc: "御堂筋線 (心齋橋→梅田)。", 
-                            transit: "🚶 <b>步行：</b>從飯店走到心齋橋站 1 號入口。<br>🚇 <b>地鐵 (7分鐘)：</b>搭乘御堂筋線往「新大阪/千里中央」方向，於「梅田站」下車。",
+                            transit: "🕒 <b>08:00 出發 ➔ 08:15 抵達</b><br>🚶 <b>步行：</b>從飯店走到心齋橋站 1 號入口。<br>🚇 <b>地鐵 (7分鐘)：</b>搭乘御堂筋線往「新大阪/千里中央」方向，於「梅田站」下車。",
                             map: null 
                         },
                         { 
-                            time: "08:25", icon: "🚌", title: "往 Outlet (早班建議)", 
-                            desc: "<b>HERBIS OSAKA 巴士總站 4 號乘車處</b>。<br><b>班次 A: 08:25 發車</b> (約 09:32 抵達)<br><b>⚠️ 注意：座席定員制 (先到先得)，不可網上預約。</b>請提早排隊。", 
-                            transit: "🚶 <b>轉乘步行 (10-15分鐘)：重點！容易迷路</b><br>1. 梅田站下車後，請走<b>「南改札口」</b>出站。<br>2. 出站後看頭頂指標，找<b>「西梅田」</b>或<b>「HERBIS OSAKA (ハービスOSAKA)」</b>。<br>3. 沿地下街一直往西走，直到抵達 HERBIS PLAZA ENT 入口。<br>4. 搭手扶梯上 1F，前往巴士總站 <b>4 號站牌</b>。",
+                            time: "08:40", icon: "🚌", title: "往 Outlet (早班建議)", 
+                            desc: "<b>HERBIS OSAKA 巴士總站 4 號乘車處</b>。<br><b>班次：08:40 發車</b> (約 09:47 抵達)<br><b>⚠️ 注意：座席定員制 (先到先得)，不可網上預約。</b>請提早排隊。", 
+                            transit: "🕒 <b>08:40 出發 ➔ 09:47 抵達</b><br>🚶 <b>轉乘步行 (15-20分鐘)：重點！容易迷路</b><br>1. 梅田站下車後，請走<b>「南改札口」</b>出站。<br>2. 出站後看頭頂指標，找<b>「西梅田」</b>或<b>「HERBIS OSAKA (ハービスOSAKA)」</b>。<br>3. 沿地下街一直往西走，直到抵達 HERBIS PLAZA ENT 入口。<br>4. 搭手扶梯上 1F，前往巴士總站 <b>4 號站牌</b>。",
                             map: "https://www.google.com/maps/search/?api=1&query=Herbis+Osaka+Bus+Terminal",
                             website: "https://www.premiumoutlets.co.jp/kobesanda/access/bus.html"
                         },
                         { 
-                            time: "09:35", icon: "🚌", title: "往 Outlet (標準班次)", 
-                            desc: "<b>班次 B: 09:35 發車</b> (約 10:42 抵達)<br><b>⚠️ 注意：不可預約。</b>若起不來可搭這班，但人較多。", 
-                            transit: "同上，於 HERBIS OSAKA 4 號站牌排隊。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Herbis+Osaka+Bus+Terminal",
-                            website: "https://www.premiumoutlets.co.jp/kobesanda/access/bus.html"
-                        },
-                        { 
-                            time: "10:30", icon: "🛍️", title: "神戶三田 Premium Outlets", 
+                            time: "10:00", icon: "🛍️", title: "神戶三田 Premium Outlets", 
                             desc: "營業時間 10:00-20:00。關西最大級。建議預留 4-5 小時。", 
-                            transit: "🚌 <b>巴士 (70分鐘)：</b><br>下車點即是 Outlet 入口。回程巴士站通常在同一區。",
+                            transit: "🕒 <b>09:47 抵達 ➔ 15:00 離開</b><br>🚌 <b>巴士 (67分鐘)：</b><br>下車點即是 Outlet 入口。回程巴士站通常在同一區。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kobe+Sanda+Premium+Outlets",
                             website: "https://www.premiumoutlets.co.jp/kobesanda/" 
                         },
                         { 
                             time: "15:00", icon: "🚌", title: "巴士往三宮 (班次A)", 
                             desc: "Outlet 巴士站搭乘往「三宮」方向。<br><b>建議班次: 15:00</b> (約 15:50 抵達)。無預約制。", 
-                            transit: "🚌 <b>巴士 (50分鐘)：</b><br>在 Outlet 巴士站搭乘往「三宮 (Sannomiya)」的班次。<br>終點站為三宮巴士總站 (近 JR 高架橋)。",
+                            transit: "🕒 <b>15:00 出發 ➔ 15:50 抵達</b><br>🚌 <b>巴士 (50分鐘)：</b><br>在 Outlet 巴士站搭乘往「三宮 (Sannomiya)」的班次。<br>終點站為三宮巴士總站 (近 JR 高架橋)。",
                             map: null,
                             website: "https://www.premiumoutlets.co.jp/en/kobesanda/access/bus_schedule_root2.html" 
                         },
                         { 
                             time: "15:40", icon: "🚌", title: "巴士往三宮 (班次B)", 
                             desc: "<b>備選班次: 15:40</b> (約 16:30 抵達)。無預約制。", 
-                            transit: "同上。",
+                            transit: "🕒 <b>15:40 出發 ➔ 16:30 抵達</b>",
                             map: null,
                             website: "https://www.premiumoutlets.co.jp/en/kobesanda/access/bus_schedule_root2.html"
                         },
                         { 
                             time: "16:30", icon: "🤖", title: "TamTam Hobby Shop", 
                             desc: "三宮著名的模型店。位於 Center Plaza 西館 2F/3F。營業時間 11:00-20:00。", 
-                            transit: "🚶 <b>步行：</b><br>抵達三宮後，前往 TamTam Hobby Shop Kobe Sannomiya (位於 Center Plaza 西館)。",
+                            transit: "🕒 <b>16:30 抵達 ➔ 17:30 離開</b><br>🚶 <b>步行：</b><br>抵達三宮後，前往 TamTam Hobby Shop Kobe Sannomiya (位於 Center Plaza 西館)。",
                             map: "https://maps.app.goo.gl/saf3yjxTAsAoMsef9",
                             website: "https://www.hs-tamtam.jp/" 
                         },
                         { 
                             time: "17:30", icon: "🛍️", title: "三宮周邊商場漫步", 
                             desc: "Center Plaza, 三宮 Center 街。可以逛 Clefy, OPA 等年輕人商場。", 
-                            transit: "🚶 <b>步行：</b><br>TamTam 所在的 Center Plaza 本身就是熱鬧的商場，連接三宮 Center 街。",
+                            transit: "🕒 <b>17:30 開始 ➔ 19:00 結束</b><br>🚶 <b>步行：</b><br>TamTam 所在的 Center Plaza 本身就是熱鬧的商場，連接三宮 Center 街。",
                             map: "https://www.google.com/maps/search/?api=1&query=Sannomiya+Center+Gai",
                             website: null 
                         },
                         { 
                             time: "19:00", icon: "🥩", title: "晚餐：神戶牛 Ishida. 三宮店", 
                             desc: "本店。需預約。頂級鐵板燒體驗。", 
-                            transit: "🚶 <b>步行 (5-10分鐘)：</b><br>從模型店步行前往餐廳。請務必依照 Google Map 導航確認分店位置 (連結為三宮店)。",
+                            transit: "🕒 <b>19:00 抵達</b><br>🚶 <b>步行 (5-10分鐘)：</b><br>從模型店步行前往餐廳。請務必依照 Google Map 導航確認分店位置 (連結為三宮店)。",
                             map: "https://goo.gl/maps/1s2wGuMMrWdHkW4S8",
                             website: "https://kobebeef-ishida.com/" 
                         },
                         { 
                             time: "22:00", icon: "♨️", title: "溫泉：延羽之湯 (鶴橋店)", 
                             desc: "由三宮搭阪神電車回難波轉千日前線。營業至 02:00。", 
-                            transit: "🚆 <b>電車 (45分鐘)：</b><br>前往「阪神三宮站」，搭乘<b>快速急行</b> (往奈良/難波方向)，於「大阪難波站」下車。<br><br>🚇 <b>轉乘 (5分鐘)：</b><br>站內轉乘地下鐵「千日前線」 (往南巽方向)，搭 3 站至「鶴橋站」。<br><br>🚶 <b>步行 (5分鐘)：</b><br>鶴橋站<b>「6 號出口」</b>出站，向東直行 (跟著便利商店方向)，會看到巨大的延羽之湯招牌。",
+                            transit: "🕒 <b>21:00 出發 ➔ 21:50 抵達</b><br>🚆 <b>電車 (45分鐘)：</b><br>前往「阪神三宮站」，搭乘<b>快速急行</b> (往奈良/難波方向)，於「大阪難波站」下車。<br><br>🚇 <b>轉乘 (5分鐘)：</b><br>站內轉乘地下鐵「千日前線」 (往南巽方向)，搭 3 站至「鶴橋站」。<br><br>🚶 <b>步行 (5分鐘)：</b><br>鶴橋站<b>「6 號出口」</b>出站，向東直行 (跟著便利商店方向)，會看到巨大的延羽之湯招牌。",
                             map: "https://www.google.com/maps/search/?api=1&query=Nobeha+no+Yu+Tsuruhashi",
                             website: "https://www.nobuta123.co.jp/nobehatsuruhashi/" 
                         }
@@ -456,49 +457,49 @@
                         { 
                             time: "07:00", icon: "🐟", title: "早餐：木津市場", 
                             desc: "地鐵大國町站。新年開市日。營業至 13:00。", 
-                            transit: "🚇 <b>地鐵 (4分鐘)：</b><br>心齋橋搭御堂筋線 (往天王寺/中百舌鳥方向) 至「大國町站」。<br><br>🚶 <b>步行 (2分鐘)：</b><br>請走<b>「1 號出口」</b>。出站後向左後方轉，沿著大路直行即達。",
+                            transit: "🕒 <b>06:40 出發 ➔ 07:00 抵達</b><br>🚇 <b>地鐵 (4分鐘)：</b><br>心齋橋搭御堂筋線 (往天王寺/中百舌鳥方向) 至「大國町站」。<br><br>🚶 <b>步行 (2分鐘)：</b><br>請走<b>「1 號出口」</b>。出站後向左後方轉，沿著大路直行即達。",
                             map: "https://www.google.com/maps/search/?api=1&query=Osaka+Kizu+Wholesale+Market",
                             website: "https://kizu-ichiba.com/" 
                         },
                         { 
                             time: "09:00", icon: "🚆", title: "前往勝尾寺 (新路線)", 
                             desc: "<b>御堂筋線直通北大阪急行</b>至終點站「箕面萱野」。入山需購票。", 
-                            transit: "🚇 <b>地鐵 (45分鐘)：</b><br>回到大國町站，搭御堂筋線 (往箕面萱野方向) 坐到終點站「箕面萱野」。<br><br>🚌 <b>巴士 (20分鐘)：</b><br>從<b>北改札口</b>出站，前往巴士總站 <b>8 號乘車處</b>，搭乘阪急巴士 <b>30 號系統</b>。於「勝尾寺」下車。",
+                            transit: "🕒 <b>09:00 出發 ➔ 10:30 抵達</b><br>🚇 <b>地鐵 (52分鐘)：</b><br>回到大國町站，搭御堂筋線 (往箕面萱野方向) 坐到終點站「箕面萱野」。<br><br>🚌 <b>巴士 (25分鐘)：</b><br>從<b>北改札口</b>出站，前往巴士總站 <b>8 號乘車處</b>，搭乘阪急巴士 <b>30 號系統</b>。車程約25分鐘。總車程約 1 小時 30 分 (含轉乘)。",
                             map: "https://www.google.com/maps/search/?api=1&query=Katsuoji+Temple",
                             website: "https://katsuo-ji-temple.or.jp/" 
                         },
                         { 
-                            time: "13:00", icon: "🍽️", title: "午餐：梅田周邊", 
+                            time: "13:50", icon: "🍽️", title: "午餐：梅田周邊", 
                             desc: "回到梅田後，在附近的商場或地下街享用午餐 (彈性安排)。", 
-                            transit: "🚌 <b>回程巴士：</b><br>搭 30 號巴士回到「箕面萱野站」。<br><br>🚇 <b>地鐵 (25分鐘)：</b><br>搭御堂筋線至「梅田站」。",
+                            transit: "🕒 <b>12:30 出發 ➔ 13:50 抵達</b><br>🚌 <b>回程巴士：</b><br>搭 30 號巴士回到「箕面萱野站」。<br><br>🚇 <b>地鐵 (25分鐘)：</b><br>搭御堂筋線至「梅田站」。",
                             map: "https://www.google.com/maps/search/?api=1&query=Umeda+Station+Restaurants",
                             website: null
                         },
                         { 
-                            time: "14:30", icon: "🧸", title: "阪急三番街 & HEP FIVE", 
-                            desc: "<b>重點店鋪與營業時間：</b><br>• <b>Chiikawa Land / Kiddy Land</b> (10:00-21:00)<br>• <b>Muji Com</b> (10:00-21:00)<br>• <b>#C-pla 扭蛋</b> (10:00-23:00)<br>• <b>HEP FIVE 商場</b> (11:00-21:00)<br>• <b>Jump Shop</b> (HEP FIVE 6F, 11:00-21:00)", 
-                            transit: "🚶 <b>步行：</b><br>從地鐵梅田站往北走，跟隨「阪急三番街」指標。HEP FIVE 就在旁邊紅色摩天輪建築。",
+                            time: "14:45", icon: "🧸", title: "阪急三番街 & HEP FIVE", 
+                            desc: "<b>重點店鋪與營業時間：</b><br>• <b>Chiikawa Land</b> (10:00-21:00)<br>• <b>Kiddy Land</b> (10:00-21:00)<br>• <b>Muji Com</b> (10:00-21:00)<br>• <b>#C-pla 扭蛋</b> (10:00-23:00)<br>• <b>HEP FIVE 商場</b> (11:00-21:00)<br>• <b>Jump Shop</b> (HEP FIVE 6F, 11:00-21:00)", 
+                            transit: "🕒 <b>14:45 抵達 ➔ 16:30 離開</b><br>🚶 <b>步行：</b><br>從地鐵梅田站往北走，跟隨「阪急三番街」指標。HEP FIVE 就在旁邊紅色摩天輪建築。",
                             map: "https://www.google.com/maps/search/?api=1&query=Hankyu+Sanbangai",
                             website: "https://www.h-sanbangai.com/"
                         },
                         { 
-                            time: "16:30", icon: "🛍️", title: "LUCUA / LUCUA 1100", 
-                            desc: "<b>LUCUA 1100 / LUCUA (10:30-20:30)：</b><br>• <b>Freak's Store</b> (LUCUA 7F)<br>• <b>BEAMS</b> (LUCUA 3F)<br>• <b>橡子共和國</b> (LUCUA 9F)<br>• <b>Loft</b> (LUCUA 9F)<br>• <b>@cosme OSAKA</b> (LUCUA 3F)", 
-                            transit: "🚶 <b>步行：</b><br>回到 JR 大阪站北側 (North Gate Building)。",
+                            time: "16:30", icon: "🛍️", title: "LUCUA / LUCUA 1100 / 大丸", 
+                            desc: "<b>LUCUA (10:30-20:30)：</b><br>• <b>Freak's Store</b> (7F), <b>BEAMS</b> (3F), <b>橡子共和國</b> (9F), <b>Loft</b> (9F), <b>@cosme</b> (3F)<br><b>大丸梅田 (10:00-20:00)：</b><br>• <b>Nagano Market (ナガノマーケット)</b> (13F)", 
+                            transit: "🕒 <b>16:30 抵達 ➔ 17:30 離開</b><br>🚶 <b>步行：</b><br>回到 JR 大阪站北側。大丸百貨位於南側。",
                             map: "https://www.google.com/maps/search/?api=1&query=LUCUA+Osaka",
                             website: "https://www.lucua.jp/"
                         },
                         { 
                             time: "17:30", icon: "👗", title: "EST 梅田", 
                             desc: "年輕時尚商場 (11:00-21:00)。<br>推薦店鋪：<b>GRL</b> (實體店), <b>ABC-MART Grand Stage</b>。", 
-                            transit: "🚶 <b>步行：</b><br>位於 HEP FIVE 旁邊的高架橋下區域。",
+                            transit: "🕒 <b>17:30 抵達 ➔ 19:00 離開</b><br>🚶 <b>步行：</b><br>位於 HEP FIVE 旁邊的高架橋下區域。",
                             map: "https://www.google.com/maps/search/?api=1&query=EST+Umeda",
                             website: "https://www.est-sc.com/"
                         },
                         { 
                             time: "19:30", icon: "🥘", title: "晚餐：木曽路 北新地店", 
                             desc: "しゃぶしゃぶ・日本料理。預約時間 19:30。優質涮涮鍋。", 
-                            transit: "🚶 <b>步行 (10-15分鐘)：</b><br>從梅田往南走，穿過大阪站前大樓區域，抵達北新地。<br>請開啟 Google Map 導航確認位置。",
+                            transit: "🕒 <b>19:00 出發 ➔ 19:30 抵達</b><br>🚶 <b>步行 (10-15分鐘)：</b><br>從梅田往南走，穿過大阪站前大樓區域，抵達北新地。<br>請開啟 Google Map 導航確認位置。",
                             map: "https://maps.app.goo.gl/RDgMw3rR9aGvN6FPA",
                             website: "https://www.kisoji.co.jp/" 
                         }
@@ -514,37 +515,37 @@
                     diningInfo: "晚餐：蟹道樂 網元本館 (20:30)。",
                     timeline: [
                         { 
-                            time: "08:45", icon: "🚶", title: "離開酒店出發", 
-                            desc: "前往地鐵心齋橋站，準備前往京都。", 
-                            transit: "🚶 <b>步行：</b><br>步行至心齋橋站 1 號出口。",
+                            time: "08:45", icon: "🏨", title: "離開飯店", 
+                            desc: "準時出發，前往京都。", 
+                            transit: "🕒 <b>08:45 出發</b>",
                             map: null,
                             website: null
                         },
                         { 
-                            time: "09:00", icon: "⛩️", title: "前往京都 (下鴨神社)", 
+                            time: "09:45", icon: "⛩️", title: "抵達京都 (下鴨神社)", 
                             desc: "京阪電車特急。車程約 50 分鐘。", 
-                            transit: "🚇 <b>地鐵 (2分鐘)：</b><br>心齋橋搭御堂筋線至「淀屋橋站」。<br><br>🚆 <b>京阪電車 (50分鐘)：</b><br>轉乘京阪本線 (特急/快速急行) 往「出町柳」方向，於終點站「出町柳」下車。<br><br>🚶 <b>步行 (10分鐘)：</b><br>從<b>「5 號出口」</b>出站，過橋後沿著表參道直行即達下鴨神社 (世界遺產)。",
+                            transit: "🕒 <b>08:45 出發 ➔ 09:45 抵達</b><br>🚇 <b>地鐵 (2分鐘)：</b><br>心齋橋搭御堂筋線至「淀屋橋站」。<br><br>🚆 <b>京阪電車 (50分鐘)：</b><br>轉乘京阪本線 (特急/快速急行) 往「出町柳」方向，於終點站「出町柳」下車。<br><br>🚶 <b>步行 (10分鐘)：</b><br>從<b>「5 號出口」</b>出站，過橋後沿著表參道直行即達下鴨神社 (世界遺產)。",
                             map: "https://www.google.com/maps/search/?api=1&query=Shimogamo+Shrine",
                             website: "https://www.shimogamo-jinja.or.jp/" 
                         },
                         { 
                             time: "13:30", icon: "🚆", title: "返回大阪 (日本橋)", 
                             desc: "午餐建議在京都出町柳附近簡單解決，或回大阪日本橋吃。", 
-                            transit: "🚆 <b>京阪電車 (50分鐘)：</b><br>從出町柳搭特急回程，在「北濱站 (Kitahama)」下車。<br><br>🚇 <b>地鐵 (5分鐘)：</b><br>轉乘堺筋線 (往天下茶屋方向)，在「惠美須町站」或「日本橋站」下車，即抵達 Den Den Town。",
+                            transit: "🕒 <b>13:30 出發 ➔ 14:30 抵達</b><br>🚆 <b>京阪電車 (50分鐘)：</b><br>從出町柳搭特急回程，在「北濱站 (Kitahama)」下車。<br><br>🚇 <b>地鐵 (5分鐘)：</b><br>轉乘堺筋線 (往天下茶屋方向)，在「惠美須町站」或「日本橋站」下車，即抵達 Den Den Town。",
                             map: null,
                             website: "https://www.keihan.co.jp/"
                         },
                         { 
                             time: "15:00", icon: "⚡", title: "日本橋 Den Den Town", 
                             desc: "深度動漫遊。<b>重點店鋪與營業時間：</b><br>• Super Kids Land (10:00-20:00)<br>• Animate (11:00-20:00)<br>• Surugaya 駿河屋 (11:00-20:00)<br>• Jungle 密林 (12:00-20:00)<br>• BOOKOFF (10:00-22:00)", 
-                            transit: "🚶 <b>步行：</b><br>沿著堺筋大道兩側逛。從南 (惠美須町) 往北 (難波) 走。",
+                            transit: "🕒 <b>15:00 抵達 ➔ 20:00 離開</b><br>🚶 <b>步行：</b><br>沿著堺筋大道兩側逛。從南 (惠美須町) 往北 (難波) 走。",
                             map: "https://www.google.com/maps/search/?api=1&query=Super+Kids+Land+Character",
                             website: "https://shop.joshin.co.jp/shopdetail.php?cd=1746" 
                         },
                         { 
                             time: "20:30", icon: "🦀", title: "晚餐：蟹道樂 網元本館", 
                             desc: "<b>注意：</b>這間不是道頓堀那間，而是位於西心齋橋的高級別邸。氣氛更幽靜。營業至 22:30。", 
-                            transit: "🚶 <b>步行 (15分鐘)：</b><br>從日本橋往難波/心齋橋方向走。網元本館位於美國村附近的西心齋橋區域。<br>請務必開啟 Google Map 導航確認位置。",
+                            transit: "🕒 <b>20:15 出發 ➔ 20:30 抵達</b><br>🚶 <b>步行 (15分鐘)：</b><br>從日本橋往難波/心齋橋方向走。網元本館位於美國村附近的西心齋橋區域。<br>請務必開啟 Google Map 導航確認位置。",
                             map: "https://maps.google.com/?cid=17195628979030036511",
                             website: "https://douraku.co.jp/kansai/shop/amimoto_h/" 
                         }
@@ -562,35 +563,35 @@
                         { 
                             time: "10:30", icon: "🧳", title: "Check-out", 
                             desc: "辦理退房，帶著行李離開。", 
-                            transit: "無。",
+                            transit: "🕒 <b>10:30 完成</b><br>無。",
                             map: "https://www.google.com/maps/search/?api=1&query=Daiwa+Roynet+Hotel+Osaka+Shinsaibashi",
                             website: "https://www.daiwaroynet.jp/osaka-shinsaibashi/"
                         },
                         { 
                             time: "11:00", icon: "🚶", title: "心齋橋/難波隨意逛", 
                             desc: "最後的補貨時間，或找間咖啡店休息。", 
-                            transit: "🚶 <b>步行：</b><br>帶著行李不便走遠，建議在南海難波站周邊。",
+                            transit: "🕒 <b>11:00 - 13:00</b><br>🚶 <b>步行：</b><br>帶著行李不便走遠，建議在南海難波站周邊。",
                             map: null,
                             website: null
                         },
                         { 
                             time: "14:00", icon: "🚆", title: "搭乘 Rapi:t 往機場", 
-                            desc: "<b>推薦班次：</b> 14:00 發車 (約 14:40 抵達)。<br><b>備選班次：</b> 15:00 發車 (約 15:40 抵達 - 較趕)。", 
-                            transit: "🚶 <b>步行 (5分鐘)：</b><br>南海難波站 3F 月台候車。請預留時間購票。",
+                            desc: "<b>推薦班次：</b> 14:00 發車 (Rapi:t β45) (約 14:39 抵達)。<br><b>備選班次：</b> 14:35 發車 (Rapi:t β47) (約 15:13 抵達)。", 
+                            transit: "🕒 <b>14:00 出發 ➔ 14:39 抵達</b><br>🚶 <b>步行 (5分鐘)：</b><br>南海難波站 3F 月台候車。請預留時間購票。",
                             map: "https://www.google.com/maps/search/?api=1&query=Nankai+Namba+Station",
                             website: "https://www.howto-osaka.com/tc/group/rapit/" 
                         },
                         { 
                             time: "15:00", icon: "🍽️", title: "午餐：關西機場 (Tasty Street)", 
                             desc: "位於第1航廈 2F 的新美食區。推薦：<b>551蓬萊</b>(中華料理)、<b>神座拉麵</b>、<b>Colowide</b>(牛排/漢堡排)。", 
-                            transit: "🚶 <b>步行：</b><br>出改札口後直走即達第 1 航廈 2F，美食區位於國內線出發口附近 (非管制區，誰都可以吃)。",
+                            transit: "🕒 <b>15:00 - 15:40</b><br>🚶 <b>步行：</b><br>出改札口後直走即達第 1 航廈 2F，美食區位於國內線出發口附近 (非管制區，誰都可以吃)。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kansai+Airport+Terminal+1+Restaurants",
                             website: "https://www.kansai-airport.or.jp/tw/shop-and-dine/dine" 
                         },
                         { 
                             time: "15:40", icon: "🛫", title: "Check-in & 登機 (HX619)", 
                             desc: "17:05 起飛。第一航廈 4F 辦理登機。", 
-                            transit: "🚶 <b>步行：</b><br>吃飽後搭手扶梯上 4F。",
+                            transit: "🕒 <b>15:40 報到 ➔ 17:05 起飛</b><br>🚶 <b>步行：</b><br>吃飽後搭手扶梯上 4F。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kansai+International+Airport",
                             website: "https://www.kansai-airport.or.jp/tw/" 
                         }
