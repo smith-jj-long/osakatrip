@@ -121,7 +121,9 @@
                 </div>
                 <div class="flex flex-wrap gap-2">
                     <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">⚡ 日本橋動漫</span>
-                    <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">⛩️ 京都下鴨</span>
+                    <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">♨️ 鶴橋溫泉</span>
+                    <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">⛩️ 勝尾寺</span>
+                    <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">⛩️ 下鴨神社</span> 
                     <span class="bg-white/20 px-2 py-1 rounded text-xs font-bold">🛍️ 三田 Outlet</span>
                 </div>
             </div>
@@ -154,7 +156,7 @@
                     <!-- Personal Care -->
                     <div class="font-bold text-orange-600 mt-2 col-span-full">個人護理 & 藥品</div>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>基本藥品 (止痛,腸胃,過敏)</span></label>
-                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>清熱酷 (粉袋 各人一盒)</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>清熱酷 x8</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>牙套套裝 (盒/牙刷/牙線)</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>直髮器 & 髮夾</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>剃鬚刨</span></label>
@@ -168,7 +170,7 @@
                 </div>
             </div>
 
-            <!-- Pre-Travel Checklist (Admin) -->
+            <!-- Pre-Travel Checklist -->
             <div class="bg-white p-4 rounded-xl shadow-sm border border-stone-100">
                 <h3 class="font-bold text-stone-800 mb-3 flex items-center gap-2">
                     <span>✅</span> 行前準備清單
@@ -176,19 +178,19 @@
                 <div class="space-y-2 text-sm text-stone-600">
                     <label class="flex items-center gap-3 checklist-item cursor-pointer p-2 hover:bg-stone-50 rounded-lg transition">
                         <input type="checkbox" class="w-4 h-4 text-orange-500 rounded border-stone-300 focus:ring-orange-500">
-                        <span><b>Visit Japan Web</b> (入境/海關申報)</span>
+                        <span><b>Visit Japan Web</b> (入境/海關申報) - 已處理</span>
                     </label>
                     <label class="flex items-center gap-3 checklist-item cursor-pointer p-2 hover:bg-stone-50 rounded-lg transition">
                         <input type="checkbox" class="w-4 h-4 text-orange-500 rounded border-stone-300 focus:ring-orange-500">
-                        <span><b>旅遊保險</b> (建議涵蓋醫療與不便險)</span>
+                        <span><b>旅遊保險</b>  - 已買</span>
                     </label>
                     <label class="flex items-center gap-3 checklist-item cursor-pointer p-2 hover:bg-stone-50 rounded-lg transition">
                         <input type="checkbox" class="w-4 h-4 text-orange-500 rounded border-stone-300 focus:ring-orange-500">
-                        <span><b>eSIM / 漫遊網卡</b> (確認開通日期)</span>
+                        <span><b>eSIM x2</b> (確認開通日期)</span>
                     </label>
                     <label class="flex items-center gap-3 checklist-item cursor-pointer p-2 hover:bg-stone-50 rounded-lg transition">
                         <input type="checkbox" class="w-4 h-4 text-orange-500 rounded border-stone-300 focus:ring-orange-500">
-                        <span><b>線上預辦登機</b> (Online Check-in)</span>
+                        <span><b>線上預辦登機</b> (1／1可以禁)</span>
                     </label>
                 </div>
             </div>
@@ -295,10 +297,10 @@
                     id: 1,
                     date: "1/3 (六)",
                     fullDate: "1月3日 週六",
-                    title: "香港出發、Workman、心齋橋",
-                    summary: "早機出發，抵達難波後先去買外套，再回酒店 Check-in。",
-                    transportInfo: "南海電鐵 Rapi:t (機場→難波)。Workman 位於難波 CITY，可步行回心齋橋。",
-                    diningInfo: "宵夜：鳥貴族 (22:00)。",
+                    title: "香港出發、Workman、溫泉",
+                    summary: "早機出發，抵達難波先買裝備，晚上享受鶴橋延羽之湯溫泉。",
+                    transportInfo: "南海電鐵 Rapi:t (機場→難波)。晚上地鐵至鶴橋。",
+                    diningInfo: "宵夜：鳥貴族 (00:00)。",
                     timeline: [
                         { 
                             time: "05:25", icon: "🚌", title: "出發前往機場", 
@@ -364,9 +366,23 @@
                             website: "https://www.donki.com/"
                         },
                         { 
-                            time: "22:30", icon: "🍢", title: "宵夜：鳥貴族", 
-                            desc: "心齋橋北店。營業至凌晨 05:00。全品項均一價。", 
-                            transit: "🕒 <b>22:30 抵達</b><br>🚶 <b>步行 (5-8分鐘)：</b><br>由飯店步行前往附近的「心齋橋北店」或「南船場店」。<br>Google Map 搜尋最近的一間即可，步行距離極近。",
+                            time: "21:30", icon: "🚆", title: "前往鶴橋溫泉", 
+                            desc: "出發前往延羽之湯。<b>請帶好毛巾/換洗衣物。</b>", 
+                            transit: "🕒 <b>21:30 出發 ➔ 22:00 抵達</b><br>🚶 <b>步行 (10分鐘)：</b><br>從飯店/Donki 步行至地鐵「難波站」。<br>🚇 <b>地鐵 (5分鐘)：</b><br>搭乘千日前線 (粉紅線) 往「南巽」方向，至「鶴橋站」下車。<br>🚶 <b>步行 (5分鐘)：</b><br>6 號出口出站，向東直走即達。",
+                            map: "https://www.google.com/maps/search/?api=1&query=Nobeha+no+Yu+Tsuruhashi",
+                            website: "https://www.nobuta123.co.jp/nobehatsuruhashi/"
+                        },
+                        { 
+                            time: "22:30", icon: "♨️", title: "溫泉：延羽之湯 (鶴橋店)", 
+                            desc: "<b>已預訂：22:30 - 23:30</b>。享受優質溫泉放鬆身心。營業至 02:00。", 
+                            transit: "🕒 <b>22:30 入場 ➔ 23:30 結束</b>",
+                            map: "https://www.google.com/maps/search/?api=1&query=Nobeha+no+Yu+Tsuruhashi",
+                            website: "https://www.nobuta123.co.jp/nobehatsuruhashi/" 
+                        },
+                        { 
+                            time: "00:00", icon: "🍢", title: "宵夜：鳥貴族 (溫泉後)", 
+                            desc: "返回飯店附近享用宵夜。營業至 05:00。", 
+                            transit: "🕒 <b>00:00 抵達</b><br>🚕 <b>計程車 (15分鐘)：</b><br>建議從鶴橋直接搭的士回心齋橋飯店附近 (約 ¥1500-2000)，省時省力。<br>或者搭末班電車 (需注意時間)。",
                             map: "https://www.google.com/maps/search/?api=1&query=Torikizoku+Shinsaibashi",
                             website: "https://torikizoku.co.jp/" 
                         }
@@ -437,11 +453,11 @@
                             website: "https://kobebeef-ishida.com/" 
                         },
                         { 
-                            time: "22:00", icon: "♨️", title: "溫泉：延羽之湯 (鶴橋店)", 
-                            desc: "由三宮搭阪神電車回難波轉千日前線。營業至 02:00。", 
-                            transit: "🕒 <b>21:00 出發 ➔ 21:50 抵達</b><br>🚆 <b>電車 (45分鐘)：</b><br>前往「阪神三宮站」，搭乘<b>快速急行</b> (往奈良/難波方向)，於「大阪難波站」下車。<br><br>🚇 <b>轉乘 (5分鐘)：</b><br>站內轉乘地下鐵「千日前線」 (往南巽方向)，搭 3 站至「鶴橋站」。<br><br>🚶 <b>步行 (5分鐘)：</b><br>鶴橋站<b>「6 號出口」</b>出站，向東直行 (跟著便利商店方向)，會看到巨大的延羽之湯招牌。",
-                            map: "https://www.google.com/maps/search/?api=1&query=Nobeha+no+Yu+Tsuruhashi",
-                            website: "https://www.nobuta123.co.jp/nobehatsuruhashi/" 
+                            time: "21:30", icon: "🚆", title: "返回大阪", 
+                            desc: "晚餐後搭車返回難波/心齋橋。", 
+                            transit: "🕒 <b>21:30 出發 ➔ 22:15 抵達</b><br>🚆 <b>電車：</b><br>阪神三宮站 (快速急行) -> 大阪難波站。<br>或 JR 神戶線 -> 大阪站。",
+                            map: null,
+                            website: null 
                         }
                     ]
                 },
@@ -477,14 +493,14 @@
                         },
                         { 
                             time: "14:45", icon: "🧸", title: "阪急三番街 & HEP FIVE", 
-                            desc: "<b>重點店鋪與營業時間：</b><br>• <b>Chiikawa Land</b> (10:00-21:00)<br>• <b>Kiddy Land</b> (10:00-21:00)<br>• <b>Muji Com</b> (10:00-21:00)<br>• <b>#C-pla 扭蛋</b> (10:00-23:00)<br>• <b>HEP FIVE 商場</b> (11:00-21:00)<br>• <b>Jump Shop</b> (HEP FIVE 6F, 11:00-21:00)", 
+                            desc: "<b>重點店鋪與營業時間：</b><br>• <b>Chiikawa Land / Kiddy Land</b> (10:00-21:00)<br>• <b>Muji Com</b> (10:00-21:00)<br>• <b>#C-pla 扭蛋</b> (10:00-23:00)<br>• <b>HEP FIVE 商場</b> (11:00-21:00)<br>• <b>Jump Shop</b> (HEP FIVE 6F, 11:00-21:00)", 
                             transit: "🕒 <b>14:45 抵達 ➔ 16:30 離開</b><br>🚶 <b>步行：</b><br>從地鐵梅田站往北走，跟隨「阪急三番街」指標。HEP FIVE 就在旁邊紅色摩天輪建築。",
                             map: "https://www.google.com/maps/search/?api=1&query=Hankyu+Sanbangai",
                             website: "https://www.h-sanbangai.com/"
                         },
                         { 
                             time: "16:30", icon: "🛍️", title: "LUCUA / LUCUA 1100 / 大丸", 
-                            desc: "<b>LUCUA (10:30-20:30)：</b><br>• <b>Freak's Store</b> (7F), <b>BEAMS</b> (3F), <b>橡子共和國</b> (9F), <b>Loft</b> (9F), <b>@cosme</b> (3F)<br><b>大丸梅田 (10:00-20:00)：</b><br>• <b>Nagano Market (ナガノマーケット)</b> (13F)", 
+                            desc: "<b>LUCUA (10:30-20:30)：</b><br>• <b>Freak's Store</b> (7F), <b>BEAMS</b> (3F), <b>橡子共和國</b> (9F), <b>Loft</b> (9F), <b>@cosme OSAKA</b> (3F)<br><b>大丸梅田 (10:00-20:00)：</b><br>• <b>Nagano Market (ナガノマーケット)</b> (13F)", 
                             transit: "🕒 <b>16:30 抵達 ➔ 17:30 離開</b><br>🚶 <b>步行：</b><br>回到 JR 大阪站北側。大丸百貨位於南側。",
                             map: "https://www.google.com/maps/search/?api=1&query=LUCUA+Osaka",
                             website: "https://www.lucua.jp/"
