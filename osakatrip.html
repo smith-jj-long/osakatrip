@@ -142,13 +142,15 @@
                     
                     <!-- Electronics -->
                     <div class="font-bold text-orange-600 mt-2 col-span-full">電子用品</div>
-                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>手機及充電線/器 x2</span></label>
-                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>移動電源 (Powerbank)</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>手機及充電線/器/板 x2</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>移動電源</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>日本電壓轉換插頭 (兩腳扁插)</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>耳機</span></label>
                     
                     <!-- Clothing -->
                     <div class="font-bold text-orange-600 mt-2 col-span-full">衣物與飾品</div>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>衣物 (2套衫/褲/內衣/襪子)</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>頸巾 & 保護手套</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>睡衣 (1套訓教衫褲)</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>帽子 & 太陽眼鏡</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>Beams斜背包</span></label>
@@ -158,12 +160,12 @@
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>基本藥品 (止痛,腸胃,過敏)</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>清熱酷 x8</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>牙套套裝 (盒,牙刷,牙線)</span></label>
-                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>直髮器 & 髮夾</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>直髮器</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>剃鬚刨</span></label>
-                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>化妝袋(洗面,搽面)</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>化妝袋(洗面,搽面,髮夾)</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>Gel 頭</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>口罩 x4</span></label>
-                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>好多暖包</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>暖包 x6</span></label>
                     
                     <!-- Misc -->
                     <div class="font-bold text-orange-600 mt-2 col-span-full">雜物</div>
@@ -171,6 +173,8 @@
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>紙巾 x5 & 濕紙巾 x2</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>垃圾膠袋 x5</span></label>
                     <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>環保袋</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>zip袋</span></label>
+                    <label class="flex items-center gap-2 checklist-item"><input type="checkbox" class="accent-orange-500"><span>飛機頸枕</span></label>
                 </div>
             </div>
 
@@ -194,7 +198,11 @@
                     </label>
                     <label class="flex items-center gap-3 checklist-item cursor-pointer p-2 hover:bg-stone-50 rounded-lg transition">
                         <input type="checkbox" class="w-4 h-4 text-orange-500 rounded border-stone-300 focus:ring-orange-500">
-                        <span><b>線上預辦登機</b> (1/1可以禁)</span>
+                        <span><b>線上預辦登機</b> (回程未預定)</span>
+                    </label>
+                    <label class="flex items-center gap-3 checklist-item cursor-pointer p-2 hover:bg-stone-50 rounded-lg transition">
+                        <input type="checkbox" class="w-4 h-4 text-orange-500 rounded border-stone-300 focus:ring-orange-500">
+                        <span><b>去程及回程-機場火車</b> (回程未預定)</span>
                     </label>
                 </div>
             </div>
@@ -307,9 +315,9 @@
                     diningInfo: "宵夜：鳥貴族 (00:00)。",
                     timeline: [
                         { 
-                            time: "05:25", icon: "🚌", title: "出發前往機場", 
+                            time: "05:00", icon: "🚌", title: "出發前往機場", 
                             desc: "前往香港國際機場。預計 06:30 抵達。", 
-                            transit: "🕒 <b>05:25 出發 ➔ 06:30 抵達</b><br><b>路線1：</b>巴士 A36 (05:50 錦上路開，約 45 分鐘)。<br><b>路線2：</b>巴士 N26 (05:25 油塘開，約 60 分鐘)。",
+                            transit: "🕒 <b>05:00 出發 ➔ 06:30 抵達</b><br><b>路線1：</b>巴士 A36 (05:30 錦上路開，約 45 分鐘)。<br><b>路線2：</b>巴士 N26 (05:00 油塘開，約 60 分鐘)。",
                             map: null,
                             website: "https://www.hongkongairport.com/" 
                         },
@@ -342,7 +350,7 @@
                             website: "https://www.workman.co.jp/" 
                         },
                         { 
-                            time: "17:45", icon: "🏨", title: "飯店 Check-in", 
+                            time: "17:30", icon: "🏨", title: "飯店 Check-in", 
                             desc: "Daiwa Roynet Hotel。由南海難波轉御堂筋線至心齋橋站 (1號出口)。", 
                             transit: "🕒 <b>17:30 出發 ➔ 17:45 抵達</b><br>🚶 <b>轉乘 (15分鐘)：</b><br>取回行李後，從難波站搭乘地鐵御堂筋線 (往新大阪/千里中央方向) 1 站至「心齋橋」。<br>由 1 號出口步行 3-4 分鐘抵達飯店。",
                             map: "https://www.google.com/maps/search/?api=1&query=Daiwa+Roynet+Hotel+Osaka+Shinsaibashi",
@@ -409,15 +417,15 @@
                         },
                         { 
                             time: "08:40", icon: "🚌", title: "往 Outlet (早班建議)", 
-                            desc: "<b>HERBIS OSAKA 巴士總站 4 號乘車處</b>。<br><b>班次：08:40 發車</b> (約 09:47 抵達)<br><b>⚠️ 注意：座席定員制 (先到先得)，不可網上預約。</b>請提早排隊。", 
+                            desc: "<b>HERBIS OSAKA 巴士總站 4 號乘車處</b>。<br><b>班次：08:40 發車</b> (約 09:47 抵達)<br><b>班次：09:10 發車</b> (約 10:00 抵達)<br><b>⚠️ 注意：座席定員制 (先到先得)，不可網上預約。</b>請提早排隊。", 
                             transit: "🕒 <b>08:40 出發 ➔ 09:47 抵達</b><br>🚶 <b>轉乘步行 (15-20分鐘)：重點！容易迷路</b><br>1. 梅田站下車後，請走<b>「南改札口」</b>出站。<br>2. 出站後看頭頂指標，找<b>「西梅田」</b>或<b>「HERBIS OSAKA (ハービスOSAKA)」</b>。<br>3. 沿地下街一直往西走，直到抵達 HERBIS PLAZA ENT 入口。<br>4. 搭手扶梯上 1F，前往巴士總站 <b>4 號站牌</b>。",
                             map: "https://www.google.com/maps/search/?api=1&query=Herbis+Osaka+Bus+Terminal",
-                            website: "https://www.premiumoutlets.co.jp/cht/kobesanda/access/"
+                            website: "https://www.premiumoutlets.co.jp/en/kobesanda/access/bus_schedule_root3.html"
                         },
                         { 
                             time: "10:00", icon: "🛍️", title: "神戶三田 Premium Outlets", 
                             desc: "營業時間 10:00-20:00。關西最大級。建議預留 4-5 小時。", 
-                            transit: "🕒 <b>09:47 抵達 ➔ 15:00 離開</b><br>🚌 <b>巴士 (67分鐘)：</b><br>下車點即是 Outlet 入口。回程巴士站通常在同一區。",
+                            transit: "🕒 <b>09:47/10:00 抵達 ➔ 15:00 離開</b><br>🚌 <b>巴士 (67分鐘)：</b><br>下車點即是 Outlet 入口。回程巴士站通常在同一區。",
                             map: "https://www.google.com/maps/search/?api=1&query=Kobe+Sanda+Premium+Outlets",
                             website: "https://www.premiumoutlets.co.jp/kobesanda/" 
                         },
@@ -430,7 +438,7 @@
                         },
                         { 
                             time: "15:40", icon: "🚌", title: "巴士往三宮 (班次B)", 
-                            desc: "<b>備選班次: 15:40</b> (約 16:30 抵達)。無預約制。", 
+                            desc: "<b>備選班次: 15:40</b> (約 16:30 抵達)。無預約制。<br><b>備選班次: 16:00</b> (約 16:50 抵達)。無預約制。", 
                             transit: "🕒 <b>15:40 出發 ➔ 16:30 抵達</b>",
                             map: null,
                             website: "https://www.premiumoutlets.co.jp/en/kobesanda/access/bus_schedule_root2.html"
@@ -475,7 +483,7 @@
                     diningInfo: "晚餐：木曽路 北新地店 (19:30)。",
                     timeline: [
                         { 
-                            time: "07:00", icon: "🐟", title: "早餐：木津市場", 
+                            time: "06:40", icon: "🐟", title: "早餐：木津市場", 
                             desc: "地鐵大國町站。新年開市日。營業至 13:00。", 
                             transit: "🕒 <b>06:40 出發 ➔ 07:00 抵達</b><br>🚇 <b>地鐵 (4分鐘)：</b><br>心齋橋搭御堂筋線 (往天王寺/中百舌鳥方向) 至「大國町站」。<br><br>🚶 <b>步行 (2分鐘)：</b><br>請走<b>「1 號出口」</b>。出站後向左後方轉，沿著大路直行即達。",
                             map: "https://www.google.com/maps/search/?api=1&query=Osaka+Kizu+Wholesale+Market",
@@ -483,13 +491,13 @@
                         },
                         { 
                             time: "09:00", icon: "🚆", title: "前往勝尾寺 (新路線)", 
-                            desc: "<b>御堂筋線直通北大阪急行</b>至終點站「箕面萱野」。入山需購票。", 
+                            desc: "<b>御堂筋線直通北大阪急行</b>至終點站「箕面萱野」。入山需購票(前一日購買)。", 
                             transit: "🕒 <b>09:00 出發 ➔ 10:30 抵達</b><br>🚇 <b>地鐵 (52分鐘)：</b><br>回到大國町站，搭御堂筋線 (往箕面萱野方向) 坐到終點站「箕面萱野」。<br><br>🚌 <b>巴士 (25分鐘)：</b><br>從<b>北改札口</b>出站，前往巴士總站 <b>8 號乘車處</b>，搭乘阪急巴士 <b>30 號系統</b>。車程約25分鐘。總車程約 1 小時 30 分 (含轉乘)。",
                             map: "https://www.google.com/maps/search/?api=1&query=Katsuoji+Temple",
                             website: "https://katsuo-ji-temple.or.jp/" 
                         },
                         { 
-                            time: "13:50", icon: "🍽️", title: "午餐：梅田周邊", 
+                            time: "12:30", icon: "🍽️", title: "午餐：梅田周邊", 
                             desc: "回到梅田後，在附近的商場或地下街享用午餐 (彈性安排)。", 
                             transit: "🕒 <b>12:30 出發 ➔ 13:50 抵達</b><br>🚌 <b>回程巴士：</b><br>搭 30 號巴士回到「箕面萱野站」。<br><br>🚇 <b>地鐵 (25分鐘)：</b><br>搭御堂筋線至「梅田站」。",
                             map: "https://www.google.com/maps/search/?api=1&query=Umeda+Station+Restaurants",
@@ -497,14 +505,14 @@
                         },
                         { 
                             time: "14:45", icon: "🧸", title: "阪急三番街 & HEP FIVE", 
-                            desc: "<b>重點店鋪與營業時間：</b><br>• <b>Chiikawa Land / Kiddy Land</b> (10:00-21:00)<br>• <b>Muji Com</b> (10:00-21:00)<br>• <b>#C-pla 扭蛋</b> (10:00-23:00)<br>• <b>HEP FIVE 商場</b> (11:00-21:00)<br>• <b>Jump Shop</b> (HEP FIVE 6F, 11:00-21:00)", 
+                            desc: "<b>重點店鋪與營業時間：</b><br>• <b>Chiikawa Land / Kiddy Land(檢查是否需要整理卷)</b> (10:00-21:00)<br>• <b>Muji Com</b> (10:00-21:00)<br>• <b>#C-pla 扭蛋</b> (10:00-23:00)<br>• <b>Jump Shop</b> (11:00-21:00)<br>• <b>HEP FIVE 商場</b> (11:00-21:00)<br>", 
                             transit: "🕒 <b>14:45 抵達 ➔ 16:30 離開</b><br>🚶 <b>步行：</b><br>從地鐵梅田站往北走，跟隨「阪急三番街」指標。HEP FIVE 就在旁邊紅色摩天輪建築。",
                             map: "https://www.google.com/maps/search/?api=1&query=Hankyu+Sanbangai",
                             website: "https://www.h-sanbangai.com/"
                         },
                         { 
                             time: "16:30", icon: "🛍️", title: "LUCUA / LUCUA 1100 / 大丸", 
-                            desc: "<b>LUCUA (10:30-20:30)：</b><br>• <b>Freak's Store</b> (7F), <b>BEAMS</b> (3F), <b>橡子共和國</b> (9F), <b>Loft</b> (9F), <b>@cosme OSAKA</b> (3F)<br><b>大丸梅田 (10:00-20:00)：</b><br>• <b>Nagano Market (ナガノマーケット)</b> (13F)", 
+                            desc: "<b>LUCUA (10:30-20:30)：</b><br>• <b>Freak's Store</b> (7F), <b>BEAMS</b> (3F), <b>橡子共和國</b> (9F), <b>Loft</b> (9F), <b>@cosme OSAKA</b> (3F)<br><b>大丸梅田 (10:00-20:00)：</b><br>• <b>Nagano Market (ナガノマーケット) (檢查是否需要整理卷)</b> (13F)", 
                             transit: "🕒 <b>16:30 抵達 ➔ 17:30 離開</b><br>🚶 <b>步行：</b><br>回到 JR 大阪站北側。大丸百貨位於南側。",
                             map: "https://www.google.com/maps/search/?api=1&query=LUCUA+Osaka",
                             website: "https://www.lucua.jp/"
@@ -517,7 +525,7 @@
                             website: "https://www.est-sc.com/"
                         },
                         { 
-                            time: "19:30", icon: "🥘", title: "晚餐：木曽路 北新地店", 
+                            time: "19:00", icon: "🥘", title: "晚餐：木曽路 北新地店", 
                             desc: "しゃぶしゃぶ・日本料理。預約時間 19:30。優質涮涮鍋。", 
                             transit: "🕒 <b>19:00 出發 ➔ 19:30 抵達</b><br>🚶 <b>步行 (10-15分鐘)：</b><br>從梅田往南走，穿過大阪站前大樓區域，抵達北新地。<br>請開啟 Google Map 導航確認位置。",
                             map: "https://maps.app.goo.gl/RDgMw3rR9aGvN6FPA",
@@ -529,7 +537,7 @@
                     id: 4,
                     date: "1/6 (二)",
                     fullDate: "1月6日 週二",
-                    title: "京都下鴨、網元本館、日本橋",
+                    title: "京都下鴨、日本橋、網元本館",
                     summary: "早上前往京都下鴨神社，下午回日本橋尋寶，晚上於西心齋橋享用頂級蟹料理。",
                     transportInfo: "去京都: 京阪電車 (淀屋橋發)。<br>回大阪: 京阪電車 (出町柳發)。",
                     diningInfo: "晚餐：蟹道樂 網元本館 (20:30)。",
@@ -563,7 +571,7 @@
                             website: "https://shop.joshin.co.jp/shopdetail.php?cd=1746" 
                         },
                         { 
-                            time: "20:30", icon: "🦀", title: "晚餐：蟹道樂 網元本館", 
+                            time: "20:15", icon: "🦀", title: "晚餐：蟹道樂 網元本館", 
                             desc: "<b>注意：</b>這間不是道頓堀那間，而是位於西心齋橋的高級別邸。氣氛更幽靜。營業至 22:30。", 
                             transit: "🕒 <b>20:15 出發 ➔ 20:30 抵達</b><br>🚶 <b>步行 (15分鐘)：</b><br>從日本橋往難波/心齋橋方向走。網元本館位於美國村附近的西心齋橋區域。<br>請務必開啟 Google Map 導航確認位置。",
                             map: "https://maps.google.com/?cid=17195628979030036511",
